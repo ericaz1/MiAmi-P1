@@ -183,40 +183,36 @@
   <div class="absolute -top-24 -right-24 w-96 h-96 bg-secondary-fixed opacity-20 rounded-full blur-3xl pointer-events-none"></div>
   <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-tertiary-fixed opacity-20 rounded-full blur-3xl pointer-events-none"></div>
   <div class="max-w-4xl mx-auto relative z-10">
-    <div class="bg-white rounded-xl shadow-xl border border-sand-dark p-8 md:p-12">
-      <div class="text-center mb-10">
-        <h2 class="font-headline-section text-headline-section text-primary mb-2">נשמח לעמוד לשירותכם</h2>
-        <p class="font-body-main text-body-main text-on-surface-variant">השאירו פרטים ונציג שלנו יחזור אליכם בהקדם להתאמת חופשה או אירוע.</p>
+    <div class="bg-white rounded-xl shadow-xl border border-sand-dark p-8 md:p-12 text-center">
+      <div class="inline-flex items-center gap-2 mb-4">
+        <span class="w-8 h-px bg-gold-accent"></span>
+        <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">יצירת קשר מהירה</span>
+        <span class="w-8 h-px bg-gold-accent"></span>
       </div>
-      <form class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="space-y-2">
-            <label class="block font-label-meta text-label-meta text-on-surface-variant" for="name">שם מלא</label>
-            <input class="w-full bg-surface-bright border border-sand-dark rounded-md px-4 py-3 font-body-main text-body-main text-primary focus:outline-none focus:ring-2 focus:ring-gold-accent focus:border-transparent transition-all" id="name" placeholder="הכנס שם מלא" type="text">
-          </div>
-          <div class="space-y-2">
-            <label class="block font-label-meta text-label-meta text-on-surface-variant" for="phone">מספר טלפון</label>
-            <input class="w-full bg-surface-bright border border-sand-dark rounded-md px-4 py-3 font-body-main text-body-main text-primary focus:outline-none focus:ring-2 focus:ring-gold-accent focus:border-transparent transition-all text-right placeholder-right" dir="ltr" id="phone" placeholder="05X-XXXXXXX" type="tel">
-          </div>
-        </div>
-        <div class="space-y-2">
-          <label class="block font-label-meta text-label-meta text-on-surface-variant" for="interest">במה אתם מתעניינים?</label>
-          <select class="w-full bg-surface-bright border border-sand-dark rounded-md px-4 py-3 font-body-main text-body-main text-primary focus:outline-none focus:ring-2 focus:ring-gold-accent focus:border-transparent transition-all appearance-none" id="interest">
-            <option disabled selected value="">בחרו נושא פנייה</option>
-            <option value="vacation">הזמנת חופשה</option>
-            <option value="shabbat">שבת חתן</option>
-            <option value="events">כנסים ואירועים</option>
-            <option value="other">אחר</option>
-          </select>
-        </div>
-        <button class="w-full bg-primary text-on-primary font-nav-link text-nav-link px-8 py-4 rounded-md shadow-md hover:bg-primary-container hover:-translate-y-0.5 transition-all duration-300 flex justify-center items-center gap-2" type="submit">
-          שלח פנייה
-          <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 0;">send</span>
-        </button>
-        <p class="text-center font-label-meta text-label-meta text-outline mt-4">
-          הפרטים שלכם שמורים אצלנו ולא יועברו לצד שלישי.
-        </p>
-      </form>
+      <h2 class="font-headline-section text-headline-section text-primary mb-6">נשמח לעמוד לשירותכם</h2>
+      <p class="font-body-main text-on-surface-variant max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
+        בין אם אתם מתכננים חופשה משפחתית מפנקת, שבת חתן חגיגית או כנס עסקי יוקרתי, הצוות המקצועי של מלון מיאמי אשדוד כאן כדי לדאוג לכל פרט.
+      </p>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
+        <a href="contact.html?type=vacation" class="flex flex-col items-center justify-center p-6 bg-surface-container-low border border-sand-dark rounded-xl hover:border-gold-accent/50 hover:bg-surface-bright transition-all duration-300 group">
+          <span class="material-symbols-outlined text-gold-accent text-3xl mb-2 group-hover:scale-110 transition-transform">hotel</span>
+          <span class="font-nav-link text-primary font-bold">הזמנת חופשה</span>
+        </a>
+        <a href="contact.html?type=shabbat" class="flex flex-col items-center justify-center p-6 bg-surface-container-low border border-sand-dark rounded-xl hover:border-gold-accent/50 hover:bg-surface-bright transition-all duration-300 group">
+          <span class="material-symbols-outlined text-gold-accent text-3xl mb-2 group-hover:scale-110 transition-transform">celebration</span>
+          <span class="font-nav-link text-primary font-bold">שבת חתן ושמחות</span>
+        </a>
+        <a href="contact.html?type=events" class="flex flex-col items-center justify-center p-6 bg-surface-container-low border border-sand-dark rounded-xl hover:border-gold-accent/50 hover:bg-surface-bright transition-all duration-300 group">
+          <span class="material-symbols-outlined text-gold-accent text-3xl mb-2 group-hover:scale-110 transition-transform">business_center</span>
+          <span class="font-nav-link text-primary font-bold">כנסים ואירועים</span>
+        </a>
+      </div>
+      
+      <a class="inline-flex items-center gap-2 bg-primary text-on-primary font-nav-link text-nav-link px-10 py-4 rounded-xl shadow-lg hover:bg-primary-container hover:-translate-y-0.5 transition-all duration-300" href="contact.html">
+        מעבר לטופס הפנייה המלא
+        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+      </a>
     </div>
   </div>
 </section>

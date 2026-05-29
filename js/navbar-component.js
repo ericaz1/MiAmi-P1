@@ -28,7 +28,7 @@
 </header>
 
 <div class="announcement-bar">
-  <p>כשרות הרב מחפוד | זמני כניסת שבת: 19:00 | זמני יציאת שבת: 20:00</p>
+  <p id="shabbat-announcement">כשרות הרב מחפוד | זמני כניסת שבת: טוען... | זמני יציאת שבת: טוען...</p>
 </div>
 
 <div id="mobile-menu-overlay" class="mobile-nav-overlay"></div>
@@ -95,4 +95,64 @@
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") setOpen(false);
   });
+
+  // עדכון דינמי של זמני שבת מאתר Hebcal
+  async function updateShabbatTimes() {
+    const announcementEl = document.getElementById("shabbat-announcement");
+    if (!announcementEl) return;
+
+    try {
+      const cached = localStorage.getItem("miami_shabbat_times_v2");
+      const cachedTime = localStorage.getItem("miami_shabbat_cached_at_v2");
+      const now = new Date();
+      
+      // שימוש בנתונים שמורים אם נשמרו ב-24 השעות האחרונות
+      if (cached && cachedTime && (now - new Date(cachedTime) < 24 * 60 * 60 * 1000)) {
+        const data = JSON.parse(cached);
+        if (renderShabbatTimes(data)) return;
+      }
+
+      // קריאה ל-API של Hebcal עבור אשדוד (geonameid 295629) - שימוש בזמן ברירת המחדל המקומי של ישראל (40 דקות)
+      const response = await fetch("https://www.hebcal.com/shabbat?cfg=json&geonameid=295629");
+      if (!response.ok) throw new Error("API error");
+      
+      const data = await response.json();
+      
+      localStorage.setItem("miami_shabbat_times_v2", JSON.stringify(data));
+      localStorage.setItem("miami_shabbat_cached_at_v2", now.toISOString());
+      
+      renderShabbatTimes(data);
+    } catch (error) {
+      console.warn("שגיאה בטעינת זמני השבת, משתמש בזמני ברירת מחדל:", error);
+      announcementEl.textContent = "כשרות הרב מחפוד | זמני כניסת שבת: 19:10 | זמני יציאת שבת: 20:15";
+    }
+  }
+
+  function renderShabbatTimes(data) {
+    const announcementEl = document.getElementById("shabbat-announcement");
+    if (!announcementEl || !data || !data.items) return false;
+
+    let candleTime = "";
+    let havdalahTime = "";
+
+    data.items.forEach(item => {
+      if (item.category === "candles" && item.title) {
+        const match = item.title.match(/\d{2}:\d{2}/);
+        if (match) candleTime = match[0];
+      }
+      if (item.category === "havdalah" && item.title) {
+        const match = item.title.match(/\d{2}:\d{2}/);
+        if (match) havdalahTime = match[0];
+      }
+    });
+
+    if (candleTime && havdalahTime) {
+      announcementEl.textContent = `כשרות הרב מחפוד | זמני כניסת שבת: ${candleTime} | זמני יציאת שבת: ${havdalahTime}`;
+      return true;
+    }
+    return false;
+  }
+
+  // הפעלת העדכון
+  updateShabbatTimes();
 })();
