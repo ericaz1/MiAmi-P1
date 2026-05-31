@@ -57,8 +57,8 @@
   root.outerHTML = navbarMarkup;
 
   const announcements = [
-    "כשרות הרב מחפוד למהדרין | זמני כניסת שבת: טוען... | זמני יציאת שבת: טוען...",
-    "חוגגים שבת חתן? תיהנו מפרטיות מוחלטת עם בית כנסת וחדר אוכל נפרדים למשפחתכם!",
+    "כשרות הרב מחפוד למהדרין",
+    "זמני כניסת שבת: טוען... | זמני יציאת שבת: טוען...",
     "הזמינו חופשה במחיר המשתלם ביותר ישירות באתר ותיהנו מחניה חינם!"
   ];
 
@@ -78,7 +78,7 @@
         announcementEl.textContent = announcements[currentIndex];
         announcementEl.classList.remove("opacity-0");
       }, 500);
-    }, 10000);
+    }, 3000);
   }
 
   // Start the rotation loop
@@ -130,7 +130,7 @@
       const cached = localStorage.getItem("miami_shabbat_times_v2");
       const cachedTime = localStorage.getItem("miami_shabbat_cached_at_v2");
       const now = new Date();
-      
+
       // שימוש בנתונים שמורים אם נשמרו ב-24 השעות האחרונות
       if (cached && cachedTime && (now - new Date(cachedTime) < 24 * 60 * 60 * 1000)) {
         const data = JSON.parse(cached);
@@ -140,18 +140,18 @@
       // קריאה ל-API של Hebcal עבור אשדוד (geonameid 295629) - שימוש בזמן ברירת המחדל המקומי של ישראל (40 דקות)
       const response = await fetch("https://www.hebcal.com/shabbat?cfg=json&geonameid=295629");
       if (!response.ok) throw new Error("API error");
-      
+
       const data = await response.json();
-      
+
       localStorage.setItem("miami_shabbat_times_v2", JSON.stringify(data));
       localStorage.setItem("miami_shabbat_cached_at_v2", now.toISOString());
-      
+
       renderShabbatTimes(data);
     } catch (error) {
       console.warn("שגיאה בטעינת זמני השבת, משתמש בזמני ברירת מחדל:", error);
-      const shabbatStr = "כשרות הרב מחפוד למהדרין | זמני כניסת שבת: 19:10 | זמני יציאת שבת: 20:15";
-      announcements[0] = shabbatStr;
-      if (currentIndex === 0) {
+      const shabbatStr = "זמני כניסת שבת: 19:26 | זמני יציאת שבת: 20:27";
+      announcements[1] = shabbatStr;
+      if (currentIndex === 1) {
         announcementEl.textContent = shabbatStr;
       }
     }
@@ -176,9 +176,9 @@
     });
 
     if (candleTime && havdalahTime) {
-      const shabbatStr = `כשרות הרב מחפוד למהדרין | זמני כניסת שבת: ${candleTime} | זמני יציאת שבת: ${havdalahTime}`;
-      announcements[0] = shabbatStr;
-      if (currentIndex === 0) {
+      const shabbatStr = `זמני כניסת שבת: ${candleTime} | זמני יציאת שבת: ${havdalahTime}`;
+      announcements[1] = shabbatStr;
+      if (currentIndex === 1) {
         announcementEl.textContent = shabbatStr;
       }
       return true;

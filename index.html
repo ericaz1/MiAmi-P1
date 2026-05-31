@@ -20,15 +20,15 @@
 <script src="js/navbar-component.js"></script>
 
 <!-- Hero Section -->
-<header class="relative w-full min-h-[600px] flex items-center justify-center overflow-hidden clip-slant bg-primary-container h-[650px]" style="min-height: 600px;">
+<header class="relative w-full min-h-[600px] flex items-center justify-center overflow-hidden clip-slant bg-primary-container h-[650px] mb-10" style="min-height: 600px;">
   <!-- Background Image -->
-  <div class="absolute inset-0 z-0">
-    <img class="w-full h-full object-cover opacity-60 mix-blend-overlay" data-alt="A breathtaking, cinematic wide-angle view of a luxury Mediterranean boutique hotel exterior at golden hour. The elegant architecture features clean, corporate modern lines bathed in warm sunlight, overlooking a pristine, sandy beach and deep azure ocean waters. The atmosphere is highly sophisticated, tranquil, and exclusive, reflecting a high-end coastal resort experience with soft, atmospheric lighting and a refined color palette of deep blues and warm sandy neutrals." src="images/hero_bg.webp" decoding="async">
+  <div class="hero-bg-wrapper">
+    <img class="w-full h-full object-cover opacity-60 mix-blend-overlay animate-ken-burns" data-alt="A breathtaking, cinematic wide-angle view of a luxury Mediterranean boutique hotel exterior at golden hour. The elegant architecture features clean, corporate modern lines bathed in warm sunlight, overlooking a pristine, sandy beach and deep azure ocean waters. The atmosphere is highly sophisticated, tranquil, and exclusive, reflecting a high-end coastal resort experience with soft, atmospheric lighting and a refined color palette of deep blues and warm sandy neutrals." src="images/hero_bg.webp" decoding="async">
     <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
   </div>
 
   <!-- Content -->
-  <div class="relative z-10 max-w-container-max mx-auto px-gutter text-center flex flex-col items-center">
+  <div class="relative z-10 max-w-container-max mx-auto px-gutter text-center flex flex-col items-center pb-12">
     <span class="font-accent-serif text-accent-serif text-gold-accent mb-4 tracking-widest uppercase">ברוכים הבאים למיעמי אשדוד</span>
     <h1 class="font-display-hero-mobile text-display-hero-mobile md:font-display-hero md:text-display-hero text-on-primary mb-6 max-w-4xl leading-tight">
       יוקרה על הים, <br> <span class="text-transparent bg-clip-text bg-gradient-to-l from-gold-accent to-tertiary-fixed">חוויית אירוח מושלמת.</span>
@@ -36,7 +36,7 @@
     <p class="font-body-main text-body-main text-surface-container-high max-w-2xl mb-10 text-lg opacity-90">
       מלון בוטיק על רצועת החוף היפהפייה של אשדוד. אנו מציעים שילוב נדיר של אלגנטיות מודרנית, אווירה משפחתית חמה, והקפדה מחמירה על כשרות למהדרין.
     </p>
-    <div class="flex flex-col sm:flex-row gap-4">
+    <div class="flex flex-col sm:flex-row gap-4 mb-8">
       <a class="bg-gold-accent text-on-primary font-nav-link text-nav-link px-8 py-3.5 rounded shadow-lg hover:-translate-y-[2px] hover:shadow-xl transition-all duration-300" href="contact.html">
         הזמן חופשה
       </a>
@@ -44,6 +44,50 @@
         גלו את המלון
       </a>
     </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <a href="#about" class="scroll-indicator" aria-label="גלול למטה">
+    <span class="scroll-indicator__text">גלו עוד</span>
+    <div class="scroll-indicator__mouse">
+      <div class="scroll-indicator__wheel"></div>
+    </div>
+  </a>
+
+  <!-- Floating Booking Bar -->
+  <div class="booking-bar-wrapper">
+    <form class="booking-bar__form" id="quick-booking-form">
+      <div class="booking-bar__group">
+        <label class="booking-bar__label" for="bb-checkin">תאריך הגעה</label>
+        <input class="booking-bar__input" type="date" id="bb-checkin" required>
+      </div>
+      <div class="booking-bar__group">
+        <label class="booking-bar__label" for="bb-checkout">תאריך עזיבה</label>
+        <input class="booking-bar__input" type="date" id="bb-checkout" required>
+      </div>
+      <div class="booking-bar__group">
+        <label class="booking-bar__label" for="bb-type">סוג אירוח</label>
+        <select class="booking-bar__input" id="bb-type">
+          <option value="vacation">נופש משפחתי</option>
+          <option value="shabbat">שבת חתן ושמחות</option>
+          <option value="events">כנסים ואירועים</option>
+        </select>
+      </div>
+      <div class="booking-bar__group">
+        <label class="booking-bar__label" for="bb-guests">אורחים</label>
+        <select class="booking-bar__input" id="bb-guests">
+          <option value="1">מבוגר אחד</option>
+          <option value="2" selected>זוג (2 מבוגרים)</option>
+          <option value="3">זוג + ילד</option>
+          <option value="4">זוג + 2 ילדים</option>
+          <option value="5">משפחה (5+ נפשות)</option>
+        </select>
+      </div>
+      <button class="booking-bar__submit" type="submit">
+        <span>בדיקת זמינות</span>
+        <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+      </button>
+    </form>
   </div>
 </header>
 
@@ -113,64 +157,184 @@
   </div>
 </section>
 
-<!-- Highlights Section (Events & Shabbat) -->
-<section class="py-section-lg px-gutter bg-surface-container-low border-t border-sand-dark/30 relative">
+<!-- Why Us Section -->
+<section class="py-section-lg px-gutter bg-surface" id="why-us">
   <div class="max-w-container-max mx-auto">
     <div class="text-center mb-12">
-      <h2 class="font-headline-section text-headline-section text-primary mb-4">מומחיות באירוח ואירועים</h2>
-      <p class="font-body-main text-body-main text-on-surface-variant max-w-2xl mx-auto">
-        בין אם אתם חוגגים שמחה משפחתית או מארחים כנס מקצועי, אנו מספקים מעטפת מושלמת של אולמות, קולינריה ושירות.
+      <div class="inline-flex items-center gap-2 mb-4">
+        <span class="w-8 h-px bg-gold-accent"></span>
+        <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">למה אנחנו?</span>
+        <span class="w-8 h-px bg-gold-accent"></span>
+      </div>
+      <h2 class="font-headline-section text-headline-section text-primary mb-4">למה משפחות בוחרות במלון מיעמי?</h2>
+      <p class="font-body-main text-body-main text-on-surface-variant max-w-2xl mx-auto text-base">
+        אנו גאים להעניק חוויית אירוח מסבירת פנים ובגובה העיניים, המשלבת מסורת, נוחות ומיקום מנצח במחיר המשתלם ביותר.
       </p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Card 1: Shabbat Hatan -->
-      <div class="bg-surface rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
-        <div class="h-64 overflow-hidden relative">
-          <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="An elegant, spacious banquet hall prepared for a festive Shabbat Hatan celebration in a luxury hotel. Long tables are perfectly set with gleaming white tablecloths, fine china, and elegant floral centerpieces in a modern-traditionalist style. The room is bathed in warm, soft lighting, creating a joyous and sophisticated atmosphere suitable for religious family gatherings." style="background-image: url(&quot;images/index_shabbat_card.webp&quot;);">
-          </div>
-          <div class="absolute top-4 right-4 bg-glass-white backdrop-blur-md px-3 py-1 rounded-full border border-sand-dark flex items-center gap-1 shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-gold-accent"></span>
-            <span class="font-label-meta text-label-meta text-primary">כשרות למהדרין</span>
-          </div>
-        </div>
 
-        <div class="p-8 flex flex-col flex-grow">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 rounded bg-surface-container flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: &quot;FILL&quot; 0;">celebration</span>
-            </div>
-            <h3 class="font-headline-card text-headline-card text-primary">שבת חתן ושמחות</h3>
-          </div>
-          <p class="font-body-main text-body-main text-on-surface-variant mb-6 flex-grow">
-            חבילות אירוח מקיפות לשבתות חתן, בר מצווה ושמחות משפחתיות. אולמות תפילה וסעודה פרטיים, תפריט עשיר, וליווי צמוד של צוות ההפקה שלנו ליצירת זיכרונות בלתי נשכחים.
+    <div class="why-us-grid">
+      <!-- USP 1: Kosher -->
+      <div class="why-us-card">
+        <div class="why-us-card__icon-container">
+          <span class="material-symbols-outlined">verified</span>
+        </div>
+        <h3 class="why-us-card__title">כשרות הרב מחפוד למהדרין</h3>
+        <p class="why-us-card__text">המטבח והאירועים שלנו מתנהלים תחת השגחת כשרות מהודרת וקפדנית, המעניקה לכם שקט נפשי וביטחון מלא.</p>
+      </div>
+
+      <!-- USP 2: Privacy -->
+      <div class="why-us-card">
+        <div class="why-us-card__icon-container">
+          <span class="material-symbols-outlined">meeting_room</span>
+        </div>
+        <h3 class="why-us-card__title">פרטיות מוחלטת לשמחות</h3>
+        <p class="why-us-card__text">עם שני בתי כנסת ושני חדרי אוכל נפרדים לחלוטין, אנו מאפשרים לכם לחגוג שבת חתן או ברית בפרטיות מוחלטת.</p>
+      </div>
+
+      <!-- USP 3: Free Parking -->
+      <div class="why-us-card">
+        <div class="why-us-card__icon-container">
+          <span class="material-symbols-outlined">local_parking</span>
+        </div>
+        <h3 class="why-us-card__title">חניה חופשית וחינם</h3>
+        <p class="why-us-card__text">אנו מציעים חניה בשפע ללא תשלום לאורחי המלון – חיסכון עצום ונוחות מקסימלית בקרבת חוף הים של אשדוד.</p>
+      </div>
+
+      <!-- USP 4: Beach Proximity -->
+      <div class="why-us-card">
+        <div class="why-us-card__icon-container">
+          <span class="material-symbols-outlined">beach_access</span>
+        </div>
+        <h3 class="why-us-card__title">קרבה מיידית לים ולטיילת</h3>
+        <p class="why-us-card__text">מרחק הליכה קצר ביותר מרצועת החוף המטופחת והטיילת התוססת של אשדוד. ליהנות מהבריזה של הים בכל רגע.</p>
+      </div>
+
+      <!-- USP 5: Value for money -->
+      <div class="why-us-card">
+        <div class="why-us-card__icon-container">
+          <span class="material-symbols-outlined">monetization_on</span>
+        </div>
+        <h3 class="why-us-card__title">תמורה מעולה למחיר</h3>
+        <p class="why-us-card__text">אירוח חם, נקי, משפחתי ומכבד את המסורת, המעניק לכם ערך מירבי וחוויה בלתי נשכחת במחיר הוגן.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Events Section -->
+<section class="py-section-lg px-gutter bg-surface-container-low border-t border-sand-dark/30 relative" id="home-events">
+  <div class="max-w-container-max mx-auto">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 mb-4">
+        <span class="w-8 h-px bg-gold-accent"></span>
+        <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">שמחות וכנסים</span>
+        <span class="w-8 h-px bg-gold-accent"></span>
+      </div>
+      <h2 class="font-headline-section text-headline-section text-primary mb-4">מתמחים באירועים מיוחדים</h2>
+      <p class="font-body-main text-body-main text-on-surface-variant max-w-2xl mx-auto text-base">
+        מחגיגות משפחתיות אינטימיות ועד כנסים עסקיים יוקרתיים. העבירו את העכבר על הכרטיסים כדי לגלות את פרטי האירוח.
+      </p>
+    </div>
+
+    <div class="home-events-grid">
+      <!-- Card 1: Shabbat Hatan -->
+      <div class="event-card">
+        <img class="event-card__img" src="images/index_shabbat_card.webp" alt="שבת חתן במלון מיעמי">
+        <div class="event-card__gradient"></div>
+        <div class="event-card__front">
+          <span class="event-card__tag">השמחה שלכם</span>
+          <h3 class="event-card__title">שבת חתן ושמחות</h3>
+        </div>
+        <div class="event-card__overlay">
+          <h3 class="font-headline-card text-white text-xl font-bold mb-3">שבת חתן ושמחות</h3>
+          <p class="event-card__desc">
+            אירוח שבת חתן באווירה חמה ומסורתית. אנו מציעים ליווי צמוד של צוות המלון ומעטפת שירותים מלאה לשמחה שלכם.
           </p>
-          <a class="inline-flex items-center gap-2 font-nav-link text-nav-link text-secondary hover:text-gold-accent transition-colors group/link w-max" href="shabbat.html">
-            לפרטים נוספים
-            <span class="material-symbols-outlined text-[18px] transform transition-transform group-hover/link:-translate-x-1" style="font-variation-settings: &quot;FILL&quot; 0;">arrow_back</span>
+          <div class="event-card__features">
+            <div class="event-card__feature">
+              <span class="material-symbols-outlined event-card__feature-icon">done</span>
+              <span>בית כנסת פרטי לכל משפחה</span>
+            </div>
+            <div class="event-card__feature">
+              <span class="material-symbols-outlined event-card__feature-icon">done</span>
+              <span>חדר אוכל נפרד לפרטיות מלאה</span>
+            </div>
+            <div class="event-card__feature">
+              <span class="material-symbols-outlined event-card__feature-icon">done</span>
+              <span>כשרות למהדרין של הרב מחפוד</span>
+            </div>
+          </div>
+          <a class="event-card__btn" href="shabbat.html">
+            <span>לפרטים והזמנה</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
           </a>
         </div>
       </div>
 
-      <!-- Card 2: Business Events -->
-      <div class="bg-surface rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
-        <div class="h-64 overflow-hidden relative">
-          <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A state-of-the-art corporate conference room in a luxury boutique hotel. The setting features a sleek, modern boardroom table, ergonomic seating, and advanced presentation technology. The room has large windows offering bright, natural light, designed with a corporate modern aesthetic using clean lines, deep blue accents, and professional, high-end finishing." style="background-image: url(&quot;images/index_events_card.webp&quot;);">
-          </div>
+      <!-- Card 2: Brit Milah -->
+      <div class="event-card">
+        <img class="event-card__img" src="images/index_brit_card.png" alt="ברית מילה במלון מיעמי">
+        <div class="event-card__gradient"></div>
+        <div class="event-card__front">
+          <span class="event-card__tag">שמחה משפחתית</span>
+          <h3 class="event-card__title">אירועי ברית / בריתה</h3>
         </div>
-
-        <div class="p-8 flex flex-col flex-grow">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-12 h-12 rounded bg-surface-container flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: &quot;FILL&quot; 0;">business_center</span>
-            </div>
-            <h3 class="font-headline-card text-headline-card text-primary">כנסים ואירועי חברה</h3>
-          </div>
-          <p class="font-body-main text-body-main text-on-surface-variant mb-6 flex-grow">
-            אולמות כנסים מאובזרים בטכנולוגיה מתקדמת, אידיאליים לימי עיון, ישיבות הנהלה ואירועי חברה. אנו מציעים תפריטי כיבוד מותאמים, עמדות קפה עשירות ושירות מוקפד המבטיח את הצלחת האירוע.
+        <div class="event-card__overlay">
+          <h3 class="font-headline-card text-white text-xl font-bold mb-3">ברית ובריתה</h3>
+          <p class="event-card__desc">
+            חגיגת ברית באווירה אינטימית ועוטפת. אולמות אירועים מותאמים אישית ותפריטי קייטרינג עשירים המתאימים לציבור המהדרין.
           </p>
-          <a class="inline-flex items-center gap-2 font-nav-link text-nav-link text-secondary hover:text-gold-accent transition-colors group/link w-max" href="events.html">
-            צפה באולמות
-            <span class="material-symbols-outlined text-[18px] transform transition-transform group-hover/link:-translate-x-1" style="font-variation-settings: &quot;FILL&quot; 0;">arrow_back</span>
+          <div class="event-card__features">
+            <div class="event-card__feature">
+              <span class="material-symbols-outlined event-card__feature-icon">done</span>
+              <span>חניה חינם ובשפע לאורחים</span>
+            </div>
+            <div class="event-card__feature">
+              <span class="material-symbols-outlined event-card__feature-icon">done</span>
+              <span>תפריט בשרי עשיר ומגוון</span>
+            </div>
+            <div class="event-card__feature">
+              <span class="material-symbols-outlined event-card__feature-icon">done</span>
+              <span>עיצוב אולם חגיגי ומותאם אישית</span>
+            </div>
+          </div>
+          <a class="event-card__btn" href="contact.html?type=shabbat">
+            <span>לפרטים והזמנה</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: Business Events -->
+      <div class="event-card">
+        <img class="event-card__img" src="images/index_events_card.webp" alt="כנסים ואירועים עסקיים">
+        <div class="event-card__gradient"></div>
+        <div class="event-card__front">
+          <span class="event-card__tag">עסקים וימי עיון</span>
+          <h3 class="event-card__title">כנסים ואירועי חברה</h3>
+        </div>
+        <div class="event-card__overlay">
+          <h3 class="font-headline-card text-white text-xl font-bold mb-3">כנסים ואירועי חברה</h3>
+          <p class="event-card__desc">
+            אולם כנסים מאובזר טכנולוגית, מתאים לישיבות הנהלה, הרמות כוסית, כנסים מקצועיים וימי עיון לחברות.
+          </p>
+          <div class="event-card__features">
+            <div class="event-card__feature">
+              <span class="material-symbols-outlined event-card__feature-icon">done</span>
+              <span>מקרן, מסך ומערכת הגברה מתקדמת</span>
+            </div>
+            <div class="event-card__feature">
+              <span class="material-symbols-outlined event-card__feature-icon">done</span>
+              <span>עמדות קפה משודרגות וכיבוד עשיר</span>
+            </div>
+            <div class="event-card__feature">
+              <span class="material-symbols-outlined event-card__feature-icon">done</span>
+              <span>מיקום נוח על הטיילת עם חניה חינם</span>
+            </div>
+          </div>
+          <a class="event-card__btn" href="events.html">
+            <span>לפרטים והזמנה</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
           </a>
         </div>
       </div>
@@ -178,48 +342,608 @@
   </div>
 </section>
 
-<!-- Quick Contact Section -->
-<section class="py-section-lg px-gutter bg-surface relative overflow-hidden" id="contact">
-  <!-- Decorative background element -->
-  <div class="absolute -top-24 -right-24 w-96 h-96 bg-secondary-fixed opacity-20 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-tertiary-fixed opacity-20 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="max-w-4xl mx-auto relative z-10">
-    <div class="bg-white rounded-xl shadow-xl border border-sand-dark p-8 md:p-12 text-center">
+
+<!-- Testimonials Section -->
+<section class="py-section-lg px-gutter testimonials-section" id="testimonials">
+  <div class="max-w-container-max mx-auto flex flex-col items-center">
+    
+    <div class="text-center mb-10">
       <div class="inline-flex items-center gap-2 mb-4">
         <span class="w-8 h-px bg-gold-accent"></span>
-        <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">יצירת קשר מהירה</span>
+        <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">חוות דעת של אורחים</span>
         <span class="w-8 h-px bg-gold-accent"></span>
       </div>
-      <h2 class="font-headline-section text-headline-section text-primary mb-6">נשמח לעמוד לשירותכם</h2>
-      <p class="font-body-main text-on-surface-variant max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
-        בין אם אתם מתכננים חופשה משפחתית מפנקת, שבת חתן חגיגית או כנס עסקי יוקרתי, הצוות המקצועי של מלון מיעמי אשדוד כאן כדי לדאוג לכל פרט.
+      <h2 class="font-headline-section text-headline-section text-primary mb-4">אורחי המלון מספרים</h2>
+      <p class="font-body-main text-body-main text-on-surface-variant max-w-2xl mx-auto text-base">
+        אנו מאמינים בשקיפות ובאירוח מכל הלב. קראו מה מספרים עלינו האורחים שהתארחו בשמחות, בנופש משפחתי ובכנסים.
       </p>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
-        <a href="contact.html?type=vacation" class="flex flex-col items-center justify-center p-6 bg-surface-container-low border border-sand-dark rounded-xl hover:border-gold-accent/50 hover:bg-surface-bright transition-all duration-300 group">
-          <span class="material-symbols-outlined text-gold-accent text-3xl mb-2 group-hover:scale-110 transition-transform">hotel</span>
-          <span class="font-nav-link text-primary font-bold">הזמנת חופשה</span>
-        </a>
-        <a href="contact.html?type=shabbat" class="flex flex-col items-center justify-center p-6 bg-surface-container-low border border-sand-dark rounded-xl hover:border-gold-accent/50 hover:bg-surface-bright transition-all duration-300 group">
-          <span class="material-symbols-outlined text-gold-accent text-3xl mb-2 group-hover:scale-110 transition-transform">celebration</span>
-          <span class="font-nav-link text-primary font-bold">שבת חתן ושמחות</span>
-        </a>
-        <a href="contact.html?type=events" class="flex flex-col items-center justify-center p-6 bg-surface-container-low border border-sand-dark rounded-xl hover:border-gold-accent/50 hover:bg-surface-bright transition-all duration-300 group">
-          <span class="material-symbols-outlined text-gold-accent text-3xl mb-2 group-hover:scale-110 transition-transform">business_center</span>
-          <span class="font-nav-link text-primary font-bold">כנסים ואירועים</span>
-        </a>
-      </div>
-      
-      <a class="inline-flex items-center gap-2 bg-primary text-on-primary font-nav-link text-nav-link px-10 py-4 rounded-xl shadow-lg hover:bg-primary-container hover:-translate-y-0.5 transition-all duration-300" href="contact.html">
-        מעבר לטופס הפנייה המלא
-        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-      </a>
     </div>
+
+    <!-- Category Tabs -->
+    <div class="testimonials-tabs">
+      <button class="testimonial-tab active" data-category="all">הכל</button>
+      <button class="testimonial-tab" data-category="shabbat">שבת חתן ושמחות</button>
+      <button class="testimonial-tab" data-category="vacation">נופש משפחתי</button>
+      <button class="testimonial-tab" data-category="events">לקוחות עסקיים</button>
+    </div>
+
+    <!-- Slider Container -->
+    <div class="testimonials-slider-container">
+      <div class="testimonials-track" id="testimonials-track">
+        
+        <!-- Slide 1: Shabbat Hatan -->
+        <div class="testimonial-slide active" data-category="shabbat">
+          <div class="testimonial-card">
+            <span class="testimonial-card__quote">“</span>
+            <div class="testimonial-avatar">מא</div>
+            <div class="testimonial-stars">
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="testimonial-text">"חגגנו שבת חתן לבננו במלון. השירות היה מעל ומעבר לציפיות. קיבלנו בית כנסת פרטי וחדר אוכל נפרד רק למשפחה שלנו, מה שנתן לנו פרטיות מושלמת. האוכל בכשרות הרב מחפוד היה בשפע וברמה גבוהה מאוד. מומלץ בחום!"</p>
+            <h4 class="testimonial-author">משה ואסתר אלקובי</h4>
+            <span class="testimonial-tag">שבת חתן ושמחות</span>
+          </div>
+        </div>
+
+        <!-- Slide 2: Vacation -->
+        <div class="testimonial-slide" data-category="vacation">
+          <div class="testimonial-card">
+            <span class="testimonial-card__quote">“</span>
+            <div class="testimonial-avatar">רד</div>
+            <div class="testimonial-stars">
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="testimonial-text">"חיפשנו מקום נקי, שומר שבת וכשרות, קרוב לים ובמחיר הוגן למשפחה. מלון מיעמי סיפק תמורה מושלמת למחיר. החדרים היו נקיים ומסודרים, הטיילת ממש מעבר לכביש, והחניה חינם חסכה לנו המון כאב ראש."</p>
+            <h4 class="testimonial-author">רחל ואילן דהן</h4>
+            <span class="testimonial-tag">נופש משפחתי</span>
+          </div>
+        </div>
+
+        <!-- Slide 3: Business -->
+        <div class="testimonial-slide" data-category="events">
+          <div class="testimonial-card">
+            <span class="testimonial-card__quote">“</span>
+            <div class="testimonial-avatar">יל</div>
+            <div class="testimonial-stars">
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">star</span>
+            </div>
+            <p class="testimonial-text">"קיימנו יום עיון מרוכז לצוות המנהלים שלנו במלון. חלל האירוח היה מאובזר היטב, עמדת הקפה והכיבוד היו עשירים והשירות היה אדיב ויעיל. המיקום הנוח באשדוד והחניה החופשית היו יתרון גדול."</p>
+            <h4 class="testimonial-author">ירון לוי, מנהל פרויקטים</h4>
+            <span class="testimonial-tag">לקוחות עסקיים</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation Arrows -->
+      <div class="testimonials-nav">
+        <button class="testimonial-arrow prev-btn" id="prev-testimonial-btn" aria-label="הקודם">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+        <button class="testimonial-arrow next-btn" id="next-testimonial-btn" aria-label="הבא">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+      </div>
+
+      <!-- Pagination Dots -->
+      <div class="testimonials-dots" id="testimonials-dots"></div>
+    </div>
+
+    <!-- Add Review CTA -->
+    <button class="add-review-btn" id="open-review-modal-btn">
+      <span class="material-symbols-outlined">rate_review</span>
+      <span>הוספת חוות דעת משלכם</span>
+    </button>
+
+  </div>
+</section>
+
+<!-- Review Submission Modal Overlay -->
+<div class="modal-overlay" id="review-modal-overlay">
+  <div class="review-modal">
+    <div class="review-modal__header">
+      <h3 class="review-modal__title">הוספת חוות דעת</h3>
+      <button class="review-modal__close" id="close-review-modal-btn" aria-label="סגור">&times;</button>
+    </div>
+    <div class="review-modal__body">
+      <form class="review-form" id="new-review-form">
+        <div class="review-form__group">
+          <label class="review-form__label" for="rf-name">שם מלא</label>
+          <input class="review-form__input" type="text" id="rf-name" placeholder="לדוגמה: ישראל ישראלי" required>
+        </div>
+        <div class="review-form__group">
+          <label class="review-form__label" for="rf-category">סוג אירוח</label>
+          <select class="review-form__select" id="rf-category" required>
+            <option value="shabbat">שבת חתן ושמחות</option>
+            <option value="vacation" selected>נופש משפחתי</option>
+            <option value="events">לקוחות עסקיים</option>
+          </select>
+        </div>
+        <div class="review-form__group">
+          <label class="review-form__label">דירוג המלון</label>
+          <div class="rating-select">
+            <input class="rating-star-input" type="radio" name="rf-rating" id="star-5" value="5" required>
+            <label class="rating-star-label" for="star-5" title="מצוין"><span class="material-symbols-outlined">star</span></label>
+            <input class="rating-star-input" type="radio" name="rf-rating" id="star-4" value="4">
+            <label class="rating-star-label" for="star-4" title="טוב מאוד"><span class="material-symbols-outlined">star</span></label>
+            <input class="rating-star-input" type="radio" name="rf-rating" id="star-3" value="3">
+            <label class="rating-star-label" for="star-3" title="בינוני"><span class="material-symbols-outlined">star</span></label>
+            <input class="rating-star-input" type="radio" name="rf-rating" id="star-2" value="2">
+            <label class="rating-star-label" for="star-2" title="טעון שיפור"><span class="material-symbols-outlined">star</span></label>
+            <input class="rating-star-input" type="radio" name="rf-rating" id="star-1" value="1">
+            <label class="rating-star-label" for="star-1" title="גרוע"><span class="material-symbols-outlined">star</span></label>
+          </div>
+        </div>
+        <div class="review-form__group">
+          <label class="review-form__label" for="rf-text">חוות דעתכם</label>
+          <textarea class="review-form__textarea" id="rf-text" rows="4" placeholder="שתפו אותנו בחוויית האירוח שלכם במלון..." required></textarea>
+        </div>
+        <button class="review-form__submit" type="submit">פרסום חוות דעת</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ Accordion Section -->
+<section class="py-section-lg px-gutter faq-section" id="faq">
+  <div class="max-w-container-max mx-auto">
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 mb-4">
+        <span class="w-8 h-px bg-gold-accent"></span>
+        <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">שאלות נפוצות</span>
+        <span class="w-8 h-px bg-gold-accent"></span>
+      </div>
+      <h2 class="font-headline-section text-headline-section text-primary mb-4">שאלות נפוצות ותשובות</h2>
+      <p class="font-body-main text-body-main text-on-surface-variant max-w-2xl mx-auto text-base">
+        ריכזנו עבורכם את התשובות לשאלות הנפוצות ביותר אודות כשרות המלון, חניה, מתקנים ואירוח שמחות.
+      </p>
+    </div>
+
+    <div class="faq-container">
+      <!-- Question 1 -->
+      <div class="faq-item">
+        <button class="faq-header" aria-expanded="false">
+          <span class="faq-question">מהי רמת הכשרות במלון?</span>
+          <span class="material-symbols-outlined faq-icon-toggle">add</span>
+        </button>
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            המטבח והקייטרינג במלון מיעמי אשדוד מתנהלים תחת השגחת כשרות למהדרין קפדנית ביותר של **הרב מחפוד (בד"ץ יורה דעה)**. זהו תו תקן משמעותי המעניק לציבור הדתי והחרדי ביטחון מלא ושקט נפשי לאורך כל השהות והאירועים אצלנו.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="faq-item">
+        <button class="faq-header" aria-expanded="false">
+          <span class="faq-question">האם יש חניה במלון והאם היא כרוכה בתשלום?</span>
+          <span class="material-symbols-outlined faq-icon-toggle">add</span>
+        </button>
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            אנו מציעים **חניה חופשית וחינם בשפע** לכלל אורחי המלון והאירועים. זהו יתרון משמעותי במיוחד באזור רצועת החוף והטיילת באשדוד, שבהם מקומות החניה מוגבלים מאוד או כרוכים בתשלום עירוני יומי.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="faq-item">
+        <button class="faq-header" aria-expanded="false">
+          <span class="faq-question">האם יש נוף ישיר לים מתוך חדרי המלון?</span>
+          <span class="material-symbols-outlined faq-icon-toggle">add</span>
+        </button>
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            המלון ממוקם במיקום מצוין על טיילת החוף של אשדוד ובמרחק הליכה קצר ביותר של פחות מ-2 דקות מרצועת החוף המטופחת. עם זאת, **אין למלון נוף ישיר לים מתוך החדרים**. עיצוב המלון שואב השראה מגווני הים והחול ומציע בריזה נהדרת מהמרפסות.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="faq-item">
+        <button class="faq-header" aria-expanded="false">
+          <span class="faq-question">מהם היתרונות שלכם באירוח שבתות חתן ושמחות משפחתיות?</span>
+          <span class="material-symbols-outlined faq-icon-toggle">add</span>
+        </button>
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            מלון מיעמי מתמחה באירוח אירועים משפחתיים ומציע יתרון ייחודי: **פרטיות מלאה**. במלון קיימים שני בתי כנסת מפוארים ושני חדרי אוכל נפרדים לחלוטין. הדבר מאפשר לנו לארח את השבת שלכם בפרטיות מוחלטת ללא ערבוב עם אורחים אחרים, בליווי שירות חם ועוטף.
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="faq-item">
+        <button class="faq-header" aria-expanded="false">
+          <span class="faq-question">אילו מתקנים קיימים במלון?</span>
+          <span class="material-symbols-outlined faq-icon-toggle">add</span>
+        </button>
+        <div class="faq-answer-wrapper">
+          <div class="faq-answer">
+            המלון מציע לינה בחדרים נקיים, נוחים ומשפחתיים (כולל WiFi חופשי, מיזוג אוויר וטלוויזיה), בתי כנסת פרטיים, חדרי אוכל ואולמות אירועים קטנים. על מנת לתאם ציפיות בצורה כנה, **המלון אינו כולל בריכה, ספא או חדר כושר**. אנו מתמקדים במתן אירוח נקי, משפחתי ותמורה מעולה למחיר.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final Interactive CTA Section -->
+<section class="final-cta-section" id="final-cta">
+  <div class="final-cta-container">
+    <div class="inline-flex items-center gap-2 mb-4">
+      <span class="w-8 h-px bg-gold-accent"></span>
+      <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">הזמינו חופשה או אירוע</span>
+      <span class="w-8 h-px bg-gold-accent"></span>
+    </div>
+    <h2 class="font-display-hero text-3xl md:text-4xl text-white mb-4">מוכנים לחוות את מלון מיעמי?</h2>
+    <p class="font-body-main text-white/90 max-w-xl mx-auto mb-8 text-base">
+      בחרו את סוג האירוח שלכם וקבלו הטבה בלעדית מיוחדת במעמד ההזמנה דרך האתר!
+    </p>
+
+    <!-- Stay Category Selector -->
+    <div class="final-cta-selector">
+      <button class="final-cta-tab active" data-stay="vacation">נופש משפחתי</button>
+      <button class="final-cta-tab" data-stay="shabbat">שבת חתן</button>
+      <button class="final-cta-tab" data-stay="events">אירוע עסקי</button>
+    </div>
+
+    <!-- Benefit Cards Wrapper -->
+    <div class="final-cta-card-wrapper">
+      <!-- Card 1: Vacation Benefit -->
+      <div class="final-cta-card active" data-stay="vacation">
+        <span class="final-cta-card__badge">הטבת נופש בלעדית</span>
+        <h3 class="final-cta-card__title">מארז מתוק בחדר + חניה חינם</h3>
+        <p class="final-cta-card__desc">הזמינו ישירות באתר וקבלו מארז שוקולדים ופירות יער מפנק בחדר עם הגעתכם, בנוסף לחניה חינם לכל תקופת השהות.</p>
+      </div>
+
+      <!-- Card 2: Shabbat Benefit -->
+      <div class="final-cta-card" data-stay="shabbat">
+        <span class="final-cta-card__badge">הטבת שמחות בלעדית</span>
+        <h3 class="final-cta-card__title">פגישת הפקה חינם + שי לחתן</h3>
+        <p class="final-cta-card__desc">סגרו שבת חתן אצלנו וקבלו פגישת ייעוץ והפקה חינם עם מנהל האירועים של המלון, וכן שי מפנק ומהודר לחתן השמחה.</p>
+      </div>
+
+      <!-- Card 3: Business Benefit -->
+      <div class="final-cta-card" data-stay="events">
+        <span class="final-cta-card__badge">הטבת עסקים בלעדית</span>
+        <h3 class="final-cta-card__title">שדרוג לעמדת קפה פרימיום חינם</h3>
+        <p class="final-cta-card__desc">הזמינו יום עיון או כנס עסקי וקבלו שדרוג לעמדת הקפה לעמדת אספרסו וקפוצ'ינו איכותית מטעם המלון ללא תוספת תשלום.</p>
+      </div>
+    </div>
+
+    <!-- Action Button -->
+    <a href="contact.html?type=vacation&benefit=מארז מתוק וחניה חינם" class="final-cta-btn" id="final-cta-action-link">
+      <span>לקבלת ההטבה והזמנה</span>
+      <span class="material-symbols-outlined">arrow_back</span>
+    </a>
   </div>
 </section>
 
 <div id="site-footer"></div>
 <script src="js/footer-component.js"></script>
+
+<script>
+  // Quick Booking Form Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const checkinInput = document.getElementById('bb-checkin');
+    const checkoutInput = document.getElementById('bb-checkout');
+    if (checkinInput && checkoutInput) {
+      const today = new Date();
+      const tomorrow = new Date();
+      tomorrow.setDate(today.getDate() + 1);
+
+      checkinInput.value = today.toISOString().split('T')[0];
+      checkoutInput.value = tomorrow.toISOString().split('T')[0];
+      checkinInput.min = today.toISOString().split('T')[0];
+      
+      checkinInput.addEventListener('change', () => {
+        const selectedCheckin = new Date(checkinInput.value);
+        const nextDay = new Date(selectedCheckin);
+        nextDay.setDate(selectedCheckin.getDate() + 1);
+        checkoutInput.value = nextDay.toISOString().split('T')[0];
+        checkoutInput.min = nextDay.toISOString().split('T')[0];
+      });
+    }
+
+    const bookingForm = document.getElementById('quick-booking-form');
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const checkin = document.getElementById('bb-checkin').value;
+        const checkout = document.getElementById('bb-checkout').value;
+        const type = document.getElementById('bb-type').value;
+        const guests = document.getElementById('bb-guests').value;
+        window.location.href = `contact.html?type=${type}&checkin=${checkin}&checkout=${checkout}&guests=${guests}`;
+      });
+    }
+  });
+
+  // Testimonials Slider & Modal Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('testimonials-track');
+    const dotsContainer = document.getElementById('testimonials-dots');
+    const tabs = document.querySelectorAll('.testimonial-tab');
+    const prevBtn = document.getElementById('prev-testimonial-btn');
+    const nextBtn = document.getElementById('next-testimonial-btn');
+    
+    const openModalBtn = document.getElementById('open-review-modal-btn');
+    const closeModalBtn = document.getElementById('close-review-modal-btn');
+    const modalOverlay = document.getElementById('review-modal-overlay');
+    const reviewForm = document.getElementById('new-review-form');
+
+    let currentSlideIndex = 0;
+    let filteredSlides = [];
+    
+    function getActiveSlides() {
+      const activeTab = document.querySelector('.testimonial-tab.active');
+      const category = activeTab ? activeTab.getAttribute('data-category') : 'all';
+      const allSlides = Array.from(document.querySelectorAll('.testimonial-slide'));
+      
+      if (category === 'all') {
+        return allSlides;
+      }
+      return allSlides.filter(slide => slide.getAttribute('data-category') === category);
+    }
+
+    function updateSlider() {
+      filteredSlides = getActiveSlides();
+      
+      // Ensure index is bounded
+      if (currentSlideIndex >= filteredSlides.length) {
+        currentSlideIndex = 0;
+      }
+      if (currentSlideIndex < 0) {
+        currentSlideIndex = Math.max(0, filteredSlides.length - 1);
+      }
+
+      // Hide all slides
+      const allSlides = document.querySelectorAll('.testimonial-slide');
+      allSlides.forEach(slide => {
+        slide.style.display = 'none';
+        slide.classList.remove('active');
+      });
+      
+      // Display active category slides
+      filteredSlides.forEach((slide, idx) => {
+        slide.style.display = 'block';
+        if (idx === currentSlideIndex) {
+          slide.classList.add('active');
+        }
+      });
+
+      // Slide translation (RTL translation uses positive percentages)
+      if (track) {
+        track.style.transform = `translateX(${currentSlideIndex * 100}%)`;
+      }
+      
+      // Update pagination dots
+      if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        filteredSlides.forEach((_, idx) => {
+          const dot = document.createElement('span');
+          dot.classList.add('testimonial-dot');
+          if (idx === currentSlideIndex) dot.classList.add('active');
+          dot.addEventListener('click', () => {
+            currentSlideIndex = idx;
+            updateSlider();
+          });
+          dotsContainer.appendChild(dot);
+        });
+      }
+    }
+
+    // Tab Filter click handler
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentSlideIndex = 0;
+        updateSlider();
+      });
+    });
+
+    // Prev / Next button click handlers
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (filteredSlides.length <= 1) return;
+        currentSlideIndex = (currentSlideIndex - 1 + filteredSlides.length) % filteredSlides.length;
+        updateSlider();
+      });
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (filteredSlides.length <= 1) return;
+        currentSlideIndex = (currentSlideIndex + 1) % filteredSlides.length;
+        updateSlider();
+      });
+    }
+
+    // Modal Events
+    if (openModalBtn) {
+      openModalBtn.addEventListener('click', () => {
+        modalOverlay.classList.add('active');
+      });
+    }
+    
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', () => {
+        modalOverlay.classList.remove('active');
+      });
+    }
+    
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          modalOverlay.classList.remove('active');
+        }
+      });
+    }
+
+    // Review submission form handler
+    if (reviewForm) {
+      reviewForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('rf-name').value;
+        const category = document.getElementById('rf-category').value;
+        const rating = document.querySelector('input[name="rf-rating"]:checked').value;
+        const text = document.getElementById('rf-text').value;
+        
+        // Generate initials for Avatar
+        const initials = name.trim().split(' ').map(n => n[0]).join('').slice(0, 2);
+        
+        // Get category label in Hebrew
+        let categoryLabel = 'נופש משפחתי';
+        if (category === 'shabbat') categoryLabel = 'שבת חתן ושמחות';
+        if (category === 'events') categoryLabel = 'לקוחות עסקיים';
+        
+        // Create new slide element
+        const newSlide = document.createElement('div');
+        newSlide.classList.add('testimonial-slide');
+        newSlide.setAttribute('data-category', category);
+        
+        // Generate stars HTML
+        let starsHTML = '';
+        for (let i = 1; i <= 5; i++) {
+          const filled = i <= parseInt(rating) ? 1 : 0;
+          starsHTML += `<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' ${filled};">star</span>`;
+        }
+        
+        newSlide.innerHTML = `
+          <div class="testimonial-card">
+            <span class="testimonial-card__quote">“</span>
+            <div class="testimonial-avatar">${initials}</div>
+            <div class="testimonial-stars">
+              ${starsHTML}
+            </div>
+            <p class="testimonial-text">"${text}"</p>
+            <h4 class="testimonial-author">${name}</h4>
+            <span class="testimonial-tag">${categoryLabel}</span>
+          </div>
+        `;
+        
+        // Append to slide track
+        if (track) {
+          track.appendChild(newSlide);
+        }
+        
+        // Reset form and close modal
+        reviewForm.reset();
+        modalOverlay.classList.remove('active');
+        
+        // Switch tab to the review's category to show it
+        const matchingTab = document.querySelector(`.testimonial-tab[data-category="${category}"]`);
+        if (matchingTab) {
+          matchingTab.click();
+          setTimeout(() => {
+            const currentSlides = getActiveSlides();
+            currentSlideIndex = currentSlides.length - 1;
+            updateSlider();
+          }, 100);
+        }
+        
+        alert('תודה על חוות הדעת שלך! היא התווספה בהצלחה.');
+      });
+    }
+
+    // Initial slider build
+    updateSlider();
+  });
+
+  // FAQ Accordion Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const header = item.querySelector('.faq-header');
+      const wrapper = item.querySelector('.faq-answer-wrapper');
+      
+      header.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other FAQ items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.faq-answer-wrapper').style.maxHeight = '0px';
+            otherItem.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
+          }
+        });
+        
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+          wrapper.style.maxHeight = '0px';
+          header.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('active');
+          wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+          header.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
+
+  // Final CTA Selection Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.final-cta-tab');
+    const cards = document.querySelectorAll('.final-cta-card');
+    const ctaButton = document.getElementById('final-cta-action-link');
+    
+    const benefitsMap = {
+      vacation: {
+        text: 'מארז מתוק וחניה חינם',
+        type: 'vacation'
+      },
+      shabbat: {
+        text: 'פגישת הפקה ושי לחתן',
+        type: 'shabbat'
+      },
+      events: {
+        text: 'עמדת קפה פרימיום',
+        type: 'events'
+      }
+    };
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const stayType = tab.getAttribute('data-stay');
+        
+        // Update active tab
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        // Update active card
+        cards.forEach(card => {
+          card.classList.remove('active');
+          if (card.getAttribute('data-stay') === stayType) {
+            card.classList.add('active');
+          }
+        });
+        
+        // Update CTA href
+        if (ctaButton && benefitsMap[stayType]) {
+          const benefit = benefitsMap[stayType];
+          ctaButton.setAttribute('href', `contact.html?type=${benefit.type}&benefit=${encodeURIComponent(benefit.text)}`);
+        }
+      });
+    });
+  });
+</script>
 
 <a class="whatsapp-fab" href="https://wa.me/97288522085" aria-label="WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>

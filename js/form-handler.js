@@ -22,6 +22,24 @@
     if (guestsInput && guests) {
       guestsInput.value = guests;
     }
+
+    const checkin = urlParams.get("checkin");
+    const checkout = urlParams.get("checkout");
+    const benefit = urlParams.get("benefit");
+    const messageInput = document.getElementById("message");
+    
+    if (messageInput) {
+      let msgVal = "";
+      if (checkin && checkout) {
+        msgVal += `הודעה שנשלחה מחיפוש זמינות מהיר:\nתאריך הגעה: ${checkin}\nתאריך עזיבה: ${checkout}\n`;
+      }
+      if (benefit) {
+        msgVal += `מעוניין בהטבת אתר מיוחדת: ${benefit}\n`;
+      }
+      if (msgVal) {
+        messageInput.value = msgVal;
+      }
+    }
   });
 
   // 2. האזנה לשליחת הטופס בדף צור קשר
