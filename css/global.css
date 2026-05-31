@@ -916,9 +916,14 @@ html[dir='rtl'] body {
   position: relative;
   background-color: #f5f2e8;
   color: var(--color-on-surface);
-  padding: 5rem 2rem;
+  padding: 3rem 1.5rem;
   overflow: hidden;
   border-top: 2px solid var(--color-gold-accent);
+}
+@media (min-width: 768px) {
+  .final-cta-section {
+    padding: 5rem 2rem;
+  }
 }
 .final-cta-section::before {
   content: '';
