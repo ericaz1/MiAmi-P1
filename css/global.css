@@ -169,6 +169,12 @@ html[dir='rtl'] body {
   font-family: Assistant, sans-serif;
   font-size: 0.875rem;
   line-height: 1.4;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.announcement-bar p.opacity-0 {
+  opacity: 0;
 }
 
 @media (min-width: 768px) {

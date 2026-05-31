@@ -3,6 +3,10 @@
   window.__miamiNavbarMounted = true;
 
   const navbarMarkup = `
+<div class="announcement-bar">
+  <p id="shabbat-announcement">כשרות הרב מחפוד למהדרין | זמני כניסת שבת: טוען... | זמני יציאת שבת: טוען...</p>
+</div>
+
 <header class="site-header">
   <div class="header-inner">
     <button id="mobile-menu-trigger" class="nav-toggle" aria-label="פתח תפריט" aria-expanded="false" type="button">
@@ -23,10 +27,6 @@
     <a href="contact.html" class="header-cta">הזמינו עכשיו</a>
   </div>
 </header>
-
-<div class="announcement-bar">
-  <p id="shabbat-announcement">כשרות הרב מחפוד | זמני כניסת שבת: טוען... | זמני יציאת שבת: טוען...</p>
-</div>
 
 <div id="mobile-menu-overlay" class="mobile-nav-overlay"></div>
 <aside id="mobile-nav-drawer" class="mobile-nav-drawer" dir="rtl" aria-hidden="true">
@@ -55,6 +55,34 @@
   const root = document.getElementById("site-navbar");
   if (!root) return;
   root.outerHTML = navbarMarkup;
+
+  const announcements = [
+    "כשרות הרב מחפוד למהדרין | זמני כניסת שבת: טוען... | זמני יציאת שבת: טוען...",
+    "חוגגים שבת חתן? תיהנו מפרטיות מוחלטת עם בית כנסת וחדר אוכל נפרדים למשפחתכם!",
+    "הזמינו חופשה במחיר המשתלם ביותר ישירות באתר ותיהנו מחניה חינם!"
+  ];
+
+  let currentIndex = 0;
+
+  function startAnnouncementRotation() {
+    const announcementEl = document.getElementById("shabbat-announcement");
+    if (!announcementEl) return;
+
+    // Set initial text
+    announcementEl.textContent = announcements[currentIndex];
+
+    setInterval(() => {
+      announcementEl.classList.add("opacity-0");
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % announcements.length;
+        announcementEl.textContent = announcements[currentIndex];
+        announcementEl.classList.remove("opacity-0");
+      }, 500);
+    }, 10000);
+  }
+
+  // Start the rotation loop
+  startAnnouncementRotation();
 
   const page = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
   const navLinks = document.querySelectorAll(".nav-desktop a, .mobile-nav-drawer__links a:not(.mobile-nav-drawer__cta)");
@@ -121,7 +149,11 @@
       renderShabbatTimes(data);
     } catch (error) {
       console.warn("שגיאה בטעינת זמני השבת, משתמש בזמני ברירת מחדל:", error);
-      announcementEl.textContent = "כשרות הרב מחפוד | זמני כניסת שבת: 19:10 | זמני יציאת שבת: 20:15";
+      const shabbatStr = "כשרות הרב מחפוד למהדרין | זמני כניסת שבת: 19:10 | זמני יציאת שבת: 20:15";
+      announcements[0] = shabbatStr;
+      if (currentIndex === 0) {
+        announcementEl.textContent = shabbatStr;
+      }
     }
   }
 
@@ -144,7 +176,11 @@
     });
 
     if (candleTime && havdalahTime) {
-      announcementEl.textContent = `כשרות הרב מחפוד | זמני כניסת שבת: ${candleTime} | זמני יציאת שבת: ${havdalahTime}`;
+      const shabbatStr = `כשרות הרב מחפוד למהדרין | זמני כניסת שבת: ${candleTime} | זמני יציאת שבת: ${havdalahTime}`;
+      announcements[0] = shabbatStr;
+      if (currentIndex === 0) {
+        announcementEl.textContent = shabbatStr;
+      }
       return true;
     }
     return false;
