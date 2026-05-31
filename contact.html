@@ -16,6 +16,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <link rel="stylesheet" href="css/global.css" />
 </head>
 
@@ -25,66 +27,55 @@
   <div id="site-navbar"></div>
   <script src="js/navbar-component.js"></script>
 
-  <main class="pt-0 pb-section-lg">
-    <!-- Hero Section -->
-    <section class="relative h-[409px] min-h-[300px] flex items-center justify-center overflow-hidden mb-section-md">
-      <div class="absolute inset-0 z-0">
-        <img class="w-full h-full object-cover brightness-50"
-          data-alt="A wide panoramic view of a luxury coastal boutique hotel entrance at sunset, with golden hour light reflecting off large glass windows. The architecture is modern with Mediterranean influences, featuring white stone and palm trees swaying in a gentle breeze. The sky is a gradient of deep orange and soft blue, echoing a refined, high-end resort atmosphere."
-          src="images/contact_hero.webp" decoding="async">
-        <div class="relative z-10 text-center px-4">
-          <h1 class="font-display-hero text-display-hero text-white mb-4">צרו קשר</h1>
-          <p class="font-body-main text-white/90 max-w-2xl mx-auto text-xl">אנחנו כאן כדי להפוך את השהות שלכם לחוויה
-            בלתי נשכחת. צרו קשר לכל שאלה או הזמנה.</p>
-        </div>
-    </section>
-    <div class="max-w-container-max mx-auto px-8">
+  <main class="pt-0 pb-0">
+    <!-- Hero Header -->
+    <header
+      class="relative h-[409px] min-h-[300px] flex items-center justify-center overflow-hidden clip-slant mb-section-md" style="margin-top: 0px;">
+      <img class="absolute inset-0 w-full h-full object-cover"
+        data-alt="A wide panoramic view of a luxury coastal boutique hotel entrance at sunset, with golden hour light reflecting off large glass windows. The architecture is modern with Mediterranean influences, featuring white stone and palm trees swaying in a gentle breeze. The sky is a gradient of deep orange and soft blue, echoing a refined, high-end resort atmosphere."
+        src="images/contact_hero.webp" decoding="async">
+      <div class="absolute inset-0 bg-primary/40"></div>
+      <div class="relative z-10 text-center px-4">
+        <h1 class="font-display-hero text-display-hero md:text-display-hero text-white mb-4">צרו קשר</h1>
+        <p class="font-body-main text-body-main text-white/90 max-w-2xl mx-auto">אנחנו כאן כדי להפוך את השהות שלכם לחוויה
+          בלתי נשכחת. צרו קשר לכל שאלה או הזמנה.</p>
+      </div>
+    </header>
+    <section class="bg-[#f5f2e8] py-section-lg mt-[-64px] pt-[64px]">
+      <div class="max-w-container-max mx-auto px-8">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
         <!-- Right Side: Contact Info Card (Blue) -->
-        <div class="lg:col-span-5 order-1 lg:order-2 space-y-6">
+        <div class="lg:col-span-5 order-2 lg:order-1 space-y-6">
           <div
             class="bg-primary text-on-primary rounded-xl p-8 shadow-xl relative overflow-hidden h-full flex flex-col">
             <div class="absolute top-0 right-0 w-32 h-32 bg-gold-accent/10 rounded-bl-full"></div>
-            <h2 class="font-accent-serif text-3xl mb-8 text-gold-accent font-bold">פרטי התקשרות</h2>
-            <div class="space-y-8 flex-grow">
-              <a href="tel:08-8522085" class="flex items-start gap-4 hover:opacity-85 transition-opacity">
-                <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-gold-accent">phone_in_talk</span>
+            <h2 class="font-accent-serif text-3xl mb-8 text-gold-accent font-bold text-center">פרטי התקשרות</h2>
+            <div class="flex flex-col items-center justify-center text-center gap-8 flex-grow">
+              <a href="tel:08-8522085" class="group flex flex-row items-center gap-4 transition-all duration-300 hover:translate-y-[-4px]">
+                <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-gold-accent group-hover:border-gold-accent group-hover:shadow-lg group-hover:shadow-gold-accent/20">
+                  <span class="material-symbols-outlined text-gold-accent transition-colors duration-300 group-hover:text-white">phone_in_talk</span>
                 </div>
-                <div>
-                  <p class="font-label-meta text-gold-accent uppercase mb-1">טלפון</p>
-                  <p class="font-headline-card text-headline-card">08-8522085</p>
-                </div>
+                <p class="font-headline-card text-headline-card text-white">08-8522085</p>
               </a>
               <a href="https://wa.me/97288522085" target="_blank" rel="noopener noreferrer"
-                class="flex items-start gap-4 hover:opacity-85 transition-opacity">
-                <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-gold-accent"><i
-                      class="fa-brands fa-whatsapp text-[#25D366] text-2xl"></i></span>
+                class="group flex flex-row items-center gap-4 transition-all duration-300 hover:translate-y-[-4px]">
+                <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#25D366] group-hover:border-[#25D366] group-hover:shadow-lg group-hover:shadow-[#25D366]/20">
+                  <i class="fa-brands fa-whatsapp text-gold-accent text-2xl transition-colors duration-300 group-hover:text-white"></i>
                 </div>
-                <div>
-                  <p class="font-label-meta text-gold-accent uppercase mb-1">WhatsApp</p>
-                  <p class="font-headline-card text-headline-card">08-8522085</p>
-                </div>
+                <p class="font-headline-card text-headline-card text-white">08-8522085</p>
               </a>
-              <a href="mailto:info@miamihotel.co.il" class="flex items-start gap-4 hover:opacity-85 transition-opacity">
-                <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-gold-accent">mail</span>
+              <a href="mailto:info@miamihotel.co.il" class="group flex flex-row items-center gap-4 transition-all duration-300 hover:translate-y-[-4px]">
+                <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-gold-accent group-hover:border-gold-accent group-hover:shadow-lg group-hover:shadow-gold-accent/20">
+                  <span class="material-symbols-outlined text-gold-accent transition-colors duration-300 group-hover:text-white">mail</span>
                 </div>
-                <div>
-                  <p class="font-label-meta text-gold-accent uppercase mb-1">דואר אלקטרוני</p>
-                  <p class="font-headline-card text-headline-card">info@miamihotel.co.il</p>
-                </div>
+                <p class="font-headline-card text-headline-card text-white">info@miamihotel.co.il</p>
               </a>
               <a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=31.81130,34.64125&heading=275&pitch=5" target="_blank" rel="noopener noreferrer"
-                class="flex items-start gap-4 hover:opacity-85 transition-opacity">
-                <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
-                  <span class="material-symbols-outlined text-gold-accent">location_on</span>
+                class="group flex flex-col items-center text-center transition-all duration-300 hover:translate-y-[-4px]">
+                <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-gold-accent group-hover:border-gold-accent group-hover:shadow-lg group-hover:shadow-gold-accent/20 mb-3">
+                  <span class="material-symbols-outlined text-gold-accent transition-colors duration-300 group-hover:text-white">location_on</span>
                 </div>
-                <div>
-                  <p class="font-label-meta text-gold-accent uppercase mb-1">כתובת</p>
-                  <p class="font-headline-card text-headline-card">רחוב מקס נורדאו 24, אשדוד</p>
-                </div>
+                <p class="font-headline-card text-headline-card text-white">רחוב מקס נורדאו 24, אשדוד</p>
               </a>
             </div>
             <!-- Map Container -->
@@ -98,72 +89,683 @@
           </div>
         </div>
         <!-- Left Side: Contact Form -->
-        <div class="lg:col-span-7 order-2 lg:order-1">
-          <div class="bg-white rounded-xl p-8 md:p-12 shadow-md border border-sand-dark h-full">
-            <div class="mb-8">
-              <h2 class="font-accent-serif text-3xl text-primary mb-2 font-bold">שלחו לנו הודעה</h2>
-              <p class="text-on-surface-variant font-body-main">נשמח לעמוד לרשותכם בכל פנייה. מלאו את הפרטים ונחזור
-                אליכם בהקדם.</p>
+        <div class="lg:col-span-7 order-1 lg:order-2">
+          <div
+            class="interactive-form-container bg-primary border border-white/10 rounded-2xl p-8 relative overflow-hidden shadow-xl h-full">
+            <!-- Header of Form -->
+            <div class="flex justify-between items-center mb-6">
+              <span class="step-indicator font-accent-serif text-gold-accent font-semibold text-lg"
+                id="form-step-indicator">שלב 1 מתוך 3</span>
+              <!-- Progress Bar -->
+              <div class="w-1/3 bg-white/10 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-gold-accent h-full w-1/3 transition-all duration-500" id="form-progress-bar"></div>
+              </div>
             </div>
-            <form class="space-y-6">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="space-y-2">
-                  <label class="font-label-meta text-on-surface-variant" for="full_name">שם מלא</label>
-                  <input
-                    class="w-full px-4 py-3 rounded-lg border border-sand-dark bg-white focus:ring-2 focus:ring-gold-accent focus:border-gold-accent outline-none transition-all"
-                    id="full_name" placeholder="ישראל ישראלי" type="text">
-                </div>
-                <div class="space-y-2">
-                  <label class="font-label-meta text-on-surface-variant" for="phone">טלפון ליצירת קשר</label>
-                  <input
-                    class="w-full px-4 py-3 rounded-lg border border-sand-dark bg-white focus:ring-2 focus:ring-gold-accent focus:border-gold-accent outline-none transition-all"
-                    id="phone" placeholder="050-0000000" type="tel">
+
+            <form id="interactive-lead-form">
+              <!-- Step 1: Interest -->
+              <div class="form-step active" data-step="1">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">במה נוכל לעזור לכם היום?</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="interest-options">
+                  <label
+                    class="interest-card relative flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:bg-white/10 transition-all duration-300">
+                    <input type="radio" name="interest" value="vacation" class="sr-only" required>
+                    <div class="flex items-center gap-3">
+                      <span class="material-symbols-outlined text-gold-accent text-2xl">bed</span>
+                      <span class="text-white font-semibold">חדרים ונופש משפחתי</span>
+                    </div>
+                    <div
+                      class="card-radio-circle w-5 h-5 rounded-full border-2 border-white/30 flex items-center justify-center">
+                      <div
+                        class="inner-circle w-2.5 h-2.5 rounded-full bg-gold-accent scale-0 transition-transform duration-300">
+                      </div>
+                    </div>
+                  </label>
+
+                  <label
+                    class="interest-card relative flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:bg-white/10 transition-all duration-300">
+                    <input type="radio" name="interest" value="shabbat" class="sr-only">
+                    <div class="flex items-center gap-3">
+                      <span class="material-symbols-outlined text-gold-accent text-2xl">menu_book</span>
+                      <span class="text-white font-semibold">שבת חתן ושמחות</span>
+                    </div>
+                    <div
+                      class="card-radio-circle w-5 h-5 rounded-full border-2 border-white/30 flex items-center justify-center">
+                      <div
+                        class="inner-circle w-2.5 h-2.5 rounded-full bg-gold-accent scale-0 transition-transform duration-300">
+                      </div>
+                    </div>
+                  </label>
+
+                  <label
+                    class="interest-card relative flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:bg-white/10 transition-all duration-300">
+                    <input type="radio" name="interest" value="events" class="sr-only">
+                    <div class="flex items-center gap-3">
+                      <span class="material-symbols-outlined text-gold-accent text-2xl">co_present</span>
+                      <span class="text-white font-semibold">אירוע עסקי</span>
+                    </div>
+                    <div
+                      class="card-radio-circle w-5 h-5 rounded-full border-2 border-white/30 flex items-center justify-center">
+                      <div
+                        class="inner-circle w-2.5 h-2.5 rounded-full bg-gold-accent scale-0 transition-transform duration-300">
+                      </div>
+                    </div>
+                  </label>
+
+                  <label
+                    class="interest-card relative flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:bg-white/10 transition-all duration-300">
+                    <input type="radio" name="interest" value="brit" class="sr-only">
+                    <div class="flex items-center gap-3">
+                      <span class="material-symbols-outlined text-gold-accent text-2xl">child_friendly</span>
+                      <span class="text-white font-semibold">ברית מילה / בריתה</span>
+                    </div>
+                    <div
+                      class="card-radio-circle w-5 h-5 rounded-full border-2 border-white/30 flex items-center justify-center">
+                      <div
+                        class="inner-circle w-2.5 h-2.5 rounded-full bg-gold-accent scale-0 transition-transform duration-300">
+                      </div>
+                    </div>
+                  </label>
+
+                  <label
+                    class="interest-card relative flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:bg-white/10 transition-all duration-300 sm:col-span-2">
+                    <input type="radio" name="interest" value="bar_mitzvah" class="sr-only">
+                    <div class="flex items-center gap-3">
+                      <span class="material-symbols-outlined text-gold-accent text-2xl">school</span>
+                      <span class="text-white font-semibold">עלייה לתורה / בר מצווה</span>
+                    </div>
+                    <div
+                      class="card-radio-circle w-5 h-5 rounded-full border-2 border-white/30 flex items-center justify-center">
+                      <div
+                        class="inner-circle w-2.5 h-2.5 rounded-full bg-gold-accent scale-0 transition-transform duration-300">
+                      </div>
+                    </div>
+                  </label>
                 </div>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="space-y-2">
-                  <label class="font-label-meta text-on-surface-variant" for="event_type">סוג האירוע / פנייה</label>
-                  <select
-                    class="w-full px-4 py-3 rounded-lg border border-sand-dark bg-white focus:ring-2 focus:ring-gold-accent focus:border-gold-accent outline-none transition-all appearance-none"
-                    id="event_type">
-                    <option>חופשה משפחתית</option>
-                    <option>שבת חתן</option>
-                    <option>אירוע עסקי</option>
-                    <option>אחר</option>
-                  </select>
+
+              <!-- Step 2: Date & Guests -->
+              <div class="form-step" data-step="2">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">פרטי השהות או האירוע</h3>
+                <div class="flex flex-col gap-6 text-right">
+                  <!-- Date Pickers -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-2">
+                      <label class="text-sm font-semibold text-white/95" for="form-date-start" id="date-start-label">תאריך הגעה</label>
+                      <input type="text" id="form-date-start" name="date_start" placeholder="dd/mm/yyyy" lang="en"
+                        class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-gold-accent transition-colors"
+                        required>
+                    </div>
+                    <div class="flex flex-col gap-2" id="date-end-wrapper">
+                      <label class="text-sm font-semibold text-white/95" for="form-date-end">תאריך עזיבה</label>
+                      <input type="text" id="form-date-end" name="date_end" placeholder="dd/mm/yyyy" lang="en"
+                        class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-gold-accent transition-colors">
+                    </div>
+                  </div>
+
+                  <!-- No Date Yet Checkbox -->
+                  <div class="flex items-center gap-2 mt-[-0.5rem] mb-2 select-none">
+                    <input type="checkbox" id="form-no-date" name="no_date_yet"
+                      class="rounded border-white/20 bg-white/10 text-gold-accent focus:ring-gold-accent focus:ring-offset-primary cursor-pointer">
+                    <label for="form-no-date" class="text-sm text-white/80 cursor-pointer">טרם קבעתי תאריך</label>
+                  </div>
+
+                  <!-- Guests Counter -->
+                  <div class="flex flex-col gap-2">
+                    <label class="text-sm font-semibold text-white/95">מספר אורחים משוער</label>
+                    <div
+                      class="flex items-center justify-between bg-white/10 border border-white/20 rounded-xl p-3 select-none">
+                      <button type="button"
+                        class="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-xl flex items-center justify-center transition-colors cursor-pointer"
+                        id="guests-minus">&minus;</button>
+                      <span class="text-xl font-bold text-white" id="guests-count-display">2 אורחים</span>
+                      <input type="hidden" name="guests_count" id="guests-count-input" value="2">
+                      <button type="button"
+                        class="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-xl flex items-center justify-center transition-colors cursor-pointer"
+                        id="guests-plus">&plus;</button>
+                    </div>
+                  </div>
+
+                  <!-- Additional Event Details -->
+                  <div class="flex flex-col gap-2">
+                    <label class="text-sm font-semibold text-white/95" for="form-event-details">פרטים נוספים על האירוע (לא חובה)</label>
+                    <div class="relative">
+                      <textarea id="form-event-details" name="event_details" maxlength="200" rows="3" placeholder="ספרו לנו עוד על האירוע שלכם (סוג האירוע, דרישות מיוחדות, העדפות מזון וכד')..."
+                        class="w-full bg-white/10 border border-white/20 rounded-xl p-3 pb-8 text-white focus:outline-none focus:border-gold-accent transition-colors placeholder:text-white/40 resize-none"></textarea>
+                      <span id="char-counter" class="absolute bottom-2 left-3 text-xs text-white/40 select-none">0/200</span>
+                    </div>
+                  </div>
+
+                  <!-- Shabbat Special Note -->
+                  <div id="shabbat-guests-note"
+                    class="hidden bg-white/5 border border-gold-accent/20 rounded-xl p-4 text-sm text-gold-accent/90 leading-relaxed">
+                    <div class="flex items-start gap-2">
+                      <span class="material-symbols-outlined text-gold-accent text-lg flex-shrink-0">info</span>
+                      <p>שבת חתן מתקיימת עבור <strong>מינימום של 40 אורחים</strong>. באירוע כזה משפחתכם מקבלת בית כנסת פרטי
+                        וחדר אוכל פרטי המוקצים בלעדית עבורכם.</p>
+                    </div>
+                  </div>
                 </div>
-                <div class="space-y-2">
-                  <label class="font-label-meta text-on-surface-variant" for="guests">מספר אורחים</label>
-                  <input
-                    class="w-full px-4 py-3 rounded-lg border border-sand-dark bg-white focus:ring-2 focus:ring-gold-accent focus:border-gold-accent outline-none transition-all"
-                    id="guests" placeholder="1" type="number">
+              </div>
+
+              <!-- Step 3: Contact Info -->
+              <div class="form-step" data-step="3">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">פרטים ליצירת קשר</h3>
+                <div class="flex flex-col gap-4 text-right">
+                  <div class="flex flex-col gap-2">
+                    <label class="text-sm font-semibold text-white/95" for="form-contact-name">שם מלא</label>
+                    <input type="text" id="form-contact-name" name="contact_name" placeholder="הכנס את שמך המלא"
+                      class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-gold-accent transition-colors placeholder:text-white/40"
+                      required>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <label class="text-sm font-semibold text-white/95" for="form-contact-phone">מספר טלפון</label>
+                    <input type="tel" id="form-contact-phone" name="contact_phone" placeholder="לדוגמה: 050-1234567"
+                      class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-gold-accent transition-colors placeholder:text-white/40"
+                      required>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <label class="text-sm font-semibold text-white/95" for="form-contact-email">כתובת אימייל</label>
+                    <input type="email" id="form-contact-email" name="contact_email" placeholder="name@domain.com"
+                      class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-gold-accent transition-colors placeholder:text-white/40"
+                      required>
+                  </div>
                 </div>
               </div>
-              <div class="space-y-2">
-                <label class="font-label-meta text-on-surface-variant" for="message">הודעה</label>
-                <textarea
-                  class="w-full px-4 py-3 rounded-lg border border-sand-dark bg-white focus:ring-2 focus:ring-gold-accent focus:border-gold-accent outline-none transition-all"
-                  id="message" placeholder="נשמח לשמוע פרטים נוספים..." rows="5"></textarea>
+
+              <!-- Navigation buttons -->
+              <div class="flex justify-between items-center mt-8 gap-4">
+                <button type="button"
+                  class="form-nav-btn prev-btn bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all cursor-pointer flex items-center gap-2 visibility-hidden"
+                  id="form-prev-btn">
+                  <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  <span>חזרה</span>
+                </button>
+                <button type="button"
+                  class="form-nav-btn next-btn bg-gold-accent hover:bg-gold-accent/90 text-white font-bold py-3 px-8 rounded-xl transition-all cursor-pointer flex items-center gap-2"
+                  id="form-next-btn">
+                  <span>המשך</span>
+                  <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                </button>
               </div>
-              <div class="flex items-center gap-2 mb-6">
-                <input class="rounded text-gold-accent focus:ring-gold-accent h-4 w-4" id="consent" type="checkbox">
-                <label class="text-sm text-on-surface-variant" for="consent">אני מאשר קבלת הצעות ועדכונים מהמלון</label>
-              </div>
-              <button
-                class="w-full bg-gold-accent text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                type="submit">
-                שליחת הודעה
-              </button>
             </form>
+
+            <!-- Success Message Container -->
+            <div
+              class="form-success-message absolute inset-0 bg-primary/95 flex flex-col items-center justify-center text-center p-8 opacity-0 pointer-events-none transition-all duration-500">
+              <div
+                class="success-icon-wrapper w-20 h-20 bg-gold-accent/10 border border-gold-accent/40 rounded-full flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-gold-accent text-5xl">done</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-3">הבקשה שלך נשלחה בהצלחה!</h3>
+              <p class="text-white/80 max-w-sm mb-6">תודה שבחרת במלון מיעמי אשדוד. מנהל האירועים והחופשות שלנו יעבור על פרטי
+                הבקשה שלך ויחזור אליך טלפונית עם הצעה מותאמת אישית תוך 24 שעות.</p>
+              <button type="button"
+                class="bg-gold-accent hover:bg-gold-accent/90 text-white font-bold py-2.5 px-6 rounded-lg transition-colors cursor-pointer"
+                id="form-reset-btn">שלח בקשה חדשה</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>
   <script src="js/footer-component.js"></script>
-  <script src="js/form-handler.js"></script>
+  <script>
+    // Interactive Multi-Step Lead Form Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      let currentStep = 1;
+      const totalSteps = 3;
+      let fpStart, fpEnd;
+
+      const form = document.getElementById('interactive-lead-form');
+      if (!form) return;
+
+      const steps = document.querySelectorAll('.form-step');
+      const stepIndicator = document.getElementById('form-step-indicator');
+      const progressBar = document.getElementById('form-progress-bar');
+      const prevBtn = document.getElementById('form-prev-btn');
+      const nextBtn = document.getElementById('form-next-btn');
+
+      const guestsMinus = document.getElementById('guests-minus');
+      const guestsPlus = document.getElementById('guests-plus');
+      const guestsDisplay = document.getElementById('guests-count-display');
+      const guestsInput = document.getElementById('guests-count-input');
+
+      const dateStartLabel = document.getElementById('date-start-label');
+      const dateStartInput = document.getElementById('form-date-start');
+      const dateEndWrapper = document.getElementById('date-end-wrapper');
+      const dateEndInput = document.getElementById('form-date-end');
+
+      const successMessage = document.querySelector('.form-success-message');
+      const resetBtn = document.getElementById('form-reset-btn');
+
+      const eventDetailsInput = document.getElementById('form-event-details');
+      const charCounter = document.getElementById('char-counter');
+
+      if (eventDetailsInput && charCounter) {
+        eventDetailsInput.addEventListener('input', () => {
+          const count = eventDetailsInput.value.length;
+          charCounter.textContent = `${count}/200`;
+        });
+      }
+
+      const noDateCheckbox = document.getElementById('form-no-date');
+
+      if (noDateCheckbox) {
+        noDateCheckbox.addEventListener('change', (e) => {
+          const isChecked = e.target.checked;
+          if (isChecked) {
+            if (fpStart) {
+              fpStart.clear();
+              fpStart.set('clickOpens', false);
+              if (fpStart.altInput) {
+                fpStart.altInput.disabled = true;
+                fpStart.altInput.placeholder = 'טרם נקבע תאריך';
+              }
+            }
+            if (fpEnd) {
+              fpEnd.clear();
+              fpEnd.set('clickOpens', false);
+              if (fpEnd.altInput) {
+                fpEnd.altInput.disabled = true;
+                fpEnd.altInput.placeholder = 'טרם נקבע תאריך';
+              }
+            }
+            dateStartInput.removeAttribute('required');
+            dateEndInput.removeAttribute('required');
+          } else {
+            if (fpStart) {
+              fpStart.set('clickOpens', true);
+              if (fpStart.altInput) {
+                fpStart.altInput.disabled = false;
+                fpStart.altInput.placeholder = 'dd/mm/yyyy';
+              }
+            }
+            if (fpEnd) {
+              fpEnd.set('clickOpens', true);
+              if (fpEnd.altInput) {
+                fpEnd.altInput.disabled = false;
+                fpEnd.altInput.placeholder = 'dd/mm/yyyy';
+              }
+            }
+            
+            // Re-apply required attributes based on selected interest type
+            const selectedInterest = document.querySelector('input[name="interest"]:checked')?.value;
+            dateStartInput.setAttribute('required', 'required');
+            if (selectedInterest === 'vacation') {
+              dateEndInput.setAttribute('required', 'required');
+            } else {
+              dateEndInput.removeAttribute('required');
+            }
+          }
+        });
+      }
+
+      let guestStep = 1;
+      let guestMin = 1;
+      let guestMax = 500;
+      let guestSuffix = 'אורחים';
+
+      // Interest selection styling & change handler (keyboard-accessible & double-click bug free)
+      const interestRadios = document.querySelectorAll('input[name="interest"]');
+      const interestCards = document.querySelectorAll('.interest-card');
+
+      interestRadios.forEach((radio) => {
+        radio.addEventListener('change', () => {
+          interestCards.forEach(c => c.classList.remove('active'));
+          const card = radio.closest('.interest-card');
+          if (card) {
+            card.classList.add('active');
+          }
+          // Trigger adaptiveness
+          updateFormContext(radio.value);
+        });
+      });
+
+      function updateFormContext(type) {
+        const shabbatNote = document.getElementById('shabbat-guests-note');
+        const isNoDate = noDateCheckbox && noDateCheckbox.checked;
+
+        if (type === 'vacation') {
+          guestStep = 1;
+          guestMin = 1;
+          guestSuffix = 'אורחים';
+          guestsInput.value = 2;
+          guestsDisplay.textContent = `2 ${guestSuffix}`;
+
+          dateStartLabel.textContent = 'תאריך הגעה';
+          dateEndWrapper.style.display = 'flex';
+          if (isNoDate) {
+            dateEndInput.removeAttribute('required');
+          } else {
+            dateEndInput.setAttribute('required', 'required');
+          }
+          if (shabbatNote) shabbatNote.classList.add('hidden');
+        } else if (type === 'shabbat') {
+          guestStep = 10;
+          guestMin = 40;
+          guestSuffix = 'מוזמנים';
+          guestsInput.value = 40;
+          guestsDisplay.textContent = `40 ${guestSuffix}`;
+
+          dateStartLabel.textContent = 'תאריך האירוע המבוקש';
+          dateEndWrapper.style.display = 'none';
+          dateEndInput.removeAttribute('required');
+          if (shabbatNote) shabbatNote.classList.remove('hidden');
+        } else {
+          guestStep = 10;
+          guestMin = 10;
+          guestSuffix = 'מוזמנים';
+          guestsInput.value = 50;
+          guestsDisplay.textContent = `50 ${guestSuffix}`;
+
+          dateStartLabel.textContent = 'תאריך האירוע המבוקש';
+          dateEndWrapper.style.display = 'none';
+          dateEndInput.removeAttribute('required');
+          if (shabbatNote) shabbatNote.classList.add('hidden');
+        }
+
+        if (isNoDate) {
+          dateStartInput.removeAttribute('required');
+          dateEndInput.removeAttribute('required');
+        }
+      }
+
+      // Guests plus/minus clicks
+      guestsMinus.addEventListener('click', (e) => {
+        e.preventDefault();
+        let val = parseInt(guestsInput.value);
+        if (val > guestMin) {
+          val -= guestStep;
+          if (val < guestMin) val = guestMin;
+          guestsInput.value = val;
+          guestsDisplay.textContent = `${val} ${guestSuffix}`;
+        }
+      });
+
+      guestsPlus.addEventListener('click', (e) => {
+        e.preventDefault();
+        let val = parseInt(guestsInput.value);
+        if (val < guestMax) {
+          val += guestStep;
+          guestsInput.value = val;
+          guestsDisplay.textContent = `${val} ${guestSuffix}`;
+        }
+      });
+
+      // Update form progress UI
+      function updateFormUI() {
+        steps.forEach((step, idx) => {
+          if (idx + 1 === currentStep) {
+            step.classList.add('active');
+          } else {
+            step.classList.remove('active');
+          }
+        });
+
+        stepIndicator.textContent = `שלב ${currentStep} מתוך ${totalSteps}`;
+        progressBar.style.width = `${(currentStep / totalSteps) * 100}%`;
+
+        if (currentStep === 1) {
+          prevBtn.classList.add('visibility-hidden');
+        } else {
+          prevBtn.classList.remove('visibility-hidden');
+        }
+
+        if (currentStep === totalSteps) {
+          nextBtn.querySelector('span:not(.material-symbols-outlined)').textContent = 'חזרו אליי';
+          nextBtn.querySelector('.material-symbols-outlined').textContent = 'check';
+        } else {
+          nextBtn.querySelector('span:not(.material-symbols-outlined)').textContent = 'המשך';
+          nextBtn.querySelector('.material-symbols-outlined').textContent = 'arrow_back';
+        }
+      }
+
+      // Validate contact details (full name, phone, email & check temp domains)
+      function validateContactInfo() {
+        const nameInput = document.getElementById('form-contact-name');
+        const phoneInput = document.getElementById('form-contact-phone');
+        const emailInput = document.getElementById('form-contact-email');
+
+        const name = nameInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const email = emailInput.value.trim();
+
+        // 1. Full name validation (At least first name and last name, letters only)
+        const nameWords = name.split(/\s+/).filter(word => word.length > 0);
+        if (nameWords.length < 2) {
+          alert('אנא הזן שם מלא (שם פרטי ושם משפחה)');
+          nameInput.focus();
+          return false;
+        }
+
+        const nameRegex = /^[a-zA-Zא-ת\s]+$/;
+        if (!nameRegex.test(name)) {
+          alert('השם יכול להכיל אותיות בלבד');
+          nameInput.focus();
+          return false;
+        }
+
+        // 2. Phone validation (Israeli format validation)
+        const normalizedPhone = phone.replace(/[- ]/g, '');
+        const phoneRegex = /^(05\d{8}|0[23489]\d{7}|07\d{8})$/;
+        if (!phoneRegex.test(normalizedPhone)) {
+          alert('אנא הזן מספר טלפון ישראלי תקין ואמיתי (לדוגמה: 0501234567)');
+          phoneInput.focus();
+          return false;
+        }
+
+        // 3. Email validation & Disposable domain blocking
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert('אנא הזן כתובת אימייל תקינה');
+          emailInput.focus();
+          return false;
+        }
+
+        const disposableDomains = [
+          'yopmail.com', 'mailinator.com', '10minutemail.com', 'tempmail.com',
+          'temp-mail.org', 'guerrillamail.com', 'sharklasers.com', 'dispostable.com',
+          'getairmail.com', 'boun.cr'
+        ];
+        const emailDomain = email.split('@')[1]?.toLowerCase();
+        if (disposableDomains.includes(emailDomain)) {
+          alert('אנא הזן כתובת אימייל אמיתית (לא אימייל זמני)');
+          emailInput.focus();
+          return false;
+        }
+
+        return true;
+      }
+
+      // Validate inputs of current step
+      function validateStep(stepNum) {
+        if (stepNum === 1) {
+          const selectedInterest = document.querySelector('input[name="interest"]:checked');
+          if (!selectedInterest) {
+            alert('אנא בחרו במה אתם מתעניינים כדי להמשיך');
+            return false;
+          }
+          return true;
+        } else if (stepNum === 2) {
+          const noDateYet = noDateCheckbox && noDateCheckbox.checked;
+          const selectedInterest = document.querySelector('input[name="interest"]:checked').value;
+          const guestsCount = parseInt(guestsInput.value);
+
+          if (!noDateYet) {
+            const dateStart = dateStartInput.value;
+            const todayDate = new Date();
+            todayDate.setHours(0, 0, 0, 0);
+
+            const oneYearLater = new Date();
+            oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+            oneYearLater.setHours(23, 59, 59, 999);
+
+            if (!dateStart) {
+              alert('אנא בחרו תאריך');
+              if (fpStart) fpStart.open();
+              return false;
+            }
+
+            if (new Date(dateStart) < todayDate) {
+              alert('תאריך ההתחלה אינו יכול להיות בעבר');
+              if (fpStart) fpStart.open();
+              return false;
+            }
+
+            if (new Date(dateStart) > oneYearLater) {
+              alert('ניתן לבחור תאריך עד שנה קדימה בלבד');
+              if (fpStart) fpStart.open();
+              return false;
+            }
+
+            if (selectedInterest === 'vacation') {
+              const dateEnd = dateEndInput.value;
+              if (!dateEnd) {
+                alert('אנא בחרו תאריך עזיבה');
+                if (fpEnd) fpEnd.open();
+                return false;
+              }
+              if (new Date(dateStart) >= new Date(dateEnd)) {
+                alert('תאריך העזיבה חייב להיות אחרי תאריך ההגעה');
+                if (fpEnd) fpEnd.open();
+                return false;
+              }
+              if (new Date(dateEnd) > oneYearLater) {
+                alert('ניתן לבחור תאריך עזיבה עד שנה קדימה בלבד');
+                if (fpEnd) fpEnd.open();
+                return false;
+              }
+            }
+          }
+
+          if (selectedInterest === 'shabbat' && (isNaN(guestsCount) || guestsCount < 40)) {
+            alert('שבת חתן מתקיימת עבור מינימום של 40 אורחים, כיוון שהאירוע כולל בית כנסת פרטי וחדר אוכל פרטי המוקצים בלעדית למשפחתכם.');
+            return false;
+          }
+          return true;
+        } else if (stepNum === 3) {
+          return validateContactInfo();
+        }
+        return true;
+      }
+
+      // Navigation clicks
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (!validateStep(currentStep)) return;
+
+        if (currentStep < totalSteps) {
+          currentStep++;
+          updateFormUI();
+        } else {
+          submitLeadForm();
+        }
+      });
+
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (currentStep > 1) {
+          currentStep--;
+          updateFormUI();
+        }
+      });
+
+      function submitLeadForm() {
+        successMessage.classList.add('active');
+      }
+
+      // Initialize Flatpickr for start and end dates
+      fpStart = flatpickr("#form-date-start", {
+        altInput: true,
+        altFormat: "d/m/Y",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+        maxDate: new Date().fp_incr(365),
+        locale: "en",
+        disableMobile: true,
+        onChange: function (selectedDates, dateStr, instance) {
+          if (selectedDates.length > 0) {
+            fpEnd.set("minDate", selectedDates[0]);
+
+            // Sync logic: if dateEnd is before dateStart, set it to dateStart + 1 day
+            const startVal = selectedDates[0];
+            const endVal = fpEnd.selectedDates[0];
+            if (endVal && endVal <= startVal) {
+              const nextDay = new Date(startVal);
+              nextDay.setDate(nextDay.getDate() + 1);
+              fpEnd.setDate(nextDay);
+            }
+          }
+        }
+      });
+
+      fpEnd = flatpickr("#form-date-end", {
+        altInput: true,
+        altFormat: "d/m/Y",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+        maxDate: new Date().fp_incr(365),
+        locale: "en",
+        disableMobile: true
+      });
+
+      resetBtn.addEventListener('click', () => {
+        form.reset();
+        if (noDateCheckbox) {
+          noDateCheckbox.checked = false;
+          noDateCheckbox.dispatchEvent(new Event('change'));
+        }
+        if (charCounter) {
+          charCounter.textContent = '0/200';
+        }
+        if (fpStart) {
+          fpStart.clear();
+          fpStart.set("minDate", "today");
+        }
+        if (fpEnd) {
+          fpEnd.clear();
+          fpEnd.set("minDate", "today");
+        }
+        interestCards.forEach(c => c.classList.remove('active'));
+        currentStep = 1;
+        updateFormUI();
+        successMessage.classList.remove('active');
+        updateFormContext('vacation');
+      });
+
+      // URL parameter pre-selection
+      const urlParams = new URLSearchParams(window.location.search);
+      const typeParam = urlParams.get("type");
+      const guestsParam = urlParams.get("guests");
+
+      if (typeParam) {
+        const matchingRadio = document.querySelector(`input[name="interest"][value="${typeParam}"]`);
+        if (matchingRadio) {
+          matchingRadio.checked = true;
+          interestCards.forEach(c => c.classList.remove('active'));
+          const card = matchingRadio.closest('.interest-card');
+          if (card) {
+            card.classList.add('active');
+          }
+          updateFormContext(typeParam);
+          
+          // Advance to step 2 automatically if type is preselected
+          currentStep = 2;
+          updateFormUI();
+        }
+      }
+
+      if (guestsParam && !isNaN(parseInt(guestsParam))) {
+        const val = parseInt(guestsParam);
+        guestsInput.value = val;
+        guestsDisplay.textContent = `${val} ${guestSuffix}`;
+      }
+    });
+  </script>
 
   <a class="whatsapp-fab" href="https://wa.me/97288522085" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>

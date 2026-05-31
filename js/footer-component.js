@@ -69,4 +69,10 @@
   </div>
 </footer>
 `;
+
+  // Load accessibility widget dynamically
+  const accScript = document.createElement("script");
+  accScript.src = "js/accessibility-widget.js";
+  accScript.defer = true;
+  document.body.appendChild(accScript);
 })();

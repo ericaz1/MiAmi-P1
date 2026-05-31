@@ -216,6 +216,15 @@
           <p class="why-us-card__text">אירוח חם, נקי, משפחתי ומכבד את המסורת, המעניק לכם ערך מירבי וחוויה בלתי נשכחת
             במחיר הוגן.</p>
         </div>
+
+        <!-- USP 6: Dedicated Service -->
+        <div class="why-us-card">
+          <div class="why-us-card__icon-container">
+            <span class="material-symbols-outlined">room_service</span>
+          </div>
+          <h3 class="why-us-card__title">שירות אישי ומסור</h3>
+          <p class="why-us-card__text">צוות המלון המסור זמין עבורכם לכל בקשה ומלווה אתכם לאורך כל השהות עם יחס חם, משפחתי וקשוב לכל פרט.</p>
+        </div>
       </div>
       <!-- Dots indicator for mobile slider -->
       <div class="why-us-dots">
@@ -224,6 +233,7 @@
         <span class="why-us-dot" data-index="2"></span>
         <span class="why-us-dot" data-index="3"></span>
         <span class="why-us-dot" data-index="4"></span>
+        <span class="why-us-dot" data-index="5"></span>
       </div>
     </div>
   </section>
@@ -487,8 +497,8 @@
           <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">שאלות נפוצות</span>
           <span class="w-8 h-px bg-gold-accent"></span>
         </div>
-        <h2 class="font-headline-section text-headline-section text-primary mb-4">שאלות נפוצות ותשובות</h2>
-        <p class="font-body-main text-body-main text-on-surface-variant max-w-2xl mx-auto text-base">
+        <h2 class="font-headline-section text-headline-section text-white mb-4">שאלות נפוצות ותשובות</h2>
+        <p class="font-body-main text-body-main text-white/80 max-w-2xl mx-auto text-base">
           ריכזנו עבורכם את התשובות לשאלות הנפוצות ביותר אודות כשרות המלון, חניה, מתקנים ואירוח שמחות.
         </p>
       </div>
@@ -582,10 +592,10 @@
             אירוע</span>
           <span class="w-8 h-px bg-gold-accent"></span>
         </div>
-        <h2 class="font-display-hero text-3xl md:text-5xl text-white mb-6 leading-tight">
+        <h2 class="font-display-hero text-3xl md:text-5xl text-primary mb-6 leading-tight">
           מוכנים לחוות את <br><span class="text-gold-accent">מלון מיעמי אשדוד?</span>
         </h2>
-        <p class="font-body-main text-white/80 text-lg mb-8 max-w-md">
+        <p class="font-body-main text-on-surface-variant text-lg mb-0 max-w-md">
           השלימו את הטופס הקצר (3 שלבים פשוטים) וצוות המלון יכין עבורכם הצעה מושלמת התפורה בדיוק למידות
           שלכם.
         </p>
@@ -595,7 +605,7 @@
 
       <!-- Right Column: Interactive Multi-Step Form -->
       <div
-        class="interactive-form-container max-w-2xl w-full mx-auto bg-glass-dark border border-white/10 rounded-2xl p-8 relative overflow-hidden backdrop-blur-md">
+        class="interactive-form-container max-w-2xl w-full mx-auto bg-primary border border-white/10 rounded-2xl p-8 relative overflow-hidden shadow-2xl">
         <!-- Header of Form -->
         <div class="flex justify-between items-center mb-6">
           <span class="step-indicator font-accent-serif text-gold-accent font-semibold text-lg"
@@ -708,6 +718,13 @@
                 </div>
               </div>
 
+              <!-- No Date Yet Checkbox -->
+              <div class="flex items-center gap-2 mt-[-0.5rem] mb-2 select-none">
+                <input type="checkbox" id="form-no-date" name="no_date_yet"
+                  class="rounded border-white/20 bg-white/10 text-gold-accent focus:ring-gold-accent focus:ring-offset-primary cursor-pointer">
+                <label for="form-no-date" class="text-sm text-white/80 cursor-pointer">טרם קבעתי תאריך</label>
+              </div>
+
               <!-- Guests Counter -->
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold text-white/95">מספר אורחים משוער</label>
@@ -721,6 +738,16 @@
                   <button type="button"
                     class="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold text-xl flex items-center justify-center transition-colors cursor-pointer"
                     id="guests-plus">&plus;</button>
+                </div>
+              </div>
+
+              <!-- Additional Event Details -->
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-semibold text-white/95" for="form-event-details">פרטים נוספים על האירוע (לא חובה)</label>
+                <div class="relative">
+                  <textarea id="form-event-details" name="event_details" maxlength="200" rows="3" placeholder="ספרו לנו עוד על האירוע שלכם (סוג האירוע, דרישות מיוחדות, העדפות מזון וכד')..."
+                    class="w-full bg-white/10 border border-white/20 rounded-xl p-3 pb-8 text-white focus:outline-none focus:border-gold-accent transition-colors placeholder:text-white/40 resize-none"></textarea>
+                  <span id="char-counter" class="absolute bottom-2 left-3 text-xs text-white/40 select-none">0/200</span>
                 </div>
               </div>
 
@@ -1008,6 +1035,68 @@
       const successMessage = document.querySelector('.form-success-message');
       const resetBtn = document.getElementById('form-reset-btn');
 
+      const eventDetailsInput = document.getElementById('form-event-details');
+      const charCounter = document.getElementById('char-counter');
+
+      if (eventDetailsInput && charCounter) {
+        eventDetailsInput.addEventListener('input', () => {
+          const count = eventDetailsInput.value.length;
+          charCounter.textContent = `${count}/200`;
+        });
+      }
+
+      const noDateCheckbox = document.getElementById('form-no-date');
+
+      if (noDateCheckbox) {
+        noDateCheckbox.addEventListener('change', (e) => {
+          const isChecked = e.target.checked;
+          if (isChecked) {
+            if (fpStart) {
+              fpStart.clear();
+              fpStart.set('clickOpens', false);
+              if (fpStart.altInput) {
+                fpStart.altInput.disabled = true;
+                fpStart.altInput.placeholder = 'טרם נקבע תאריך';
+              }
+            }
+            if (fpEnd) {
+              fpEnd.clear();
+              fpEnd.set('clickOpens', false);
+              if (fpEnd.altInput) {
+                fpEnd.altInput.disabled = true;
+                fpEnd.altInput.placeholder = 'טרם נקבע תאריך';
+              }
+            }
+            dateStartInput.removeAttribute('required');
+            dateEndInput.removeAttribute('required');
+          } else {
+            if (fpStart) {
+              fpStart.set('clickOpens', true);
+              if (fpStart.altInput) {
+                fpStart.altInput.disabled = false;
+                fpStart.altInput.placeholder = 'dd/mm/yyyy';
+              }
+            }
+            if (fpEnd) {
+              fpEnd.set('clickOpens', true);
+              if (fpEnd.altInput) {
+                fpEnd.altInput.disabled = false;
+                fpEnd.altInput.placeholder = 'dd/mm/yyyy';
+              }
+            }
+            
+            // Re-apply required attributes based on selected interest type
+            const selectedInterest = document.querySelector('input[name="interest"]:checked')?.value;
+            dateStartInput.setAttribute('required', 'required');
+            if (selectedInterest === 'vacation') {
+              dateEndInput.setAttribute('required', 'required');
+            } else {
+              dateEndInput.removeAttribute('required');
+            }
+          }
+        });
+      }
+
       let guestStep = 1;
       let guestMin = 1;
       let guestMax = 500;
@@ -1031,6 +1120,7 @@
 
       function updateFormContext(type) {
         const shabbatNote = document.getElementById('shabbat-guests-note');
+        const isNoDate = noDateCheckbox && noDateCheckbox.checked;
 
         if (type === 'vacation') {
           guestStep = 1;
@@ -1041,7 +1131,11 @@
 
           dateStartLabel.textContent = 'תאריך הגעה';
           dateEndWrapper.style.display = 'flex';
-          dateEndInput.setAttribute('required', 'required');
+          if (isNoDate) {
+            dateEndInput.removeAttribute('required');
+          } else {
+            dateEndInput.setAttribute('required', 'required');
+          }
           if (shabbatNote) shabbatNote.classList.add('hidden');
         } else if (type === 'shabbat') {
           guestStep = 10;
@@ -1065,6 +1159,11 @@
           dateEndWrapper.style.display = 'none';
           dateEndInput.removeAttribute('required');
           if (shabbatNote) shabbatNote.classList.add('hidden');
+        }
+
+        if (isNoDate) {
+          dateStartInput.removeAttribute('required');
+          dateEndInput.removeAttribute('required');
         }
       }
 
@@ -1185,56 +1284,60 @@
           }
           return true;
         } else if (stepNum === 2) {
-          const dateStart = dateStartInput.value;
+          const noDateYet = noDateCheckbox && noDateCheckbox.checked;
           const selectedInterest = document.querySelector('input[name="interest"]:checked').value;
-          const todayDate = new Date();
-          todayDate.setHours(0, 0, 0, 0);
-
-          const oneYearLater = new Date();
-          oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
-          oneYearLater.setHours(23, 59, 59, 999);
-
-          if (!dateStart) {
-            alert('אנא בחרו תאריך');
-            if (fpStart) fpStart.open();
-            return false;
-          }
-
-          if (new Date(dateStart) < todayDate) {
-            alert('תאריך ההתחלה אינו יכול להיות בעבר');
-            if (fpStart) fpStart.open();
-            return false;
-          }
-
-          if (new Date(dateStart) > oneYearLater) {
-            alert('ניתן לבחור תאריך עד שנה קדימה בלבד');
-            if (fpStart) fpStart.open();
-            return false;
-          }
-
           const guestsCount = parseInt(guestsInput.value);
+
+          if (!noDateYet) {
+            const dateStart = dateStartInput.value;
+            const todayDate = new Date();
+            todayDate.setHours(0, 0, 0, 0);
+
+            const oneYearLater = new Date();
+            oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+            oneYearLater.setHours(23, 59, 59, 999);
+
+            if (!dateStart) {
+              alert('אנא בחרו תאריך');
+              if (fpStart) fpStart.open();
+              return false;
+            }
+
+            if (new Date(dateStart) < todayDate) {
+              alert('תאריך ההתחלה אינו יכול להיות בעבר');
+              if (fpStart) fpStart.open();
+              return false;
+            }
+
+            if (new Date(dateStart) > oneYearLater) {
+              alert('ניתן לבחור תאריך עד שנה קדימה בלבד');
+              if (fpStart) fpStart.open();
+              return false;
+            }
+
+            if (selectedInterest === 'vacation') {
+              const dateEnd = dateEndInput.value;
+              if (!dateEnd) {
+                alert('אנא בחרו תאריך עזיבה');
+                if (fpEnd) fpEnd.open();
+                return false;
+              }
+              if (new Date(dateStart) >= new Date(dateEnd)) {
+                alert('תאריך העזיבה חייב להיות אחרי תאריך ההגעה');
+                if (fpEnd) fpEnd.open();
+                return false;
+              }
+              if (new Date(dateEnd) > oneYearLater) {
+                alert('ניתן לבחור תאריך עזיבה עד שנה קדימה בלבד');
+                if (fpEnd) fpEnd.open();
+                return false;
+              }
+            }
+          }
+
           if (selectedInterest === 'shabbat' && (isNaN(guestsCount) || guestsCount < 40)) {
             alert('שבת חתן מתקיימת עבור מינימום של 40 אורחים, כיוון שהאירוע כולל בית כנסת פרטי וחדר אוכל פרטי המוקצים בלעדית למשפחתכם.');
             return false;
-          }
-
-          if (selectedInterest === 'vacation') {
-            const dateEnd = dateEndInput.value;
-            if (!dateEnd) {
-              alert('אנא בחרו תאריך עזיבה');
-              if (fpEnd) fpEnd.open();
-              return false;
-            }
-            if (new Date(dateStart) >= new Date(dateEnd)) {
-              alert('תאריך העזיבה חייב להיות אחרי תאריך ההגעה');
-              if (fpEnd) fpEnd.open();
-              return false;
-            }
-            if (new Date(dateEnd) > oneYearLater) {
-              alert('ניתן לבחור תאריך עזיבה עד שנה קדימה בלבד');
-              if (fpEnd) fpEnd.open();
-              return false;
-            }
           }
           return true;
         } else if (stepNum === 3) {
@@ -1306,6 +1409,13 @@
 
       resetBtn.addEventListener('click', () => {
         form.reset();
+        if (noDateCheckbox) {
+          noDateCheckbox.checked = false;
+          noDateCheckbox.dispatchEvent(new Event('change'));
+        }
+        if (charCounter) {
+          charCounter.textContent = '0/200';
+        }
         if (fpStart) {
           fpStart.clear();
           fpStart.set("minDate", "today");

@@ -641,16 +641,6 @@ html[dir='rtl'] body {
   .why-us-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  .why-us-grid > :nth-child(4) {
-    grid-column: span 1;
-    margin-left: auto;
-    width: 100%;
-  }
-  .why-us-grid > :nth-child(5) {
-    grid-column: span 1;
-    margin-right: auto;
-    width: 100%;
-  }
 }
 .why-us-card {
   background-color: #fff;
@@ -851,9 +841,9 @@ html[dir='rtl'] body {
    ========================================== */
 
 .faq-section {
-  background-color: #fff;
-  border-top: 1px solid rgba(229, 222, 201, 0.4);
-  border-bottom: 1px solid rgba(229, 222, 201, 0.4);
+  background-color: var(--color-primary);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .faq-container {
   max-width: 800px;
@@ -924,8 +914,8 @@ html[dir='rtl'] body {
 
 .final-cta-section {
   position: relative;
-  background-color: #1b1c1e;
-  color: #fff;
+  background-color: #f5f2e8;
+  color: var(--color-on-surface);
   padding: 5rem 2rem;
   overflow: hidden;
   border-top: 2px solid var(--color-gold-accent);
@@ -948,13 +938,14 @@ html[dir='rtl'] body {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 1.5rem;
   align-items: center;
 }
 @media (min-width: 1024px) {
   .final-cta-container {
     grid-template-columns: 1fr 1.2fr;
     text-align: right;
+    gap: 3rem;
   }
 }
 

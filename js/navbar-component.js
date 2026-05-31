@@ -24,7 +24,7 @@
       <a href="rooms.html">חדרים</a>
     </nav>
 
-    <a href="contact.html" class="header-cta">הזמינו עכשיו</a>
+    <a href="contact.html" class="header-cta">קבלו הצעת מחיר</a>
   </div>
 </header>
 
@@ -47,7 +47,7 @@
     <a href="gallery.html">גלריה</a>
     <a href="about.html">אודות</a>
     <a href="contact.html">צור קשר</a>
-    <a href="contact.html" class="mobile-nav-drawer__cta">הזמינו עכשיו</a>
+    <a href="contact.html" class="mobile-nav-drawer__cta">קבלו הצעת מחיר</a>
   </nav>
 </aside>
 `;
