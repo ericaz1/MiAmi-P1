@@ -12,6 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <link rel="stylesheet" href="css/global.css"/>
 </head>
 <body class="bg-surface text-on-surface font-body-main text-body-main antialiased selection:bg-gold-accent selection:text-white">
@@ -38,7 +40,7 @@
 <div class="flex-1 min-w-[200px]">
 <label class="block font-label-meta text-label-meta text-primary mb-2">תאריכי הגעה</label>
 <div class="relative">
-<input class="w-full bg-surface-container-low border-sand-dark rounded-lg py-3 pr-10 focus:ring-2 focus:ring-gold-accent focus:border-gold-accent transition-all" type="date">
+<input id="rooms-date-input" class="w-full bg-surface-container-low border-sand-dark rounded-lg py-3 pr-10 focus:ring-2 focus:ring-gold-accent focus:border-gold-accent transition-all" type="text" placeholder="dd/mm/yyyy">
 <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary/50">calendar_month</span>
 </div>
 </div>
@@ -299,6 +301,19 @@
 
 <div id="site-footer"></div>
 <script src="js/footer-component.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    flatpickr("#rooms-date-input", {
+      altInput: true,
+      altFormat: "d/m/Y",
+      dateFormat: "Y-m-d",
+      minDate: "today",
+      maxDate: new Date().fp_incr(365),
+      locale: "en",
+      disableMobile: true
+    });
+  });
+</script>
 
 <a class="whatsapp-fab" href="https://wa.me/97288522085" aria-label="WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>
