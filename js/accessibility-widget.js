@@ -212,7 +212,7 @@
     }
     .acc-reset-btn:hover {
       background-color: #f0eee9;
-      border-color: #b48a3d;
+      border-color: #e6af2e;
     }
     .acc-reset-btn .material-symbols-outlined {
       font-size: 1.15rem;

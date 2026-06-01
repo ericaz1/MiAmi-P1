@@ -2,7 +2,8 @@
 :root {
   --color-primary: #00182f;
   --color-primary-container: #0f2d4a;
-  --color-gold-accent: #b48a3d;
+  --color-gold-accent: #e6af2e;
+  --color-mustard-accent: #e6af2e;
   --color-navy: #0f2942;
   --color-surface: #fbf9f4;
   --color-on-surface: #1b1c19;
@@ -120,12 +121,12 @@ html[dir='rtl'] body {
 }
 
 .nav-desktop a:hover {
-  color: var(--color-gold-accent);
+  color: var(--color-mustard-accent);
 }
 
 .nav-desktop a.is-active {
-  color: var(--color-gold-accent);
-  border-bottom-color: var(--color-gold-accent);
+  color: var(--color-mustard-accent);
+  border-bottom-color: var(--color-mustard-accent);
 }
 
 .header-cta {
@@ -136,7 +137,7 @@ html[dir='rtl'] body {
   .header-cta {
     display: inline-flex;
     align-items: center;
-    background: var(--color-gold-accent);
+    background: var(--color-mustard-accent);
     color: #fff;
     padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;
@@ -144,13 +145,13 @@ html[dir='rtl'] body {
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    box-shadow: 0 4px 6px rgba(180, 138, 61, 0.25);
+    box-shadow: 0 4px 6px rgba(230, 175, 46, 0.25);
     transition: transform 0.2s, box-shadow 0.2s;
   }
 
   .header-cta:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 12px rgba(180, 138, 61, 0.35);
+    box-shadow: 0 6px 12px rgba(230, 175, 46, 0.35);
   }
 }
 
@@ -257,7 +258,7 @@ html[dir='rtl'] body {
 
 .mobile-nav-drawer__links a:hover,
 .mobile-nav-drawer__links a.is-active {
-  color: var(--color-gold-accent);
+  color: var(--color-mustard-accent);
 }
 
 .mobile-nav-drawer__links a.is-active {
@@ -269,11 +270,11 @@ html[dir='rtl'] body {
   margin-top: 0.5rem;
   padding: 0.75rem 1rem;
   text-align: center;
-  background: var(--color-gold-accent);
+  background: var(--color-mustard-accent);
   color: #fff !important;
   border-radius: 0.5rem;
   font-weight: 700;
-  box-shadow: 0 4px 6px rgba(180, 138, 61, 0.3);
+  box-shadow: 0 4px 6px rgba(230, 175, 46, 0.3);
 }
 
 /* Footer */
@@ -468,7 +469,7 @@ html[dir='rtl'] body {
   top: 1rem;
   right: 1.5rem;
   font-size: 4.5rem;
-  color: rgba(180, 138, 61, 0.1);
+  color: rgba(230, 175, 46, 0.1);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
@@ -829,7 +830,7 @@ html[dir='rtl'] body {
   font-weight: 700;
   text-decoration: none;
   transition: background-color 0.2s, transform 0.2s;
-  box-shadow: 0 4px 8px rgba(180, 138, 61, 0.2);
+  box-shadow: 0 4px 8px rgba(230, 175, 46, 0.2);
 }
 .event-card__btn:hover {
   background-color: #c49a4a;
@@ -932,7 +933,7 @@ html[dir='rtl'] body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(180, 138, 61, 0.12) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(230, 175, 46, 0.12) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -997,17 +998,17 @@ html[dir='rtl'] body {
 }
 .interest-card:hover {
   background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(180, 138, 61, 0.5);
+  border-color: rgba(230, 175, 46, 0.5);
 }
 .interest-card.active {
-  border-color: var(--color-gold-accent) !important;
-  background-color: rgba(180, 138, 61, 0.15) !important;
+  border-color: var(--color-mustard-accent) !important;
+  background-color: rgba(230, 175, 46, 0.15) !important;
 }
 .interest-card.active .inner-circle {
   transform: scale(1);
 }
 .interest-card.active .card-radio-circle {
-  border-color: var(--color-gold-accent);
+  border-color: var(--color-mustard-accent);
 }
 
 .form-nav-btn {
@@ -1079,7 +1080,7 @@ html[dir='rtl'] body {
 .flatpickr-day.today.inRange,
 .flatpickr-day.prevMonthDay.today.inRange,
 .flatpickr-day.nextMonthDay.today.inRange {
-  background: rgba(180, 138, 61, 0.15) !important;
+  background: rgba(230, 175, 46, 0.15) !important;
   border-color: transparent !important;
 }
 .flatpickr-day:hover,
@@ -1135,5 +1136,38 @@ span.flatpickr-weekday {
 }
 .flatpickr-calendar.open {
   z-index: 99999 !important;
+}
+
+/* Mustard Theme overrides for flatpickr inside forms */
+.flatpickr-calendar.mustard-theme .flatpickr-day.selected,
+.flatpickr-calendar.mustard-theme .flatpickr-day.startRange,
+.flatpickr-calendar.mustard-theme .flatpickr-day.endRange,
+.flatpickr-calendar.mustard-theme .flatpickr-day.selected.inRange,
+.flatpickr-calendar.mustard-theme .flatpickr-day.startRange.inRange,
+.flatpickr-calendar.mustard-theme .flatpickr-day.endRange.inRange,
+.flatpickr-calendar.mustard-theme .flatpickr-day.selected:focus,
+.flatpickr-calendar.mustard-theme .flatpickr-day.startRange:focus,
+.flatpickr-calendar.mustard-theme .flatpickr-day.endRange:focus,
+.flatpickr-calendar.mustard-theme .flatpickr-day.selected:hover,
+.flatpickr-calendar.mustard-theme .flatpickr-day.startRange:hover,
+.flatpickr-calendar.mustard-theme .flatpickr-day.endRange:hover,
+.flatpickr-calendar.mustard-theme .flatpickr-day.prevMonthDay.selected,
+.flatpickr-calendar.mustard-theme .flatpickr-day.nextMonthDay.selected {
+  background: var(--color-mustard-accent) !important;
+  border-color: var(--color-mustard-accent) !important;
+  color: #fff !important;
+}
+.flatpickr-calendar.mustard-theme .flatpickr-day.inRange,
+.flatpickr-calendar.mustard-theme .flatpickr-day.prevMonthDay.inRange,
+.flatpickr-calendar.mustard-theme .flatpickr-day.nextMonthDay.inRange,
+.flatpickr-calendar.mustard-theme .flatpickr-day.today.inRange,
+.flatpickr-calendar.mustard-theme .flatpickr-day.prevMonthDay.today.inRange,
+.flatpickr-calendar.mustard-theme .flatpickr-day.nextMonthDay.today.inRange {
+  background: rgba(230, 175, 46, 0.15) !important;
+  border-color: transparent !important;
+}
+.flatpickr-calendar.mustard-theme .flatpickr-months .flatpickr-prev-month:hover svg,
+.flatpickr-calendar.mustard-theme .flatpickr-months .flatpickr-next-month:hover svg {
+  fill: var(--color-mustard-accent) !important;
 }
 
