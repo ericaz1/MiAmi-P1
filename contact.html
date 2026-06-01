@@ -116,6 +116,7 @@
               </div>
 
               <form id="interactive-lead-form">
+                <input type="hidden" name="room_type" id="form-room-type" value="">
                 <!-- Step 1: Interest -->
                 <div class="form-step active" data-step="1">
                   <h3 class="text-2xl font-bold text-white mb-6 text-center">במה נוכל לעזור לכם היום?</h3>
@@ -201,6 +202,19 @@
                 <div class="form-step" data-step="2">
                   <h3 class="text-2xl font-bold text-white mb-6 text-center">פרטי השהות או האירוע</h3>
                   <div class="flex flex-col gap-6 text-right">
+                    <!-- Selected Room Info Box -->
+                    <div id="selected-room-info" class="hidden bg-white/5 border border-mustard-accent/20 rounded-xl p-4 text-white">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                          <span class="material-symbols-outlined text-mustard-accent text-2xl">bed</span>
+                          <div>
+                            <span class="text-xs text-white/60 block leading-none mb-1">החדר שנבחר</span>
+                            <span id="selected-room-name" class="font-bold text-base text-white"></span>
+                          </div>
+                        </div>
+                        <button type="button" id="clear-room-selection" class="text-xs text-white/50 hover:text-white underline transition-colors cursor-pointer">הסר חדר</button>
+                      </div>
+                    </div>
                     <!-- Date Pickers -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div class="flex flex-col gap-2">
@@ -446,6 +460,12 @@
       function updateFormContext(type) {
         const shabbatNote = document.getElementById('shabbat-guests-note');
         const isNoDate = noDateCheckbox && noDateCheckbox.checked;
+        const roomInfo = document.getElementById('selected-room-info');
+        const roomInput = document.getElementById('form-room-type');
+
+        if (type !== 'vacation' && roomInput) {
+          roomInput.value = '';
+        }
 
         if (type === 'vacation') {
           guestStep = 1;
@@ -462,6 +482,11 @@
             dateEndInput.setAttribute('required', 'required');
           }
           if (shabbatNote) shabbatNote.classList.add('hidden');
+          
+          // Show room selection info if we have one
+          if (roomInput && roomInput.value && roomInfo) {
+            roomInfo.classList.remove('hidden');
+          }
         } else if (type === 'shabbat') {
           guestStep = 10;
           guestMin = 40;
@@ -473,6 +498,11 @@
           dateEndWrapper.style.display = 'none';
           dateEndInput.removeAttribute('required');
           if (shabbatNote) shabbatNote.classList.remove('hidden');
+          
+          // Hide room selection info for other event types
+          if (roomInfo) {
+            roomInfo.classList.add('hidden');
+          }
         } else {
           guestStep = 10;
           guestMin = 10;
@@ -484,6 +514,11 @@
           dateEndWrapper.style.display = 'none';
           dateEndInput.removeAttribute('required');
           if (shabbatNote) shabbatNote.classList.add('hidden');
+          
+          // Hide room selection info for other event types
+          if (roomInfo) {
+            roomInfo.classList.add('hidden');
+          }
         }
 
         if (isNoDate) {
@@ -694,6 +729,20 @@
       });
 
       function submitLeadForm() {
+        const roomInput = document.getElementById('form-room-type');
+        const successText = successMessage.querySelector('p');
+        if (roomInput && roomInput.value) {
+          let roomNameHebrew = "";
+          if (roomInput.value === "couple") roomNameHebrew = "חדר זוגי סטנדרט";
+          else if (roomInput.value === "family") roomNameHebrew = "חדר משפחתי מרווח";
+          else if (roomInput.value === "jacuzzi") roomNameHebrew = "חדר זוגי עם ג'קוזי";
+          
+          if (roomNameHebrew && successText) {
+            successText.innerHTML = `תודה שבחרת במלון מיעמי אשדוד. מנהל האירועים והחופשות שלנו יעבור על פרטי הבקשה שלך עבור <strong>${roomNameHebrew}</strong> ויחזור אליך טלפונית עם הצעה מותאמת אישית תוך 24 שעות.`;
+          }
+        } else if (successText) {
+          successText.innerHTML = `תודה שבחרת במלון מיעמי אשדוד. מנהל האירועים והחופשות שלנו יעבור על פרטי הבקשה שלך ויחזור אליך טלפונית עם הצעה מותאמת אישית תוך 24 שעות.`;
+        }
         successMessage.classList.add('active');
       }
 
@@ -740,6 +789,11 @@
 
       resetBtn.addEventListener('click', () => {
         form.reset();
+        const roomInput = document.getElementById('form-room-type');
+        const roomInfo = document.getElementById('selected-room-info');
+        if (roomInput) roomInput.value = '';
+        if (roomInfo) roomInfo.classList.add('hidden');
+
         if (noDateCheckbox) {
           noDateCheckbox.checked = false;
           noDateCheckbox.dispatchEvent(new Event('change'));
@@ -762,10 +816,24 @@
         updateFormContext('vacation');
       });
 
+      // Clear room selection handler
+      const clearRoomBtn = document.getElementById('clear-room-selection');
+      if (clearRoomBtn) {
+        clearRoomBtn.addEventListener('click', () => {
+          const roomInput = document.getElementById('form-room-type');
+          const roomInfo = document.getElementById('selected-room-info');
+          if (roomInput) roomInput.value = '';
+          if (roomInfo) roomInfo.classList.add('hidden');
+        });
+      }
+
       // URL parameter pre-selection
       const urlParams = new URLSearchParams(window.location.search);
       const typeParam = urlParams.get("type");
       const guestsParam = urlParams.get("guests");
+      const dateStartParam = urlParams.get("date_start");
+      const dateEndParam = urlParams.get("date_end");
+      const roomParam = urlParams.get("room");
 
       if (typeParam) {
         const matchingRadio = document.querySelector(`input[name="interest"][value="${typeParam}"]`);
@@ -788,6 +856,50 @@
         const val = parseInt(guestsParam);
         guestsInput.value = val;
         guestsDisplay.textContent = `${val} ${guestSuffix}`;
+      }
+
+      // Date parameter population
+      if (dateStartParam) {
+        if (fpStart) {
+          fpStart.setDate(dateStartParam);
+        }
+        if (fpEnd) {
+          fpEnd.set("minDate", dateStartParam);
+        }
+      }
+      if (dateEndParam) {
+        if (fpEnd) {
+          fpEnd.setDate(dateEndParam);
+        }
+      }
+
+      // Selected Room parameter population
+      if (roomParam) {
+        const roomInput = document.getElementById('form-room-type');
+        const roomInfo = document.getElementById('selected-room-info');
+        const roomNameEl = document.getElementById('selected-room-name');
+        
+        if (roomInput) {
+          roomInput.value = roomParam;
+        }
+        
+        let roomNameHebrew = "";
+        if (roomParam === "couple") {
+          roomNameHebrew = "חדר זוגי סטנדרט";
+        } else if (roomParam === "family") {
+          roomNameHebrew = "חדר משפחתי מרווח";
+        } else if (roomParam === "jacuzzi") {
+          roomNameHebrew = "חדר זוגי עם ג'קוזי";
+        }
+        
+        if (roomNameHebrew) {
+          if (roomNameEl) {
+            roomNameEl.textContent = roomNameHebrew;
+          }
+          if (roomInfo && (!typeParam || typeParam === "vacation")) {
+            roomInfo.classList.remove('hidden');
+          }
+        }
       }
     });
   </script>

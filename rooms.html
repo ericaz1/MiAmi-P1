@@ -4,7 +4,7 @@
   <link rel='icon' type='image/png' href='images/favicon.png' />
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>חדרים וסוויטות - מלון מיעמי אשדוד</title>
+  <title>חדרי אירוח ונופש - מלון מיעמי אשדוד</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script id="tailwind-config" src="js/tailwind-config.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -23,294 +23,788 @@
 
 <main>
 <!-- Hero Section -->
-<section class="relative h-[716px] min-h-[500px] flex items-center justify-center overflow-hidden clip-slant" style="margin-top: 0;">
-<img alt="Luxury Coastal View" class="absolute inset-0 w-full h-full object-cover" data-alt="A wide-angle, cinematic shot of a luxury boutique hotel terrace overlooking the Mediterranean coast of Ashdod. The scene is bathed in the golden hour's warm, hazy sunlight, highlighting the sparkling turquoise sea and white sandy beaches. The terrace features minimalist glass railings and high-end outdoor furniture in a palette of sand and ocean blue, reflecting a modern-traditionalist coastal aesthetic. The mood is serene, exclusive, and aspirational." src="images/rooms_coastal_view.webp" decoding="async">
-<div class="absolute inset-0 bg-primary/30"></div>
-<div class="relative z-10 text-center px-6 max-w-4xl">
-<span class="inline-block px-4 py-1 mb-6 bg-gold-accent text-white rounded-full font-label-meta text-label-meta tracking-widest uppercase">Mediterranean Boutique Experience</span>
-<h1 class="font-display-hero text-display-hero md:text-display-hero text-white mb-6">החדרים והסוויטות שלנו</h1>
-<p class="font-body-main text-body-main text-white/90 max-w-2xl mx-auto text-lg">
-                    חוויית אירוח יוקרתית מול הים התיכון. עיצוב מודרני המשלב נוחות מקסימלית עם נגיעות של שלווה חופית, המותאמת במיוחד למשפחות ולזוגות המחפשים חופשה כשרה למהדרין בסטנדרט בינלאומי.
-                </p>
-</div>
-</section>
-<!-- Room Filter / Search Bar (Implicit) -->
-<section class="relative z-20 -mt-12 px-8">
-<div class="max-w-5xl mx-auto glass-card shadow-xl rounded-xl p-6 flex flex-wrap gap-4 items-end justify-center border border-white/20">
-<div class="flex-1 min-w-[200px]">
-<label class="block font-label-meta text-label-meta text-primary mb-2">תאריכי הגעה</label>
-<div class="relative">
-<input id="rooms-date-input" class="w-full bg-surface-container-low border-sand-dark rounded-lg py-3 pr-10 focus:ring-2 focus:ring-gold-accent focus:border-gold-accent transition-all" type="text" placeholder="dd/mm/yyyy">
-<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary/50">calendar_month</span>
-</div>
-</div>
-<div class="flex-1 min-w-[200px]">
-<label class="block font-label-meta text-label-meta text-primary mb-2">מספר אורחים</label>
-<div class="relative">
-<select class="w-full bg-surface-container-low border-sand-dark rounded-lg py-3 pr-10 focus:ring-2 focus:ring-gold-accent focus:border-gold-accent transition-all appearance-none">
-<option>זוג (2 מבוגרים)</option>
-<option>משפחה (זוג + 2 ילדים)</option>
-<option>סוויטת נשיאותית (עד 6)</option>
-</select>
-<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary/50">group</span>
-</div>
-</div>
-<a href="contact.html?type=vacation" class="bg-primary text-white px-10 py-3.5 rounded-lg font-nav-link text-nav-link hover:bg-primary-container transition-all flex items-center gap-2 justify-center">
-<span class="material-symbols-outlined">search</span>
-                    חפש חדרים
-</a>
-</div>
+<header class="relative min-h-[500px] h-[70vh] flex items-center justify-center overflow-hidden clip-slant bg-primary-container mb-10">
+  <div class="hero-bg-wrapper">
+    <img class="w-full h-full object-cover opacity-60 mix-blend-overlay animate-ken-burns"
+      alt="אירוח נעים ליד הים - מלון מיעמי אשדוד"
+      data-alt="צילום מזווית רחבה של אזור החוף באשדוד הסמוך למלון מיעמי, באווירה חמה ומזמינה של שעת השקיעה."
+      src="images/rooms_coastal_view.webp" decoding="async">
+    <div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/50 to-transparent"></div>
+  </div>
+  <div class="relative z-10 text-center px-6 max-w-4xl flex flex-col items-center">
+    <span class="font-accent-serif text-accent-serif text-gold-accent mb-4 tracking-widest uppercase">חופשה משפחתית וכשרה באשדוד</span>
+    <h1 class="font-display-hero-mobile text-display-hero-mobile md:font-display-hero md:text-display-hero text-white mb-6 leading-tight">החדרים והאירוח שלנו</h1>
+    <p class="font-body-main text-body-main text-white/90 max-w-2xl mx-auto text-lg leading-relaxed">
+      אירוח חם, נקי ומשפחתי במרחק הליכה קצר ביותר מחוף הים והטיילת. החדרים שלנו מעוצבים ומאובזרים לנוחותכם המלאה, ומספקים תמורה מעולה למחיר ושלווה חופית מושלמת לזוגות ולמשפחות השומרות כשרות ושבת.
+    </p>
+  </div>
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-12 left-0 right-0 flex justify-center z-20">
+    <button id="scroll-to-rooms" class="text-white hover:text-gold-accent transition-colors animate-bounce flex flex-col items-center gap-1 cursor-pointer" aria-label="גלול מטה לחדרים">
+      <span class="text-xs tracking-widest font-label-meta opacity-80">גללו לחדרים</span>
+      <span class="material-symbols-outlined text-3xl font-bold">keyboard_double_arrow_down</span>
+    </button>
+  </div>
+</header>
+<!-- Room Filter / Search Bar -->
+<section id="filter-section" class="relative z-20 -mt-12 px-8">
+  <div class="max-w-5xl mx-auto backdrop-blur-xl bg-white/20 shadow-2xl rounded-2xl p-6 flex flex-wrap gap-4 items-end justify-center border border-white/30 transition-all duration-300">
+    <div class="flex-1 min-w-[260px]">
+      <label class="block font-label-meta text-label-meta text-white mb-2 font-bold drop-shadow-sm">תאריכי אירוח (הגעה - עזיבה)</label>
+      <div class="relative">
+        <input id="rooms-date-input" class="w-full bg-white/90 border border-sand-dark rounded-xl py-3 pr-10 pl-4 focus:ring-2 focus:ring-gold-accent focus:border-gold-accent transition-all text-right placeholder:text-primary/50 text-primary font-semibold shadow-inner focus:outline-none" type="text" placeholder="בחרו תאריכי הגעה ועזיבה...">
+        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary/50">calendar_month</span>
+      </div>
+    </div>
+    <div class="flex-1 min-w-[240px]">
+      <label class="block font-label-meta text-label-meta text-white mb-2 font-bold drop-shadow-sm">הרכב אורחים</label>
+      <div class="relative">
+        <button id="guest-select-trigger" class="w-full bg-white/90 border border-sand-dark rounded-xl py-3 pr-10 pl-4 focus:ring-2 focus:ring-gold-accent focus:border-gold-accent transition-all text-right flex items-center justify-between cursor-pointer text-primary font-semibold shadow-inner focus:outline-none" type="button">
+          <span id="guest-select-summary">2 אורחים (זוג)</span>
+          <span class="material-symbols-outlined text-primary/50 text-lg transition-transform duration-200" id="guest-trigger-arrow">expand_more</span>
+        </button>
+        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary/50">group</span>
+        
+        <!-- Custom Guest Dropdown Panel -->
+        <div id="guest-dropdown-panel" class="absolute left-0 right-0 mt-2 bg-white/95 backdrop-blur-md border border-sand-dark rounded-xl shadow-2xl p-4 hidden z-30 flex flex-col gap-4 text-right transform scale-95 opacity-0 transition-all duration-200 origin-top">
+          <!-- Adults Counter -->
+          <div class="flex justify-between items-center">
+            <span class="font-semibold text-primary text-sm">מבוגרים</span>
+            <div class="flex items-center gap-3">
+              <button type="button" id="adults-minus" class="w-8 h-8 rounded-full bg-surface-container hover:bg-gold-accent hover:text-white flex items-center justify-center font-bold transition-colors cursor-pointer select-none border border-sand-dark/30 text-primary">&minus;</button>
+              <span id="adults-count" class="w-6 text-center font-bold text-primary">2</span>
+              <button type="button" id="adults-plus" class="w-8 h-8 rounded-full bg-surface-container hover:bg-gold-accent hover:text-white flex items-center justify-center font-bold transition-colors cursor-pointer select-none border border-sand-dark/30 text-primary">&plus;</button>
+            </div>
+          </div>
+          <!-- Kids Counter -->
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="font-semibold text-primary text-sm block">ילדים / מיטות יחיד</span>
+              <span class="text-[10px] text-on-surface-variant block leading-none mt-1">עד 4 מיטות יחיד נוספות</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="button" id="kids-minus" class="w-8 h-8 rounded-full bg-surface-container hover:bg-gold-accent hover:text-white flex items-center justify-center font-bold transition-colors cursor-pointer select-none border border-sand-dark/30 text-primary">&minus;</button>
+              <span id="kids-count" class="w-6 text-center font-bold text-primary">0</span>
+              <button type="button" id="kids-plus" class="w-8 h-8 rounded-full bg-surface-container hover:bg-gold-accent hover:text-white flex items-center justify-center font-bold transition-colors cursor-pointer select-none border border-sand-dark/30 text-primary">&plus;</button>
+            </div>
+          </div>
+          <!-- Jacuzzi Preference Toggle -->
+          <div class="flex justify-between items-center pt-3 border-t border-outline-variant/30">
+            <span class="font-semibold text-primary text-sm">חדר עם ג'קוזי?</span>
+            <input type="checkbox" id="jacuzzi-pref-checkbox" class="rounded border-sand-dark text-gold-accent focus:ring-gold-accent cursor-pointer w-5 h-5">
+          </div>
+          
+          <button type="button" id="apply-guests-btn" class="w-full bg-primary hover:bg-primary-container text-white py-2 rounded-lg font-bold text-xs transition-colors cursor-pointer mt-2">אישור</button>
+        </div>
+      </div>
+    </div>
+    <button id="filter-rooms-btn" class="bg-primary hover:bg-primary/90 text-white px-10 py-3.5 rounded-xl font-nav-link text-nav-link transition-all flex items-center gap-2 justify-center w-full md:w-auto cursor-pointer shadow-lg hover:shadow-primary/20">
+      <span class="material-symbols-outlined" id="search-btn-icon">search</span>
+      <span id="search-btn-text">חפש חדרים</span>
+    </button>
+  </div>
 </section>
 <!-- Rooms Grid -->
 <section class="max-w-container-max mx-auto px-8 py-12 md:py-section-lg">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-<!-- Classic Double Room -->
-<div class="group bg-white rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col">
-<div class="relative h-64 overflow-hidden">
-<img alt="Classic Double Room" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A brightly lit, sophisticated hotel room with a classic double bed, dressed in crisp white linens and navy blue accent pillows. Large windows let in soft daylight, reflecting off the warm wood flooring. The furniture is minimalist and elegant, featuring sand-colored upholstery and dark wood finishes. The room exudes a calm, clean, and professional modern-coastal aesthetic." src="images/room_classic_double.webp" loading="lazy" decoding="async">
-<div class="absolute top-4 right-4">
-<span class="bg-emerald-600 text-white px-3 py-1 rounded-full font-label-meta text-label-meta">הנבחר</span>
-</div>
-</div>
-<div class="p-6 flex-1 flex flex-col">
-<h3 class="font-headline-card text-headline-card text-primary mb-2">Classic Double Room</h3>
-<p class="text-on-surface-variant font-body-main text-sm mb-4">חדר זוגי קלאסי ומעוצב, המשלב נוחות מודרנית עם אווירה חמה ומרגיעה.</p>
-<div class="grid grid-cols-2 gap-3 mb-6">
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">wifi</span>
-<span class="text-sm">Wi-Fi חופשי</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">ac_unit</span>
-<span class="text-sm">מיזוג אוויר</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">coffee_maker</span>
-<span class="text-sm">עמדת קפה</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">person</span>
-<span class="text-sm">עד 2 אורחים</span>
-</div>
-</div>
-<div class="mt-auto pt-6 border-t border-outline-variant/30 flex justify-between items-center">
-<div>
-<span class="text-xs text-on-surface-variant block">החל מ-</span>
-<span class="text-xl font-bold text-primary">₪650</span>
-<span class="text-xs text-on-surface-variant">/ לילה</span>
-</div>
-<a href="contact.html?type=vacation" class="bg-gold-accent text-white px-4 py-2 rounded-lg font-nav-link text-sm hover:opacity-90 transition-opacity inline-block text-center">בדוק זמינות</a>
-</div>
-</div>
-</div>
-<!-- Family Suite -->
-<div class="group bg-white rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col">
-<div class="relative h-64 overflow-hidden">
-<img alt="Family Suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A spacious family suite in a high-end boutique hotel, featuring two separate sleeping areas. The design is contemporary with soft Mediterranean colors like ocean blue and sandy beige. The suite includes a comfortable seating area, high-quality wooden cabinetry, and soft lighting. The atmosphere is warm, family-oriented, and impeccably clean, ideal for a luxury vacation." src="images/room_family_suite.webp" loading="lazy" decoding="async">
-<div class="absolute top-4 right-4">
-<span class="bg-gold-accent text-white px-3 py-1 rounded-full font-label-meta text-label-meta">משפחתי</span>
-</div>
-</div>
-<div class="p-6 flex-1 flex flex-col">
-<h3 class="font-headline-card text-headline-card text-primary mb-2">Family Suite</h3>
-<p class="text-on-surface-variant font-body-main text-sm mb-4">סוויטה מרווחת המותאמת במיוחד למשפחות, עם מרחב נפרד לילדים.</p>
-<div class="grid grid-cols-2 gap-3 mb-6">
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">wifi</span>
-<span class="text-sm">Wi-Fi חופשי</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">ac_unit</span>
-<span class="text-sm">מיזוג אוויר</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">coffee_maker</span>
-<span class="text-sm">עמדת קפה</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">groups</span>
-<span class="text-sm">עד 4 אורחים</span>
-</div>
-</div>
-<div class="mt-auto pt-6 border-t border-outline-variant/30 flex justify-between items-center">
-<div>
-<span class="text-xs text-on-surface-variant block">החל מ-</span>
-<span class="text-xl font-bold text-primary">₪980</span>
-<span class="text-xs text-on-surface-variant">/ לילה</span>
-</div>
-<a href="contact.html?type=vacation" class="bg-gold-accent text-white px-4 py-2 rounded-lg font-nav-link text-sm hover:opacity-90 transition-opacity inline-block text-center">בדוק זמינות</a>
-</div>
-</div>
-</div>
-<!-- Premium Sea View Suite -->
-<div class="group bg-white rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col">
-<div class="relative h-64 overflow-hidden">
-<img alt="Premium Sea View Suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An ultra-luxury hotel suite with floor-to-ceiling windows offering a panoramic view of the turquoise Mediterranean Sea. The interior design features glass accents, marble surfaces, and soft cream-colored furnishings. Bright, airy lighting enhances the sense of space and connection to the coastline. The aesthetic is sophisticated, modern-corporate, and peaceful." src="images/room_premium_sea_view.webp" loading="lazy" decoding="async">
-<div class="absolute top-4 right-4 flex gap-2">
-<span class="bg-status-emerald text-white px-3 py-1 rounded-full font-label-meta text-label-meta">נוף לים</span>
-<span class="bg-primary text-white px-3 py-1 rounded-full font-label-meta text-label-meta">Premium</span>
-</div>
-</div>
-<div class="p-6 flex-1 flex flex-col">
-<h3 class="font-headline-card text-headline-card text-primary mb-2">Premium Sea View Suite</h3>
-<p class="text-on-surface-variant font-body-main text-sm mb-4">סוויטה יוקרתית עם מרפסת פרטית הפונה ישירות לחוף הים של אשדוד.</p>
-<div class="grid grid-cols-2 gap-3 mb-6">
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">wifi</span>
-<span class="text-sm">Wi-Fi חופשי</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">waves</span>
-<span class="text-sm">מרפסת לים</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">coffee_maker</span>
-<span class="text-sm">מכונת אספרסו</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">person</span>
-<span class="text-sm">עד 2 אורחים</span>
-</div>
-</div>
-<div class="mt-auto pt-6 border-t border-outline-variant/30 flex justify-between items-center">
-<div>
-<span class="text-xs text-on-surface-variant block">החל מ-</span>
-<span class="text-xl font-bold text-primary">₪1,250</span>
-<span class="text-xs text-on-surface-variant">/ לילה</span>
-</div>
-<a href="contact.html?type=vacation" class="bg-gold-accent text-white px-4 py-2 rounded-lg font-nav-link text-sm hover:opacity-90 transition-opacity inline-block text-center">בדוק זמינות</a>
-</div>
-</div>
-</div>
-<!-- Deluxe Room -->
-<div class="group bg-white rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col">
-<div class="relative h-64 overflow-hidden">
-<img alt="Deluxe Room" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A deluxe hotel room with elegant, modern furniture and a warm color palette of gold and soft grays. The room features a plush king-sized bed, a functional workspace with a glass-topped desk, and sophisticated atmospheric lighting. The design reflects a corporate-modern hospitality style that is both professional and deeply comfortable." src="images/room_deluxe.webp" loading="lazy" decoding="async">
-</div>
-<div class="p-6 flex-1 flex flex-col">
-<h3 class="font-headline-card text-headline-card text-primary mb-2">Deluxe Room</h3>
-<p class="text-on-surface-variant font-body-main text-sm mb-4">חדר דלקס משודרג עם פינת ישיבה וחלונות גדולים המכניסים אור טבעי.</p>
-<div class="grid grid-cols-2 gap-3 mb-6">
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">wifi</span>
-<span class="text-sm">Wi-Fi חופשי</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">ac_unit</span>
-<span class="text-sm">מיזוג אוויר</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">coffee_maker</span>
-<span class="text-sm">עמדת קפה</span>
-</div>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-lg">person</span>
-<span class="text-sm">עד 2 אורחים</span>
-</div>
-</div>
-<div class="mt-auto pt-6 border-t border-outline-variant/30 flex justify-between items-center">
-<div>
-<span class="text-xs text-on-surface-variant block">החל מ-</span>
-<span class="text-xl font-bold text-primary">₪780</span>
-<span class="text-xs text-on-surface-variant">/ לילה</span>
-</div>
-<a href="contact.html?type=vacation" class="bg-gold-accent text-white px-4 py-2 rounded-lg font-nav-link text-sm hover:opacity-90 transition-opacity inline-block text-center">בדוק זמינות</a>
-</div>
-</div>
-</div>
-<!-- Presidential Suite -->
-<div class="group lg:col-span-2 bg-white rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:scale-[1.01] transition-all duration-300 flex flex-col md:flex-row">
-<div class="relative w-full md:w-1/2 h-80 md:h-auto overflow-hidden">
-<img alt="Presidential Suite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An expansive presidential suite featuring a massive living room with designer furniture, a dining table for six, and a master bedroom with a direct sea view. The style is top-tier luxury, utilizing high-end materials like marble, brass, and glass. The lighting is layered with elegant chandeliers and floor lamps. The overall feel is one of absolute exclusivity, refinement, and coastal grandiosity." src="images/room_presidential_suite.webp" loading="lazy" decoding="async">
-<div class="absolute top-4 right-4">
-<span class="bg-primary text-white px-4 py-2 rounded-full font-label-meta text-label-meta uppercase tracking-widest">The Presidential</span>
-</div>
-</div>
-<div class="p-10 flex-1 flex flex-col">
-<h3 class="font-display-hero-mobile text-display-hero-mobile text-primary mb-4">Presidential Suite</h3>
-<p class="text-on-surface-variant font-body-main text-lg mb-6 leading-relaxed">פסגת היוקרה של מלון מיעמי. סוויטה נשיאותית רחבת ידיים הכוללת סלון מעוצב, חדר שינה פרטי, חדר רחצה מפואר ונוף פנורמי עוצר נשימה לים.</p>
-<div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-2xl" data-weight="fill">verified</span>
-<span class="text-sm font-semibold">שירות VIP</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-2xl">bathtub</span>
-<span class="text-sm font-semibold">ג'קוזי פרטי</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-2xl">dinner_dining</span>
-<span class="text-sm font-semibold">פינת אוכל</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-2xl">kitchen</span>
-<span class="text-sm font-semibold">מיני בר פרימיום</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-2xl">smart_display</span>
-<span class="text-sm font-semibold">מסכי ענק</span>
-</div>
-<div class="flex items-center gap-3 text-on-surface-variant">
-<span class="material-symbols-outlined text-gold-accent text-2xl">groups</span>
-<span class="text-sm font-semibold">עד 6 אורחים</span>
-</div>
-</div>
-<div class="mt-auto pt-6 border-t border-outline-variant/30 flex justify-between items-center">
-<div>
-<span class="text-xs text-on-surface-variant block uppercase tracking-widest">Exclusively From</span>
-<span class="text-3xl font-extrabold text-primary">₪2,800</span>
-<span class="text-sm text-on-surface-variant">/ לילה</span>
-</div>
-<a href="contact.html?type=vacation" class="bg-gold-accent text-white px-8 py-4 rounded-lg font-nav-link text-lg hover:opacity-90 transition-opacity inline-block text-center">בדוק זמינות</a>
-</div>
-</div>
-</div>
+  <div id="rooms-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+    <!-- Classic Double Room -->
+    <div data-room-type="couple" class="group bg-white rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col">
+      <div class="relative h-64 overflow-hidden">
+        <img alt="Standard Double Room" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="חדר אירוח נעים ונקי במלון מיעמי אשדוד, מעוצב בגוונים רגועים, עם מיטה רחבה ונוחה, תאורה חמה, וחלון המכניס אור טבעי." src="images/room_classic_double.webp" loading="lazy" decoding="async">
+        <div class="absolute top-4 right-4">
+          <span class="bg-emerald-600 text-white px-3 py-1 rounded-full font-label-meta text-label-meta">הנבחר</span>
+        </div>
+      </div>
+      <div class="p-6 flex-1 flex flex-col text-right">
+        <h3 class="font-headline-card text-headline-card text-primary mb-2">חדר זוגי סטנדרט</h3>
+        <p class="text-on-surface-variant font-body-main text-sm mb-4 leading-relaxed">חדר זוגי נעים ופונקציונלי, המציע נוחות מרבית ועיצוב נקי במחיר משתלם. מתאים לזוג או ליחיד, עם אפשרות למיטה זוגית או מיטות נפרדות (מיטות יהודיות).</p>
+        <div class="grid grid-cols-2 gap-3 mb-6">
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">person</span>
+            <span class="text-sm">עד 2 אורחים</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">ac_unit</span>
+            <span class="text-sm">מיזוג (שעון שבת)</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">wifi</span>
+            <span class="text-sm">Wi-Fi חופשי</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">coffee_maker</span>
+            <span class="text-sm">עמדת קפה</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start col-span-2">
+            <span class="material-symbols-outlined text-gold-accent text-lg">key</span>
+            <span class="text-sm">מפתח מכני שבת (לפי דרישה)</span>
+          </div>
+        </div>
+        <div class="mt-auto pt-6 border-t border-outline-variant/30 flex flex-col gap-3">
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="text-xs text-on-surface-variant block">החל מ-</span>
+              <span class="text-xl font-bold text-primary">₪600</span>
+              <span class="text-xs text-on-surface-variant">/ לילה</span>
+            </div>
+            <button class="view-details-btn bg-[#f7f4ec] hover:bg-gold-accent hover:text-white text-primary border border-sand-dark px-4 py-2 rounded-lg font-nav-link text-sm transition-all cursor-pointer" data-room-id="couple">לפרטים נוספים</button>
+          </div>
+          <a href="contact.html?type=vacation&room=couple" class="bg-primary hover:bg-primary-container text-white py-2.5 rounded-lg font-nav-link text-sm transition-colors block text-center w-full">בדוק זמינות והזמנה</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Family Room -->
+    <div data-room-type="family" class="group bg-white rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col">
+      <div class="relative h-64 overflow-hidden">
+        <img alt="Spacious Family Room" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="חדר משפחתי מרווח, מסודר ונקי המיועד לאירוח של זוג וילדים, בעיצוב נעים ונוח המתאים במיוחד לחוגגי שבת חתן." src="images/room_family_suite.webp" loading="lazy" decoding="async">
+        <div class="absolute top-4 right-4">
+          <span class="bg-gold-accent text-white px-3 py-1 rounded-full font-label-meta text-label-meta">הבחירה למשפחות</span>
+        </div>
+      </div>
+      <div class="p-6 flex-1 flex flex-col text-right">
+        <h3 class="font-headline-card text-headline-card text-primary mb-2">חדר משפחתי מרווח</h3>
+        <p class="text-on-surface-variant font-body-main text-sm mb-4 leading-relaxed">חדר מרווח ומותאם במיוחד למשפחות (אידיאלי לשבתות חתן). החדר מיועד לזוג ובמידת הצורך ניתן להוסיף בו עד 4 מיטות יחיד נוספות, המאפשרות אירוח של עד 6 נפשות בחדר.</p>
+        <div class="grid grid-cols-2 gap-3 mb-6">
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">groups</span>
+            <span class="text-sm">עד 6 אורחים</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">ac_unit</span>
+            <span class="text-sm">מיזוג (שעון שבת)</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">wifi</span>
+            <span class="text-sm">Wi-Fi חופשי</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">coffee_maker</span>
+            <span class="text-sm">עמדת קפה</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start col-span-2">
+            <span class="material-symbols-outlined text-gold-accent text-lg">hotel</span>
+            <span class="text-sm">אפשרות לעד 4 מיטות יחיד נוספות</span>
+          </div>
+        </div>
+        <div class="mt-auto pt-6 border-t border-outline-variant/30 flex flex-col gap-3">
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="text-xs text-on-surface-variant block">החל מ-</span>
+              <span class="text-xl font-bold text-primary">₪850</span>
+              <span class="text-xs text-on-surface-variant">/ לילה</span>
+            </div>
+            <button class="view-details-btn bg-[#f7f4ec] hover:bg-gold-accent hover:text-white text-primary border border-sand-dark px-4 py-2 rounded-lg font-nav-link text-sm transition-all cursor-pointer" data-room-id="family">לפרטים נוספים</button>
+          </div>
+          <a href="contact.html?type=vacation&room=family" class="bg-primary hover:bg-primary-container text-white py-2.5 rounded-lg font-nav-link text-sm transition-colors block text-center w-full">בדוק זמינות והזמנה</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jacuzzi Room -->
+    <div data-room-type="jacuzzi" class="group bg-white rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col">
+      <div class="relative h-64 overflow-hidden">
+        <img alt="Double Room with Jacuzzi" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="חדר אירוח זוגי מעוצב וחם, המציע ג'קוזי מובנה ומפנק, באווירה אינטימית ונינוחה." src="images/room_deluxe.webp" loading="lazy" decoding="async">
+        <div class="absolute top-4 right-4">
+          <span class="bg-primary text-white px-3 py-1 rounded-full font-label-meta text-label-meta">עם ג'קוזי</span>
+        </div>
+      </div>
+      <div class="p-6 flex-1 flex flex-col text-right">
+        <h3 class="font-headline-card text-headline-card text-primary mb-2">חדר זוגי עם ג'קוזי</h3>
+        <p class="text-on-surface-variant font-body-main text-sm mb-4 leading-relaxed">חדר זוגי נעים ומזמין הכולל ג'קוזי מובנה בחדר, פינת ישיבה נוחה ואווירה חמה ושלווה במרחק הליכה מהחוף. הבחירה המושלמת לחופשה רגועה ותמורה מעולה למחיר.</p>
+        <div class="grid grid-cols-2 gap-3 mb-6">
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">bathtub</span>
+            <span class="text-sm">ג'קוזי פרטי</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">person</span>
+            <span class="text-sm">עד 2 אורחים</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">ac_unit</span>
+            <span class="text-sm">מיזוג (שעון שבת)</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start">
+            <span class="material-symbols-outlined text-gold-accent text-lg">wifi</span>
+            <span class="text-sm">Wi-Fi חופשי</span>
+          </div>
+          <div class="flex items-center gap-2 text-on-surface-variant justify-start col-span-2">
+            <span class="material-symbols-outlined text-gold-accent text-lg">coffee_maker</span>
+            <span class="text-sm">עמדת קפה ומקרר קטן</span>
+          </div>
+        </div>
+        <div class="mt-auto pt-6 border-t border-outline-variant/30 flex flex-col gap-3">
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="text-xs text-on-surface-variant block">החל מ-</span>
+              <span class="text-xl font-bold text-primary">₪1,000</span>
+              <span class="text-xs text-on-surface-variant">/ לילה</span>
+            </div>
+            <button class="view-details-btn bg-[#f7f4ec] hover:bg-gold-accent hover:text-white text-primary border border-sand-dark px-4 py-2 rounded-lg font-nav-link text-sm transition-all cursor-pointer" data-room-id="jacuzzi">לפרטים נוספים</button>
+          </div>
+          <a href="contact.html?type=vacation&room=jacuzzi" class="bg-primary hover:bg-primary-container text-white py-2.5 rounded-lg font-nav-link text-sm transition-colors block text-center w-full">בדוק זמינות והזמנה</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- Religious Amenities Banner -->
 <section class="bg-surface-container py-10 md:py-section-md">
-<div class="max-w-container-max mx-auto px-8">
-<div class="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-right">
-<div class="max-w-xl">
-<h2 class="font-headline-section text-headline-section text-primary mb-4">חופשה כשרה למהדרין בסטנדרט גבוה</h2>
-<p class="font-body-main text-on-surface-variant">במלון מיעמי אשדוד אנחנו מקפידים על כל פרט כדי להבטיח לכם חווית אירוח דתית מושלמת: כשרות מהודרת, קרבה לבתי כנסת, שעוני שבת בכל החדרים ומפתח מכני זמין.</p>
-</div>
-<div class="flex gap-6">
-<div class="flex flex-col items-center">
-<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-2">
-<span class="material-symbols-outlined text-gold-accent text-3xl">restaurant</span>
-</div>
-<span class="text-xs font-bold text-primary">כשרות מהודרת</span>
-</div>
-<div class="flex flex-col items-center">
-<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-2">
-<span class="material-symbols-outlined text-gold-accent text-3xl">temple_hindu</span>
-</div>
-<span class="text-xs font-bold text-primary">בית כנסת</span>
-</div>
-<div class="flex flex-col items-center">
-<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-2">
-<span class="material-symbols-outlined text-gold-accent text-3xl">alarm_on</span>
-</div>
-<span class="text-xs font-bold text-primary">שעוני שבת</span>
-</div>
-</div>
-</div>
-</div>
+  <div class="max-w-container-max mx-auto px-8">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-right">
+      <div class="max-w-2xl">
+        <h2 class="font-headline-section text-headline-section text-primary mb-4">אירוח כשר למהדרין בהתאמה מלאה לשבת</h2>
+        <p class="font-body-main text-on-surface-variant text-base leading-relaxed">
+          במלון מיעמי אשדוד אנו מקפידים על כל פרט כדי להבטיח לכם שהות רגועה ומותאמת למסורת: כשרות מהודרת בהשגחת הרב מחפוד, בתי כנסת מפוארים וחדרי אוכל נפרדים לפרטיות מושלמת באירועים, שעוני שבת מובנים למיזוג ולתאורה, מפתחות שבת מכניים וחניה בשפע ללא תשלום.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-4 sm:gap-6 justify-center">
+        <div class="flex flex-col items-center w-24">
+          <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-2">
+            <span class="material-symbols-outlined text-gold-accent text-3xl">verified</span>
+          </div>
+          <span class="text-xs font-bold text-primary text-center">כשרות הרב מחפוד</span>
+        </div>
+        <div class="flex flex-col items-center w-24">
+          <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-2">
+            <span class="material-symbols-outlined text-gold-accent text-3xl">temple_hindu</span>
+          </div>
+          <span class="text-xs font-bold text-primary text-center">בתי כנסת פרטיים</span>
+        </div>
+        <div class="flex flex-col items-center w-24">
+          <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-2">
+            <span class="material-symbols-outlined text-gold-accent text-3xl">alarm_on</span>
+          </div>
+          <span class="text-xs font-bold text-primary text-center">שעוני שבת</span>
+        </div>
+        <div class="flex flex-col items-center w-24">
+          <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-2">
+            <span class="material-symbols-outlined text-gold-accent text-3xl">local_parking</span>
+          </div>
+          <span class="text-xs font-bold text-primary text-center">חניה חינם</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+<!-- Room Details Modal -->
+<div id="room-details-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-primary/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+  <div class="bg-white border border-sand-dark rounded-2xl max-w-4xl w-full shadow-2xl overflow-hidden flex flex-col md:flex-row relative max-h-[90vh] text-right">
+    <!-- Close Button -->
+    <button id="close-modal-btn" class="absolute top-4 left-4 w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-gold-accent hover:text-white transition-colors cursor-pointer z-20" aria-label="סגור חלון">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+
+    <!-- Right Column (on RTL layout): Image Gallery -->
+    <div class="w-full md:w-1/2 p-6 flex flex-col justify-between border-l border-sand-dark/30 bg-surface/50">
+      <div class="relative h-60 sm:h-72 md:h-80 overflow-hidden rounded-xl mb-4 shadow-inner">
+        <img id="modal-main-img" class="w-full h-full object-cover transition-opacity duration-300" src="" alt="תמונת חדר ראשית">
+      </div>
+      <div id="modal-thumbnails" class="flex gap-3 justify-center overflow-x-auto pb-2 scrollbar-hide">
+        <!-- Thumbnails created dynamically -->
+      </div>
+    </div>
+
+    <!-- Left Column: Details & Specs -->
+    <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto max-h-[50vh] md:max-h-[90vh]">
+      <div>
+        <h3 id="modal-room-title" class="font-display-hero-mobile text-2xl text-primary mb-3">שם החדר</h3>
+        <p id="modal-room-desc" class="text-on-surface-variant font-body-main text-sm mb-6 leading-relaxed">תיאור החדר...</p>
+        
+        <!-- Shabbat Specs -->
+        <div class="mb-6">
+          <h4 class="font-bold text-primary mb-3 flex items-center gap-2 border-b border-sand-dark pb-2">
+            <span class="material-symbols-outlined text-gold-accent text-xl">mosque</span>
+            <span>התאמה לשבת וכשרות</span>
+          </h4>
+          <ul id="modal-shabbat-specs" class="space-y-2 text-xs sm:text-sm text-on-surface-variant font-body-main">
+            <!-- Shabbat specs created dynamically -->
+          </ul>
+        </div>
+
+        <!-- Bed Configuration -->
+        <div class="mb-6">
+          <h4 class="font-bold text-primary mb-3 flex items-center gap-2 border-b border-sand-dark pb-2">
+            <span class="material-symbols-outlined text-gold-accent text-xl">hotel</span>
+            <span>סידורי לינה והרכבי מיטות</span>
+          </h4>
+          <p id="modal-bed-config" class="text-xs sm:text-sm text-on-surface-variant font-body-main leading-relaxed"></p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="pt-4 border-t border-sand-dark/30 flex flex-col sm:flex-row gap-3">
+        <a id="modal-booking-btn" href="contact.html?type=vacation" class="flex-grow bg-gold-accent text-white py-3 rounded-lg text-center font-nav-link text-sm hover:opacity-90 transition-opacity">בדוק זמינות והזמנה</a>
+        <a id="modal-whatsapp-btn" href="#" target="_blank" class="flex-grow border border-whatsapp text-whatsapp hover:bg-whatsapp hover:text-white py-3 rounded-lg text-center font-nav-link text-sm transition-all flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>פנייה ב-WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 </main>
 
 <div id="site-footer"></div>
 <script src="js/footer-component.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    flatpickr("#rooms-date-input", {
+    let fpInstance;
+
+    // Initialize Flatpickr for check-in and check-out range
+    fpInstance = flatpickr("#rooms-date-input", {
+      mode: "range",
       altInput: true,
       altFormat: "d/m/Y",
       dateFormat: "Y-m-d",
       minDate: "today",
       maxDate: new Date().fp_incr(365),
       locale: "en",
-      disableMobile: true
+      disableMobile: true,
+      onReady: function (selectedDates, dateStr, instance) {
+        instance.calendarContainer.classList.add('mustard-theme');
+      },
+      onChange: function (selectedDates, dateStr, instance) {
+        updateLinksWithParams();
+      }
+    });
+
+    // Scroll indicator click scroll
+    const scrollArrow = document.getElementById('scroll-to-rooms');
+    const filterSection = document.getElementById('filter-section');
+    if (scrollArrow && filterSection) {
+      scrollArrow.addEventListener('click', () => {
+        filterSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    // Room filtering logic setup
+    const roomCards = document.querySelectorAll('#rooms-grid > div');
+    roomCards.forEach(card => {
+      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      card.style.opacity = '1';
+      card.style.transform = 'scale(1)';
+    });
+
+    // Custom Guest Dropdown Panel controls
+    const triggerBtn = document.getElementById('guest-select-trigger');
+    const dropdownPanel = document.getElementById('guest-dropdown-panel');
+    const triggerArrow = document.getElementById('guest-trigger-arrow');
+    const applyBtn = document.getElementById('apply-guests-btn');
+    
+    const adultsCountEl = document.getElementById('adults-count');
+    const adultsMinus = document.getElementById('adults-minus');
+    const adultsPlus = document.getElementById('adults-plus');
+    
+    const kidsCountEl = document.getElementById('kids-count');
+    const kidsMinus = document.getElementById('kids-minus');
+    const kidsPlus = document.getElementById('kids-plus');
+    
+    const jacuzziCheckbox = document.getElementById('jacuzzi-pref-checkbox');
+    const summaryText = document.getElementById('guest-select-summary');
+
+    let currentAdults = 2;
+    let currentKids = 0;
+
+    // Toggle dropdown visibility with animation
+    function toggleDropdown() {
+      const isHidden = dropdownPanel.classList.contains('hidden');
+      if (isHidden) {
+        dropdownPanel.classList.remove('hidden');
+        triggerArrow.style.transform = 'rotate(180deg)';
+        setTimeout(() => {
+          dropdownPanel.classList.remove('opacity-0', 'scale-95');
+          dropdownPanel.classList.add('opacity-100', 'scale-100');
+        }, 10);
+      } else {
+        dropdownPanel.classList.add('opacity-0', 'scale-95');
+        dropdownPanel.classList.remove('opacity-100', 'scale-100');
+        triggerArrow.style.transform = 'rotate(0deg)';
+        setTimeout(() => {
+          dropdownPanel.classList.add('hidden');
+        }, 200);
+      }
+    }
+
+    triggerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdownPanel.classList.contains('hidden') && !dropdownPanel.contains(e.target) && e.target !== triggerBtn) {
+        toggleDropdown();
+      }
+    });
+
+    dropdownPanel.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Counter buttons logic
+    adultsMinus.addEventListener('click', () => {
+      if (currentAdults > 1) {
+        currentAdults--;
+        adultsCountEl.textContent = currentAdults;
+        updateSummary();
+      }
+    });
+
+    adultsPlus.addEventListener('click', () => {
+      if (currentAdults + currentKids < 6) {
+        currentAdults++;
+        adultsCountEl.textContent = currentAdults;
+        updateSummary();
+      }
+    });
+
+    kidsMinus.addEventListener('click', () => {
+      if (currentKids > 0) {
+        currentKids--;
+        kidsCountEl.textContent = currentKids;
+        updateSummary();
+      }
+    });
+
+    kidsPlus.addEventListener('click', () => {
+      if (currentAdults + currentKids < 6) {
+        currentKids++;
+        kidsCountEl.textContent = currentKids;
+        updateSummary();
+      }
+    });
+
+    jacuzziCheckbox.addEventListener('change', () => {
+      updateSummary();
+    });
+
+    function updateSummary() {
+      const total = currentAdults + currentKids;
+      let text = '';
+      if (currentAdults === 2 && currentKids === 0) {
+        text = '2 אורחים (זוג)';
+      } else if (currentAdults === 1 && currentKids === 0) {
+        text = 'אורח יחיד';
+      } else {
+        text = `${total} אורחים (${currentAdults} מבוגרים`;
+        if (currentKids > 0) {
+          text += `, ${currentKids} ילדים`;
+        }
+        text += ')';
+      }
+      
+      if (jacuzziCheckbox.checked) {
+        text += ' + ג\'קוזי';
+      }
+      
+      summaryText.textContent = text;
+    }
+
+    applyBtn.addEventListener('click', () => {
+      toggleDropdown();
+      filterRooms();
+    });
+
+    // Main Filter Action
+    function filterRooms() {
+      const totalGuests = currentAdults + currentKids;
+      const jacuzziRequired = jacuzziCheckbox.checked;
+      let matchedCount = 0;
+      
+      roomCards.forEach(card => {
+        const cardType = card.getAttribute('data-room-type');
+        let isMatch = true;
+
+        if (jacuzziRequired) {
+          if (cardType !== 'jacuzzi') {
+            isMatch = false;
+          }
+        } else {
+          if (totalGuests > 2) {
+            if (cardType !== 'family') {
+              isMatch = false;
+            }
+          } else {
+            if (cardType === 'family') {
+              isMatch = false;
+            }
+          }
+        }
+
+        if (isMatch) {
+          card.style.display = 'flex';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+          }, 50);
+          matchedCount++;
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 300);
+        }
+      });
+
+      // Show/Hide "No rooms found" message
+      let noResultsMsg = document.getElementById('no-rooms-message');
+      if (matchedCount === 0) {
+        if (!noResultsMsg) {
+          noResultsMsg = document.createElement('div');
+          noResultsMsg.id = 'no-rooms-message';
+          noResultsMsg.className = 'col-span-full text-center py-16 text-primary flex flex-col items-center gap-4 bg-white rounded-xl border border-sand-dark shadow-md p-8';
+          noResultsMsg.innerHTML = `
+            <span class="material-symbols-outlined text-gold-accent text-5xl">sentiment_dissatisfied</span>
+            <h3 class="text-xl font-bold">לא נמצאו חדרים פנויים</h3>
+            <p class="text-on-surface-variant max-w-md">לא נמצאו חדרים המתאימים להרכב האורחים או הדרישות שבחרתם. נסו לשנות את הרכב האורחים או להסיר את בחירת הג'קוזי.</p>
+            <button id="reset-search-btn" class="bg-primary hover:bg-primary-container text-white px-6 py-2.5 rounded-lg font-bold transition-all text-sm cursor-pointer mt-4">איפוס חיפוש</button>
+          `;
+          document.getElementById('rooms-grid').appendChild(noResultsMsg);
+          
+          document.getElementById('reset-search-btn').addEventListener('click', () => {
+            currentAdults = 2;
+            currentKids = 0;
+            adultsCountEl.textContent = 2;
+            kidsCountEl.textContent = 0;
+            jacuzziCheckbox.checked = false;
+            updateSummary();
+            if (fpInstance) fpInstance.clear();
+            filterRooms();
+          });
+        } else {
+          noResultsMsg.style.display = 'flex';
+        }
+      } else {
+        if (noResultsMsg) {
+          noResultsMsg.style.display = 'none';
+        }
+      }
+
+      updateLinksWithParams();
+    }
+
+    // Update rooms card links with parameters
+    function updateLinksWithParams() {
+      let dateStartVal = '';
+      let dateEndVal = '';
+      if (fpInstance && fpInstance.selectedDates.length === 2) {
+        const d1 = fpInstance.selectedDates[0];
+        const d2 = fpInstance.selectedDates[1];
+        const formatDate = (d) => {
+          const year = d.getFullYear();
+          const month = String(d.getMonth() + 1).padStart(2, '0');
+          const day = String(d.getDate()).padStart(2, '0');
+          return `${year}-${month}-${day}`;
+        };
+        dateStartVal = formatDate(d1);
+        dateEndVal = formatDate(d2);
+      }
+      
+      const totalGuests = currentAdults + currentKids;
+      
+      roomCards.forEach(card => {
+        const cardType = card.getAttribute('data-room-type');
+        const bookingLink = card.querySelector('a[href^="contact.html"]');
+        if (bookingLink) {
+          let href = `contact.html?type=vacation&room=${cardType}&guests=${totalGuests}`;
+          if (dateStartVal && dateEndVal) {
+            href += `&date_start=${dateStartVal}&date_end=${dateEndVal}`;
+          }
+          bookingLink.href = href;
+        }
+      });
+    }
+
+    // Search button loading animation
+    const filterBtn = document.getElementById('filter-rooms-btn');
+    const searchBtnIcon = document.getElementById('search-btn-icon');
+    const searchBtnText = document.getElementById('search-btn-text');
+
+    filterBtn.addEventListener('click', () => {
+      searchBtnIcon.textContent = 'autorenew';
+      searchBtnIcon.classList.add('animate-spin');
+      searchBtnText.textContent = 'מחפש חדרים...';
+      filterBtn.disabled = true;
+      filterBtn.style.opacity = '0.9';
+
+      setTimeout(() => {
+        searchBtnIcon.textContent = 'search';
+        searchBtnIcon.classList.remove('animate-spin');
+        searchBtnText.textContent = 'חפש חדרים';
+        filterBtn.disabled = false;
+        filterBtn.style.opacity = '1';
+        
+        filterRooms();
+        document.getElementById('rooms-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 550);
+    });
+
+    // Room Details Modal dynamic dataset
+    const roomsData = {
+      couple: {
+        title: "חדר זוגי סטנדרט",
+        desc: "חדר זוגי נעים ופונקציונלי, המציע נוחות מרבית ועיצוב נקי במחיר משתלם. מתאים לזוג או ליחיד, ומספק תמורה מעולה למחיר עם קרבה מיידית לים ולטיילת באשדוד.",
+        images: ["images/room_classic_double.webp", "images/room_deluxe.webp"],
+        shabbatSpecs: [
+          "שעון שבת מובנה בחדר לשליטה אוטומטית על המיזוג והתאורה.",
+          "מפתח מכני שבת פיזי זמין בקבלה (אין צורך במפתח אלקטרוני).",
+          "אפשרות להפרדת מיטות מלאה (מיטות יהודיות) לשומרי מסורת.",
+          "כיור נטילת ידיים זמין ונוח."
+        ],
+        bedConfig: "מיטה זוגית רחבה או שתי מיטות יחיד נפרדות (מיטות יהודיות) לפי בחירה מראש."
+      },
+      family: {
+        title: "חדר משפחתי מרווח",
+        desc: "חדר מרווח ומותאם במיוחד למשפחות (פתרון מצוין לשבתות חתן). החדר מיועד לזוג ובמידת הצורך ניתן להוסיף בו עד 4 מיטות יחיד נוספות, המאפשרות אירוח נוח של עד 6 נפשות בחדר אחד.",
+        images: ["images/room_family_suite.webp", "images/room_classic_double.webp", "images/room_deluxe.webp"],
+        shabbatSpecs: [
+          "שעון שבת מובנה בחדר לשליטה אוטומטית על המיזוג והתאורה.",
+          "מפתח מכני שבת פיזי זמין בקבלה (אין צורך במפתח אלקטרוני).",
+          "מיטות יהודיות הניתנות להפרדה.",
+          "מתאים במיוחד לאורחי שבתות חתן - קירבה לחדרי האוכל ובתי הכנסת הפרטיים של המשפחה במלון."
+        ],
+        bedConfig: "מיטה זוגית (או שתי מיטות יחיד נפרדות) + אפשרות לעד 4 מיטות יחיד נוספות לפי הצורך (עד 6 אורחים בחדר)."
+      },
+      jacuzzi: {
+        title: "חדר זוגי עם ג'קוזי",
+        desc: "חדר זוגי נעים וממכר הכולל ג'קוזי מובנה ומפנק בתוך החדר, פינת ישיבה נוחה ואווירה חמה ושלווה במרחק הליכה מהחוף. הבחירה המושלמת לחופשה רגועה ותמורה מעולה למחיר.",
+        images: ["images/room_deluxe.webp", "images/room_presidential_suite.webp", "images/room_classic_double.webp"],
+        shabbatSpecs: [
+          "ג'קוזי פרטי מובנה בחדר (לשימוש בימי חול).",
+          "שעון שבת מובנה בחדר לשליטה אוטומטית על המיזוג והתאורה.",
+          "מפתח מכני שבת פיזי זמין בקבלה.",
+          "פינת קפה מאובזרת ומקרר קטן בחדר."
+        ],
+        bedConfig: "מיטה זוגית רחבה ומרווחת לזוג."
+      }
+    };
+
+    // Modal elements and logic
+    const modal = document.getElementById('room-details-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+
+    const modalTitle = document.getElementById('modal-room-title');
+    const modalDesc = document.getElementById('modal-room-desc');
+    const modalMainImg = document.getElementById('modal-main-img');
+    const modalThumbnails = document.getElementById('modal-thumbnails');
+    const modalShabbatSpecs = document.getElementById('modal-shabbat-specs');
+    const modalBedConfig = document.getElementById('modal-bed-config');
+    const modalBookingBtn = document.getElementById('modal-booking-btn');
+    const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn');
+
+    function openModal(roomId) {
+      const data = roomsData[roomId];
+      if (!data) return;
+
+      modalTitle.textContent = data.title;
+      modalDesc.textContent = data.desc;
+      modalBedConfig.textContent = data.bedConfig;
+      modalMainImg.src = data.images[0];
+      modalMainImg.alt = data.title;
+
+      modalThumbnails.innerHTML = '';
+      data.images.forEach((imgSrc, index) => {
+        const thumb = document.createElement('button');
+        thumb.className = `w-16 h-12 sm:w-20 sm:h-14 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 cursor-pointer ${index === 0 ? 'border-gold-accent scale-105' : 'border-transparent opacity-70 hover:opacity-100'}`;
+        thumb.innerHTML = `<img class="w-full h-full object-cover" src="${imgSrc}" alt="תמונה ממוזערת ${index + 1}">`;
+        
+        thumb.addEventListener('click', () => {
+          modalMainImg.style.opacity = '0';
+          setTimeout(() => {
+            modalMainImg.src = imgSrc;
+            modalMainImg.style.opacity = '1';
+          }, 150);
+
+          modalThumbnails.querySelectorAll('button').forEach(btn => {
+            btn.classList.remove('border-gold-accent', 'scale-105');
+            btn.classList.add('border-transparent', 'opacity-70');
+          });
+          thumb.classList.add('border-gold-accent', 'scale-105');
+          thumb.classList.remove('border-transparent', 'opacity-70');
+        });
+
+        modalThumbnails.appendChild(thumb);
+      });
+
+      modalShabbatSpecs.innerHTML = '';
+      data.shabbatSpecs.forEach(spec => {
+        const li = document.createElement('li');
+        li.className = 'flex items-start gap-2 justify-start';
+        li.innerHTML = `
+          <span class="material-symbols-outlined text-gold-accent text-lg flex-shrink-0">done</span>
+          <span>${spec}</span>
+        `;
+        modalShabbatSpecs.appendChild(li);
+      });
+
+      // Extract search dates for modal links
+      let dateStartVal = '';
+      let dateEndVal = '';
+      if (fpInstance && fpInstance.selectedDates.length === 2) {
+        const d1 = fpInstance.selectedDates[0];
+        const d2 = fpInstance.selectedDates[1];
+        const formatDate = (d) => {
+          const year = d.getFullYear();
+          const month = String(d.getMonth() + 1).padStart(2, '0');
+          const day = String(d.getDate()).padStart(2, '0');
+          return `${year}-${month}-${day}`;
+        };
+        dateStartVal = formatDate(d1);
+        dateEndVal = formatDate(d2);
+      }
+      
+      const totalGuests = currentAdults + currentKids;
+      let bookingHref = `contact.html?type=vacation&room=${roomId}&guests=${totalGuests}`;
+      if (dateStartVal && dateEndVal) {
+        bookingHref += `&date_start=${dateStartVal}&date_end=${dateEndVal}`;
+      }
+      modalBookingBtn.href = bookingHref;
+      
+      let whatsappMsg = `שלום, אשמח לקבל פרטים נוספים והצעת מחיר עבור ${data.title} במלון מיעמי אשדוד.`;
+      if (dateStartVal && dateEndVal) {
+        const d1Str = fpInstance.selectedDates[0].toLocaleDateString('he-IL');
+        const d2Str = fpInstance.selectedDates[1].toLocaleDateString('he-IL');
+        whatsappMsg += ` עבור תאריכים ${d1Str} עד ${d2Str}`;
+      }
+      whatsappMsg += ` להרכב של ${totalGuests} אורחים.`;
+      
+      const whatsappText = encodeURIComponent(whatsappMsg);
+      modalWhatsappBtn.href = `https://wa.me/97288522085?text=${whatsappText}`;
+
+      modal.classList.remove('pointer-events-none');
+      modal.classList.add('opacity-100');
+    }
+
+    function closeModal() {
+      modal.classList.add('pointer-events-none');
+      modal.classList.remove('opacity-100');
+    }
+
+    viewDetailsBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const roomId = btn.getAttribute('data-room-id');
+        openModal(roomId);
+      });
+    });
+
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', closeModal);
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
     });
   });
 </script>

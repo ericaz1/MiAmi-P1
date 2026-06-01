@@ -692,14 +692,20 @@
                   <label class="text-sm font-semibold text-white/95" for="form-date-start" id="date-start-label">תאריך
                     הגעה</label>
                   <input type="text" id="form-date-start" name="date_start" placeholder="dd/mm/yyyy" lang="en"
-                    class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-mustard-accent transition-colors"
+                    class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 text-white focus:outline-none focus:border-mustard-accent transition-colors"
                     required>
                 </div>
                 <div class="flex flex-col gap-2" id="date-end-wrapper">
                   <label class="text-sm font-semibold text-white/95" for="form-date-end">תאריך עזיבה</label>
                   <input type="text" id="form-date-end" name="date_end" placeholder="dd/mm/yyyy" lang="en"
-                    class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-mustard-accent transition-colors">
+                    class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 text-white focus:outline-none focus:border-mustard-accent transition-colors">
                 </div>
+              </div>
+
+              <!-- Nights Counter Display -->
+              <div id="nights-counter-display" class="hidden text-sm font-semibold text-mustard-accent text-right mt-[-0.5rem] mb-2">
+                <span>סה"כ לילות: </span>
+                <span id="nights-count-val">0</span>
               </div>
 
               <!-- No Date Yet Checkbox -->
@@ -730,7 +736,7 @@
                 <label class="text-sm font-semibold text-white/95" for="form-event-details">פרטים נוספים על האירוע (לא חובה)</label>
                 <div class="relative">
                   <textarea id="form-event-details" name="event_details" maxlength="200" rows="3" placeholder="ספרו לנו עוד על האירוע שלכם (סוג האירוע, דרישות מיוחדות, העדפות מזון וכד')..."
-                    class="w-full bg-white/10 border border-white/20 rounded-xl p-3 pb-8 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40 resize-none"></textarea>
+                    class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 pb-8 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40 resize-none"></textarea>
                   <span id="char-counter" class="absolute bottom-2 left-3 text-xs text-white/40 select-none">0/200</span>
                 </div>
               </div>
@@ -754,19 +760,19 @@
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold text-white/95" for="form-contact-name">שם מלא</label>
                 <input type="text" id="form-contact-name" name="contact_name" placeholder="הכנס את שמך המלא"
-                  class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
+                  class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
                   required>
               </div>
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold text-white/95" for="form-contact-phone">מספר טלפון</label>
                 <input type="tel" id="form-contact-phone" name="contact_phone" placeholder="לדוגמה: 050-1234567"
-                  class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
+                  class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
                   required>
               </div>
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold text-white/95" for="form-contact-email">כתובת אימייל</label>
                 <input type="email" id="form-contact-email" name="contact_email" placeholder="name@domain.com"
-                  class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
+                  class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
                   required>
               </div>
             </div>
@@ -775,7 +781,7 @@
           <!-- Navigation buttons -->
           <div class="flex justify-between items-center mt-8 gap-4">
             <button type="button"
-              class="form-nav-btn prev-btn bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all cursor-pointer flex items-center gap-2 visibility-hidden"
+              class="form-nav-btn prev-btn bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all cursor-pointer flex items-center gap-2 hidden"
               id="form-prev-btn">
               <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
               <span>חזרה</span>
@@ -1149,6 +1155,7 @@
           dateStartInput.removeAttribute('required');
           dateEndInput.removeAttribute('required');
         }
+        calculateNights();
       }
 
       // Guests plus/minus clicks
@@ -1187,9 +1194,13 @@
         progressBar.style.width = `${(currentStep / totalSteps) * 100}%`;
 
         if (currentStep === 1) {
-          prevBtn.classList.add('visibility-hidden');
+          prevBtn.classList.add('hidden');
+          prevBtn.parentElement.classList.remove('justify-between');
+          prevBtn.parentElement.classList.add('justify-center');
         } else {
-          prevBtn.classList.remove('visibility-hidden');
+          prevBtn.classList.remove('hidden');
+          prevBtn.parentElement.classList.add('justify-between');
+          prevBtn.parentElement.classList.remove('justify-center');
         }
 
         if (currentStep === totalSteps) {
@@ -1352,6 +1363,28 @@
         }
       });
 
+      function calculateNights() {
+        const startVal = fpStart && fpStart.selectedDates[0];
+        const endVal = fpEnd && fpEnd.selectedDates[0];
+        const displayEl = document.getElementById('nights-counter-display');
+        const countValEl = document.getElementById('nights-count-val');
+        
+        if (!displayEl || !countValEl) return;
+        
+        const selectedInterest = document.querySelector('input[name="interest"]:checked')?.value;
+        const noDateYet = noDateCheckbox && noDateCheckbox.checked;
+
+        if (selectedInterest === 'vacation' && startVal && endVal && !noDateYet) {
+          const diffTime = Math.abs(endVal - startVal);
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+          
+          countValEl.textContent = diffDays;
+          displayEl.classList.remove('hidden');
+        } else {
+          displayEl.classList.add('hidden');
+        }
+      }
+
       function submitLeadForm() {
         successMessage.classList.add('active');
       }
@@ -1381,6 +1414,7 @@
               fpEnd.setDate(nextDay);
             }
           }
+          calculateNights();
         }
       });
 
@@ -1394,6 +1428,9 @@
         disableMobile: true,
         onReady: function (selectedDates, dateStr, instance) {
           instance.calendarContainer.classList.add('mustard-theme');
+        },
+        onChange: function (selectedDates, dateStr, instance) {
+          calculateNights();
         }
       });
 
@@ -1419,6 +1456,7 @@
         updateFormUI();
         successMessage.classList.remove('active');
         updateFormContext('vacation');
+        calculateNights();
       });
     });
   </script>

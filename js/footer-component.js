@@ -12,7 +12,7 @@
     <div class="space-y-4 flex flex-col items-center md:items-start text-center md:text-right">
       <h3 class="font-accent-serif text-2xl text-mustard-accent font-bold">מלון מיעמי אשדוד</h3>
       <p class="text-sm text-white/70 max-w-sm leading-relaxed">
-        מלון בוטיק כשר למהדרין מול רצועת החוף המרהיבה של אשדוד. שילוב מושלם של יוקרה מודרנית, אווירה משפחתית חמה ומסורת.
+        מלון בוטיק כשר למהדרין מול רצועת החוף המרהיבה של אשדוד. שילוב מושלם של נוחות מודרנית, אווירה משפחתית חמה ומסורת.
       </p>
       <div class="flex gap-4 pt-4">
         <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 hover:bg-[#1877F2] hover:text-white transition-all flex items-center justify-center text-lg text-white/80">
@@ -33,7 +33,7 @@
       <ul class="space-y-3 text-sm text-white/70 flex flex-col items-center md:items-start text-center md:text-right">
         <li class="flex items-center gap-2 justify-center md:justify-start">
           <span class="material-symbols-outlined text-mustard-accent text-lg">location_on</span>
-          <span>רחוב מקס נורדאו 24, אשדוד</span>
+          <a href="https://www.google.com/maps/search/?api=1&query=מלון+מי+עמי+אשדוד" target="_blank" rel="noopener noreferrer" class="hover:text-mustard-accent transition-colors">רחוב מקס נורדאו 24, אשדוד</a>
         </li>
         <li class="flex items-center gap-2 justify-center md:justify-start">
           <span class="material-symbols-outlined text-mustard-accent text-lg">phone</span>
@@ -55,7 +55,7 @@
       <h4 class="text-lg font-bold text-white uppercase tracking-wider relative pb-2 after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-12 after:h-0.5 after:bg-mustard-accent">מידע ומסמכים</h4>
       <div class="flex flex-col gap-2 text-sm text-white/70 flex flex-col items-center md:items-start text-center md:text-right">
         <a href="about.html" class="hover:text-mustard-accent transition-colors">אודות המלון</a>
-        <a href="rooms.html" class="hover:text-mustard-accent transition-colors">חדרים וסוויטות</a>
+        <a href="rooms.html" class="hover:text-mustard-accent transition-colors">חדרי אירוח ונופש</a>
         <a href="terms.html" class="hover:text-mustard-accent transition-colors">תנאי שימוש וביטולים</a>
         <a href="privacy.html" class="hover:text-mustard-accent transition-colors">מדיניות פרטיות</a>
         <a href="accessibility.html" class="hover:text-mustard-accent transition-colors">הצהרת נגישות</a>
