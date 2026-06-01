@@ -12,6 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <link rel="stylesheet" href="css/global.css"/>
 </head>
 <body class="bg-surface text-on-surface font-body-main text-body-main antialiased selection:bg-gold-accent selection:text-white">
@@ -48,12 +50,12 @@
   <div class="text-center mb-4">
     <div class="inline-flex items-center gap-2 mb-3">
       <span class="w-8 h-px bg-gold-accent"></span>
-      <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">בחרו את סוג האירוע שלכם</span>
+      <span id="event-selector-label" class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">שמחות ואירועים משפחתיים</span>
       <span class="w-8 h-px bg-gold-accent"></span>
     </div>
-    <h2 class="font-headline-section text-headline-section text-primary mb-4">אירוח מותאם אישית לכל שמחה ומפגש</h2>
-    <p class="font-body-main text-on-surface-variant max-w-2xl mx-auto text-base">
-      בין אם מדובר בשמחה משפחתית אינטימית ובין אם בכנס מקצועי לחברה, אנו מציעים מתחמים ייעודיים, אוכל משובח וליווי צמוד לכל אורך הדרך.
+    <h2 id="event-selector-heading" class="font-headline-section text-headline-section text-primary mb-4">אירוח מותאם אישית לכל שמחה ומפגש משפחתי</h2>
+    <p id="event-selector-paragraph" class="font-body-main text-on-surface-variant max-w-2xl mx-auto text-base">
+      אנו במלון מיעמי מתמחים ביצירת אירועים משפחתיים חמים ובלתי נשכחים. אנו מציעים בית כנסת פרטי לתפילות ועלייה לתורה, וסעודה חגיגית בכשרות מהודרת של הרב מחפוד.
     </p>
   </div>
 </section>
@@ -370,19 +372,53 @@
 </div>
 </div>
 </div>
-<div class="bg-white p-10 rounded-3xl shadow-xl border border-sand-dark relative overflow-hidden text-center flex flex-col justify-center items-center space-y-6 min-h-[400px]">
-<div class="absolute top-0 right-0 w-2 h-full bg-gold-accent"></div>
-<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center text-gold-accent mb-2">
-  <span class="material-symbols-outlined text-4xl">celebration</span>
-</div>
-<h3 class="font-headline-card text-2xl text-primary font-bold">הצעה מותאמת אישית</h3>
-<p class="font-body-main text-on-surface-variant text-base leading-relaxed">
-  מלאו את טופס הפנייה המרכזי לאירועים, והמומחים שלנו יחזרו אליכם עם תוכנית מלאה והצעת מחיר מותאמת אישית.
-</p>
-<a id="contact-form-btn" href="contact.html?type=bar_mitzvah" class="w-full bg-primary text-white py-4 rounded-xl font-headline-card hover:bg-primary-container transition-all shadow-lg flex items-center justify-center gap-2">
-  <span>להשארת פרטים בטופס המרכזי</span>
-  <span class="material-symbols-outlined text-lg">arrow_back</span>
-</a>
+<div class="bg-white p-8 rounded-3xl shadow-xl border border-sand-dark relative overflow-hidden flex flex-col justify-between space-y-6 min-h-[420px] text-right">
+  <div class="absolute top-0 right-0 w-2 h-full bg-gold-accent"></div>
+  <div>
+    <h3 class="font-headline-card text-2xl text-primary font-bold mb-2">תכנון אירוע וקבלת הצעת מחיר</h3>
+    <p class="font-body-main text-on-surface-variant text-sm leading-relaxed mb-6">
+      בחרו את פרטי האירוע שלכם ומערכת התמחור והזמינות תמשיך אתכם להשלמת הפרטים בטופס המרכזי.
+    </p>
+  </div>
+  
+  <div class="space-y-4">
+    <!-- Event Type Selector -->
+    <div class="flex flex-col gap-2">
+      <label class="text-xs font-bold text-primary" for="quick-event-type">סוג האירוע</label>
+      <div class="relative">
+        <select id="quick-event-type" class="w-full bg-surface-container border border-sand-dark rounded-xl py-3 pr-4 pl-10 text-primary text-sm font-semibold focus:outline-none focus:border-gold-accent cursor-pointer appearance-none" style="background-image: none;">
+          <option value="bar_mitzvah">עלייה לתורה / בר מצווה</option>
+          <option value="brit">ברית מילה / בריתה</option>
+        </select>
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary/50 pointer-events-none">expand_more</span>
+      </div>
+    </div>
+
+    <!-- Event Date Selector -->
+    <div class="flex flex-col gap-2">
+      <label class="text-xs font-bold text-primary" for="quick-event-date">תאריך מבוקש</label>
+      <div class="relative">
+        <input type="text" id="quick-event-date" placeholder="בחרו תאריך לאירוע..." class="w-full bg-surface-container border border-sand-dark rounded-xl p-3 pr-10 text-primary text-sm font-semibold focus:outline-none focus:border-gold-accent">
+        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary/50">calendar_month</span>
+      </div>
+    </div>
+
+    <!-- Guests Counter -->
+    <div class="flex flex-col gap-2">
+      <label class="text-xs font-bold text-primary">מספר מוזמנים משוער</label>
+      <div class="flex items-center justify-between bg-surface-container border border-sand-dark rounded-xl p-2 select-none">
+        <button type="button" id="quick-guests-minus" class="w-8 h-8 rounded-lg bg-white hover:bg-gold-accent hover:text-white text-primary font-bold flex items-center justify-center transition-colors cursor-pointer border border-sand-dark/50">&minus;</button>
+        <span class="text-sm font-bold text-primary" id="quick-guests-display">40 מוזמנים</span>
+        <input type="hidden" id="quick-guests-input" value="40">
+        <button type="button" id="quick-guests-plus" class="w-8 h-8 rounded-lg bg-white hover:bg-gold-accent hover:text-white text-primary font-bold flex items-center justify-center transition-colors cursor-pointer border border-sand-dark/50">&plus;</button>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" id="quick-event-submit-btn" class="w-full bg-primary hover:bg-primary-container text-white py-3.5 rounded-xl font-headline-card transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer mt-4">
+    <span>המשך לבדיקת זמינות</span>
+    <span class="material-symbols-outlined text-lg">arrow_back</span>
+  </button>
 </div>
 </section>
 
@@ -394,7 +430,19 @@ function switchEventTab(tabType, shouldScroll = false) {
   const familyContent = document.getElementById('tab-content-family');
   const businessContent = document.getElementById('tab-content-business');
   const contactBtn = document.getElementById('contact-form-btn');
+  const quickTypeSelect = document.getElementById('quick-event-type');
   
+  // Elements to update dynamically
+  const quickFormTitle = document.querySelector('#inquiry-form h3');
+  const quickFormDesc = document.querySelector('#inquiry-form p');
+  const quickGuestsDisplay = document.getElementById('quick-guests-display');
+  const quickGuestsInput = document.getElementById('quick-guests-input');
+
+  // Intro section elements to update dynamically
+  const introLabel = document.getElementById('event-selector-label');
+  const introHeading = document.getElementById('event-selector-heading');
+  const introParagraph = document.getElementById('event-selector-paragraph');
+
   if (tabType === 'family') {
     // Buttons styling
     familyBtn.className = "flex-1 py-4 px-6 rounded-xl font-headline-card text-base flex items-center justify-center gap-2 transition-all duration-300 bg-gold-accent text-white shadow-md";
@@ -406,6 +454,26 @@ function switchEventTab(tabType, shouldScroll = false) {
     
     if (contactBtn) {
       contactBtn.href = "contact.html?type=bar_mitzvah";
+    }
+
+    // Dynamic Intro Customization for Family Tab
+    if (introLabel) introLabel.textContent = "שמחות ואירועים משפחתיים";
+    if (introHeading) introHeading.textContent = "אירוח מותאם אישית לכל שמחה ומפגש משפחתי";
+    if (introParagraph) introParagraph.textContent = "אנו במלון מיעמי מתמחים ביצירת אירועים משפחתיים חמים ובלתי נשכחים. אנו מציעים בית כנסת פרטי לתפילות ועלייה לתורה, וסעודה חגיגית בכשרות מהודרת של הרב מחפוד.";
+
+    // Dynamic Form Customization for Family Tab
+    if (quickFormTitle) quickFormTitle.textContent = "תכנון אירוע וקבלת הצעת מחיר";
+    if (quickFormDesc) quickFormDesc.textContent = "בחרו את פרטי האירוע שלכם ומערכת התמחור והזמינות תמשיך אתכם להשלמת הפרטים בטופס המרכזי.";
+    if (quickTypeSelect) {
+      quickTypeSelect.innerHTML = `
+        <option value="bar_mitzvah">עלייה לתורה / בר מצווה</option>
+        <option value="brit">ברית מילה / בריתה</option>
+      `;
+      quickTypeSelect.value = "bar_mitzvah";
+    }
+    if (quickGuestsInput && quickGuestsDisplay) {
+      quickGuestsInput.value = 40;
+      quickGuestsDisplay.textContent = "40 מוזמנים";
     }
   } else {
     // Buttons styling
@@ -419,6 +487,27 @@ function switchEventTab(tabType, shouldScroll = false) {
     if (contactBtn) {
       contactBtn.href = "contact.html?type=events";
     }
+
+    // Dynamic Intro Customization for Business Tab
+    if (introLabel) introLabel.textContent = "כנסים ואירועים עסקיים";
+    if (introHeading) introHeading.textContent = "פתרונות אירוח מקצועיים לעסקים וחברות";
+    if (introParagraph) introParagraph.textContent = "מלון מיעמי מציע מגוון אולמות כנסים וישיבות מאובזרים בציוד טכנולוגי מתקדם, קייטרינג מהדרין איכותי ומיקום נוח בקרבת החוף לימי עיון, סדנאות ומפגשים עסקיים מוצלחים.";
+
+    // Dynamic Form Customization for Business Tab
+    if (quickFormTitle) quickFormTitle.textContent = "תכנון כנס ואירוע עסקי";
+    if (quickFormDesc) quickFormDesc.textContent = "בחרו את פרטי הכנס או האירוע העסקי שלכם והמומחים שלנו יחזרו אליכם עם הצעה מותאמת אישית.";
+    if (quickTypeSelect) {
+      quickTypeSelect.innerHTML = `
+        <option value="events">כנס מקצועי / יום עיון</option>
+        <option value="events">סדנה / ישיבת צוות</option>
+        <option value="events">הרמת כוסית / אירוע חברה</option>
+      `;
+      quickTypeSelect.value = "events";
+    }
+    if (quickGuestsInput && quickGuestsDisplay) {
+      quickGuestsInput.value = 20;
+      quickGuestsDisplay.textContent = "20 משתתפים";
+    }
   }
 
   if (shouldScroll) {
@@ -428,6 +517,110 @@ function switchEventTab(tabType, shouldScroll = false) {
     }
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Flatpickr for the quick event form
+  const eventDatePicker = flatpickr("#quick-event-date", {
+    altInput: true,
+    altFormat: "d/m/Y",
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    maxDate: new Date().fp_incr(365),
+    locale: "en",
+    disableMobile: true,
+    onReady: function (selectedDates, dateStr, instance) {
+      instance.calendarContainer.classList.add('mustard-theme');
+    }
+  });
+
+  // Guests Counter logic
+  const minusBtn = document.getElementById('quick-guests-minus');
+  const plusBtn = document.getElementById('quick-guests-plus');
+  const guestsDisplay = document.getElementById('quick-guests-display');
+  const guestsInput = document.getElementById('quick-guests-input');
+  const eventTypeSelect = document.getElementById('quick-event-type');
+
+  let minGuests = 40;
+  let guestStep = 10;
+
+  function getSuffix() {
+    return eventTypeSelect.value === 'events' ? 'משתתפים' : 'מוזמנים';
+  }
+
+  function updateCounterConfig() {
+    const type = eventTypeSelect.value;
+    if (type === 'events') {
+      minGuests = 10;
+      guestStep = 10;
+    } else {
+      minGuests = 40;
+      guestStep = 10;
+    }
+    
+    let currentVal = parseInt(guestsInput.value);
+    if (currentVal < minGuests) {
+      currentVal = minGuests;
+    }
+    guestsInput.value = currentVal;
+    guestsDisplay.textContent = `${currentVal} ${getSuffix()}`;
+  }
+
+  if (eventTypeSelect) {
+    eventTypeSelect.addEventListener('change', updateCounterConfig);
+  }
+
+  if (minusBtn) {
+    minusBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      let val = parseInt(guestsInput.value);
+      if (val > minGuests) {
+        val -= guestStep;
+        if (val < minGuests) val = minGuests;
+        guestsInput.value = val;
+        guestsDisplay.textContent = `${val} ${getSuffix()}`;
+      }
+    });
+  }
+
+  if (plusBtn) {
+    plusBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      let val = parseInt(guestsInput.value);
+      val += guestStep;
+      guestsInput.value = val;
+      guestsDisplay.textContent = `${val} ${getSuffix()}`;
+    });
+  }
+
+  // Submit/Redirect logic
+  const submitBtn = document.getElementById('quick-event-submit-btn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const type = eventTypeSelect.value;
+      const guests = guestsInput.value;
+      const selectedDate = eventDatePicker.selectedDates[0];
+      
+      if (!selectedDate) {
+        alert('אנא בחרו תאריך מבוקש לאירוע');
+        eventDatePicker.open();
+        return;
+      }
+
+      const formatDate = (d) => {
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      };
+
+      const formattedDate = formatDate(selectedDate);
+      
+      // Redirect to contact.html with params
+      window.location.href = `contact.html?type=${type}&guests=${guests}&date_start=${formattedDate}`;
+    });
+  }
+});
 </script>
 </main>
 
