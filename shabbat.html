@@ -1,168 +1,802 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
   <link rel='icon' type='image/png' href='images/favicon.png' />
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>שבת חתן - מלון מיעמי אשדוד</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>שבת חתן ושמחות משפחתיות - מלון מיעמי אשדוד</title>
+  <meta name="description"
+    content="שבתות חתן משפחתיות ואירועים במלון מיעמי אשדוד. 2 חדרי אוכל ו-2 בתי כנסת נפרדים לפרטיות מוחלטת של משפחתכם. כשרות מהודרת בהשגחת הרב מחפוד וחנייה חינם." />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script id="tailwind-config" src="js/tailwind-config.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-  <link rel="stylesheet" href="css/global.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/global.css" />
 </head>
-<body class="bg-surface text-on-surface font-body-main text-body-main antialiased selection:bg-gold-accent selection:text-white">
 
-<div id="site-navbar"></div>
-<script src="js/navbar-component.js"></script>
+<body
+  class="bg-surface text-on-surface font-body-main text-body-main antialiased selection:bg-gold-accent selection:text-white">
 
-<header class="relative min-h-[500px] h-[70vh] flex items-center overflow-hidden clip-slant">
-  <div class="absolute inset-0 z-0">
-    <img class="w-full h-full object-cover" data-alt="Elegant grand event hall" src="images/shabbat_hall.webp" decoding="async"/>
-    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent"></div>
-  </div>
-  <div class="relative z-10 w-full px-6 text-center">
-    <div class="max-w-md mx-auto space-y-6">
-      <span class="inline-block px-4 py-1 bg-gold-accent text-white font-label-meta text-xs rounded-full tracking-wider uppercase">אירועי יוקרה וקהילה</span>
-      <h1 class="font-display-hero-mobile text-display-hero-mobile text-white leading-tight">שבת חתן ואירועים משפחתיים במיעמי אשדוד</h1>
-      <p class="font-body-main text-lg text-white/90 leading-relaxed">חוויה רוחנית וקולינרית מול הים, המשלבת מסורת מפוארת עם אירוח בוטיק מוקפד.</p>
-      <div class="flex flex-col gap-3 pt-4">
-        <a class="bg-gold-accent text-white py-4 rounded-xl font-headline-card shadow-xl text-center flex items-center justify-center" href="contact.html?type=shabbat">קבלו הצעת מחיר</a>
-        <a href="gallery.html" class="bg-white/10 backdrop-blur-md border border-white/30 text-white py-4 rounded-xl font-headline-card inline-flex items-center justify-center">צפו בגלריה</a>
+  <div id="site-navbar"></div>
+  <script src="js/navbar-component.js"></script>
+
+  <main class="pt-0 pb-0">
+
+    <!-- Hero Section -->
+    <header
+      class="relative min-h-[500px] h-[75vh] flex items-center justify-center overflow-hidden clip-slant bg-primary-container mb-10">
+      <div class="hero-bg-wrapper">
+        <img class="w-full h-full object-cover opacity-60 mix-blend-overlay animate-ken-burns"
+          data-alt="Elegant grand event hall for Shabbat Chatan" src="images/shabbat_hall.webp" decoding="async">
+        <div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/50 to-transparent"></div>
       </div>
-    </div>
-  </div>
-</header>
-
-<!-- Core Services Bento Grid (Vertical Stack for Mobile) -->
-<section class="px-6 py-12 -mt-10 relative z-20">
-  <div class="flex flex-col gap-6">
-    <!-- Synagogue -->
-    <div class="bg-white p-8 rounded-2xl shadow-lg border border-sand-dark flex flex-col items-center text-center">
-      <div class="w-16 h-16 bg-surface-container rounded-full flex items-center justify-center text-gold-accent mb-6">
-        <span class="material-symbols-outlined text-4xl" data-icon="synagogue">synagogue</span>
+      <div class="relative z-10 w-full max-w-container-max mx-auto px-gutter text-center flex flex-col items-center">
+        <span class="font-accent-serif text-accent-serif text-gold-accent mb-4 tracking-widest uppercase">שבת חתן ושמחות
+          משפחתיות</span>
+        <h1
+          class="font-display-hero-mobile text-display-hero-mobile md:font-display-hero md:text-display-hero text-on-primary mb-6 max-w-4xl leading-tight">
+          חגיגה משפחתית בפרטיות מלאה <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-l from-gold-accent to-tertiary-fixed">שבת חתן בלתי
+            נשכחת מול הים.</span>
+        </h1>
+        <p class="font-body-main text-body-main text-surface-container-high max-w-2xl mb-10 text-lg opacity-90">
+          אנו מתמחים באירוח שבתות חתן באווירה חמה ועוטפת, עם כשרות מהודרת של הרב מחפוד ולראשונה באשדוד - שני מתחמים
+          נפרדים המבטיחים פרטיות מוחלטת למשפחתכם.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+          <a class="bg-gold-accent text-on-primary font-nav-link text-nav-link px-8 py-3.5 rounded shadow-lg hover:-translate-y-[2px] hover:shadow-xl transition-all duration-300"
+            href="#quote-form">
+            קבלו הצעת מחיר
+          </a>
+          <a class="bg-glass-white backdrop-blur-sm text-primary font-nav-link text-nav-link px-8 py-3.5 rounded shadow-md hover:bg-white transition-all duration-300 border border-transparent hover:border-gold-accent/30"
+            href="#privacy-section">
+            הכירו את המתחמים
+          </a>
+        </div>
       </div>
-      <h3 class="font-headline-card text-2xl text-primary mb-4">בית כנסת פרטי</h3>
-      <p class="font-body-main text-on-surface-variant mb-6">מרחב תפילה אינטימי ומפואר המוקדש למשפחתכם, כולל ספרי תורה מהודרים ואווירה קדושה המרוממת את השבת.</p>
-      <a class="text-gold-accent font-bold flex items-center gap-2" href="#quote-form">למידע נוסף <span class="material-symbols-outlined text-sm">arrow_back</span></a>
-    </div>
+    </header>
 
-    <!-- Dining Hall -->
-    <div class="relative overflow-hidden rounded-2xl shadow-lg aspect-[4/3] group">
-      <img class="absolute inset-0 w-full h-full object-cover" data-alt="Dining Hall" src="images/shabbat_dining.webp" loading="lazy" decoding="async"/>
-      <div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent"></div>
-      <div class="relative h-full flex flex-col justify-end p-6">
-        <h3 class="font-headline-card text-xl text-white">אולם סעודות ייעודי</h3>
-        <p class="font-body-main text-white/80 text-sm mt-2">חלל מעוצב המיועד לסעודות השבת, המעניק פרטיות מלאה למשפחה.</p>
-      </div>
-    </div>
+    <!-- Privacy & Complexes Section -->
+    <section id="privacy-section" class="py-16 px-gutter bg-surface">
+      <div class="max-w-container-max mx-auto">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-8 h-px bg-gold-accent"></span>
+            <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">פרטיות מלאה לשמחה
+              שלכם</span>
+            <span class="w-8 h-px bg-gold-accent"></span>
+          </div>
+          <h2 class="font-headline-section text-headline-section text-primary mb-4">שני מתחמים נפרדים - אפס פשרות על
+            פרטיות</h2>
+          <p class="font-body-main text-body-main text-on-surface-variant max-w-3xl mx-auto text-base">
+            היתרון הייחודי של מלון מיעמי: אנו מציעים שני קומפלקסים נפרדים לחלוטין של בית כנסת וחדר אוכל.
+            המשמעות היא שהמשפחה שלכם חוגגת את השבת בבלעדיות מוחלטת, ללא ערבוב עם אורחים אחרים של המלון.
+          </p>
+        </div>
 
-    <!-- Chef Catering -->
-    <div class="relative overflow-hidden rounded-2xl shadow-lg aspect-[4/3] group">
-      <img class="absolute inset-0 w-full h-full object-cover" data-alt="Chef Catering" src="images/shabbat_catering.webp" loading="lazy" decoding="async"/>
-      <div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent"></div>
-      <div class="relative h-full flex flex-col justify-end p-6">
-        <h3 class="font-headline-card text-xl text-white">קולינריה כשרה למהדרין</h3>
-        <p class="font-body-main text-white/80 text-sm mt-2">שף המלון מציע תפריטים עשירים המשלבים טעמים מסורתיים עם טוויסט מודרני.</p>
-      </div>
-    </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10">
+          <!-- Complex 1: White Hall -->
+          <div
+            class="bg-white rounded-2xl overflow-hidden border border-sand-dark shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+            <div class="relative h-64 overflow-hidden">
+              <img src="images/shabbat_hall.webp" alt="White Hall Dining Room"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"></div>
+              <span
+                class="absolute bottom-4 right-4 bg-gold-accent text-on-primary font-bold text-xs px-3 py-1.5 rounded-full shadow-md">המתחם
+                הגדול | 40 - 120 אורחים</span>
+            </div>
+            <div class="p-8 flex-grow flex flex-col">
+              <h3 class="font-headline-card text-2xl text-primary mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-gold-accent">castle</span>
+                קומפלקס White Hall & היכל מאיר
+              </h3>
+              <p class="font-body-main text-on-surface-variant text-sm mb-6 leading-relaxed flex-grow">
+                מתחם האירוח המרכזי והחגיגי שלנו, מיועד לשבתות חתן גדולות ועשירות.
+                חדר האוכל ה-White Hall מציע עיצוב מואר ואלגנטי עם שולחנות ערוכים בקפידה, ובסמוך לו ממוקם בית הכנסת
+                המפואר "היכל מאיר" המיועד לתפילות וקידוש באווירה מרוממת נפש.
+              </p>
+              <div
+                class="border-t border-sand-dark/50 pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-gold-accent text-[20px]">restaurant</span>
+                  <span class="text-sm font-semibold text-primary">חדר אוכל: <strong>White Hall</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-gold-accent text-[20px]">synagogue</span>
+                  <span class="text-sm font-semibold text-primary">בית כנסת: <strong>היכל מאיר</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <!-- Planning -->
-    <div class="bg-primary text-white p-8 rounded-2xl shadow-lg flex flex-col items-center text-center">
-      <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center text-gold-accent mb-6">
-        <span class="material-symbols-outlined text-4xl" data-icon="event_note">event_note</span>
-      </div>
-      <h3 class="font-headline-card text-2xl text-white mb-4">ליווי והפקה אישית</h3>
-      <p class="font-body-main text-white/70 mb-6">צוות ההפקה המקצועי שלנו ידאג לכל פרט - מסידור החדרים ועד תזמון הקידוש.</p>
-      <a class="text-gold-accent font-bold flex items-center gap-2" href="#quote-form">הכירו את הצוות <span class="material-symbols-outlined text-sm">arrow_back</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- Details Section (Mobile Optimized) -->
-<section class="bg-surface-container-low py-12">
-  <div class="px-6 flex flex-col gap-12">
-    <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-square">
-      <img class="w-full h-full object-cover" data-alt="Shabbat Table Details" src="images/shabbat_table.webp" loading="lazy" decoding="async"/>
-    </div>
-    <div class="space-y-8">
-      <div class="space-y-4">
-        <h2 class="font-headline-section text-3xl text-primary">כל מה שצריך לשבת מושלמת</h2>
-        <div class="w-20 h-1 bg-gold-accent"></div>
-      </div>
-      <div class="grid grid-cols-1 gap-6">
-        <div class="flex items-start gap-4">
-          <span class="material-symbols-outlined text-gold-accent" style='font-variation-settings: "FILL" 1;'>check_circle</span>
-          <div>
-            <h4 class="font-headline-card text-lg text-primary">כשרות למהדרין</h4>
-            <p class="font-body-main text-on-surface-variant text-sm">כל הארוחות תחת השגחה קפדנית של בד"ץ.</p>
+          <!-- Complex 2: Blue Hall -->
+          <div
+            class="bg-white rounded-2xl overflow-hidden border border-sand-dark shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
+            <div class="relative h-64 overflow-hidden">
+              <img src="images/shabbat_dining.webp" alt="Blue Hall Dining Room"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"></div>
+              <span
+                class="absolute bottom-4 right-4 bg-[#0b1d33] text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-md">המתחם
+                האינטימי | 40 - 60 אורחים</span>
+            </div>
+            <div class="p-8 flex-grow flex flex-col">
+              <h3 class="font-headline-card text-2xl text-primary mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-gold-accent">meeting_room</span>
+                קומפלקס Blue Hall & היכל ראובן
+              </h3>
+              <p class="font-body-main text-on-surface-variant text-sm mb-6 leading-relaxed flex-grow">
+                מתחם אירוח חם ואינטימי, מעוצב ברוח ים-תיכונית בגווני כחול וחול.
+                חדר האוכל ה-Blue Hall משרה תחושה ביתית ומלכדת, ובצמוד אליו שוכן בית הכנסת המשפחתי "היכל ראובן" המאפשר
+                תפילות שבת מרגשות בפרטיות ובאווירה אישית חמה.
+              </p>
+              <div
+                class="border-t border-sand-dark/50 pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-gold-accent text-[20px]">restaurant</span>
+                  <span class="text-sm font-semibold text-primary">חדר אוכל: <strong>Blue Hall</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-gold-accent text-[20px]">synagogue</span>
+                  <span class="text-sm font-semibold text-primary">בית כנסת: <strong>היכל ראובן</strong></span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex items-start gap-4">
-          <span class="material-symbols-outlined text-gold-accent" style='font-variation-settings: "FILL" 1;'>check_circle</span>
-          <div>
-            <h4 class="font-headline-card text-lg text-primary">חדרים צמודים</h4>
-            <p class="font-body-main text-on-surface-variant text-sm">בלוק חדרים מרוכז למשפחה לשמירה על הקרבה.</p>
+      </div>
+    </section>
+    <!-- Culinary Experience & Synced Menu Slider -->
+    <section id="meals-section" class="py-16 px-gutter bg-[#0b1d33] text-white">
+      <div class="max-w-container-max mx-auto">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-8 h-px bg-gold-accent"></span>
+            <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">סדר השבת
+              והתפריטים</span>
+            <span class="w-8 h-px bg-gold-accent"></span>
+          </div>
+          <h2 class="font-headline-section text-headline-section text-white mb-4">לוח זמנים קולינרי וחגיגי לשבת חתן
+          </h2>
+          <p class="font-body-main text-body-main text-white/80 max-w-2xl mx-auto text-base">
+            תכננו את השבת שלכם עם לוח זמנים מדויק. לחיצה על שלבי הארוחות בטיימליין תציג את התפריטים העשירים בכשרות
+            למהדרין של הרב מחפוד.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <!-- Right Column: Timeline stack (lg:col-span-7) -->
+          <div class="lg:col-span-7 text-right relative pr-4">
+            <!-- Vertical Timeline Line -->
+            <div class="absolute right-[28px] top-6 bottom-6 w-0.5 bg-gold-accent/25 z-0"></div>
+
+            <!-- Mobile-only Jump to Menus Link -->
+            <div class="lg:hidden mb-6 flex justify-center">
+              <a href="#menu-slider-container"
+                class="inline-flex items-center gap-2 bg-gold-accent hover:bg-gold-accent/90 text-primary px-6 py-3.5 rounded-full text-sm font-bold shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-95 cursor-pointer">
+                <span class="material-symbols-outlined text-primary text-[20px] font-bold">restaurant_menu</span>
+                <span>לצפייה בתפריטי השבת</span>
+                <span
+                  class="material-symbols-outlined text-[18px] text-primary animate-bounce font-bold">arrow_downward</span>
+              </a>
+            </div>
+
+            <div class="space-y-6">
+
+              <!-- Step 1 -->
+              <button type="button" id="meal-tab-0" onclick="goToMenuSlide(0); updateTabHighlight('meal-tab-0')"
+                class="w-full text-right flex items-start gap-4 meal-tab-btn relative transition-all duration-300 focus:outline-none z-10 group">
+                <!-- Timeline Dot -->
+                <div class="relative flex flex-col items-center flex-shrink-0 pt-1.5">
+                  <div
+                    class="w-6 h-6 rounded-full bg-gold-accent border-2 border-gold-accent text-white flex items-center justify-center font-bold text-[11px] timeline-dot transition-all duration-300 z-10">
+                    1
+                  </div>
+                </div>
+                <!-- Card Content -->
+                <div
+                  class="bg-white border border-gold-accent rounded-xl p-5 shadow-md flex-grow text-right transition-all duration-300 meal-card group-hover:border-gold-accent/40 group-hover:shadow-lg group-hover:-translate-x-1">
+                  <div class="flex items-center justify-between gap-2 mb-1">
+                    <span class="text-xs font-semibold text-gold-accent">יום שישי | 14:00 - 16:30</span>
+                    <span class="material-symbols-outlined text-gold-accent text-[18px]">key</span>
+                  </div>
+                  <h4 class="font-headline-card text-lg text-primary mb-1.5">התכנסות וקבלת חדרים</h4>
+                  <p class="font-body-main text-on-surface-variant text-xs leading-relaxed">
+                    קבלת פנים חמה ומסבירת פנים עם עמדת קפה ומאפים בלובי המפואר, חלוקת מפתחות שבת מכניים וצ'ק-אין מהיר
+                    לחדרים להתארגנות ומנוחה לקראת השבת מול הים.
+                  </p>
+                </div>
+              </button>
+
+              <!-- Step 2 -->
+              <button type="button" id="meal-tab-1" onclick="goToMenuSlide(0); updateTabHighlight('meal-tab-1')"
+                class="w-full text-right flex items-start gap-4 meal-tab-btn opacity-75 relative transition-all duration-300 focus:outline-none z-10 group">
+                <div class="relative flex flex-col items-center flex-shrink-0 pt-1.5">
+                  <div
+                    class="w-6 h-6 rounded-full bg-white border-2 border-sand-dark text-primary flex items-center justify-center font-bold text-[11px] timeline-dot transition-all duration-300 z-10">
+                    2
+                  </div>
+                </div>
+                <div
+                  class="bg-white border border-transparent rounded-xl p-5 shadow-sm flex-grow text-right transition-all duration-300 meal-card group-hover:border-gold-accent/40 group-hover:shadow-lg group-hover:-translate-x-1">
+                  <div class="flex items-center justify-between gap-2 mb-1">
+                    <span class="text-xs font-semibold text-gold-accent">יום שישי | זמן הדלקת נרות</span>
+                    <span class="material-symbols-outlined text-gold-accent text-[18px]">synagogue</span>
+                  </div>
+                  <h4 class="font-headline-card text-lg text-primary mb-1.5">תפילת מנחה וקבלת שבת</h4>
+                  <p class="font-body-main text-on-surface-variant text-xs leading-relaxed">
+                    קבלת שבת מרגשת ותפילה חגיגית בבית הכנסת הפרטי והמפואר שלכם (היכל מאיר או היכל ראובן) באווירת קדושה
+                    משפחתית ובפרטיות מלאה.
+                  </p>
+                </div>
+              </button>
+
+              <!-- Step 3 -->
+              <button type="button" id="meal-tab-2" onclick="goToMenuSlide(0); updateTabHighlight('meal-tab-2')"
+                class="w-full text-right flex items-start gap-4 meal-tab-btn opacity-75 relative transition-all duration-300 focus:outline-none z-10 group">
+                <div class="relative flex flex-col items-center flex-shrink-0 pt-1.5">
+                  <div
+                    class="w-6 h-6 rounded-full bg-white border-2 border-sand-dark text-primary flex items-center justify-center font-bold text-[11px] timeline-dot transition-all duration-300 z-10">
+                    3
+                  </div>
+                </div>
+                <div
+                  class="bg-white border border-transparent rounded-xl p-5 shadow-sm flex-grow text-right transition-all duration-300 meal-card group-hover:border-gold-accent/40 group-hover:shadow-lg group-hover:-translate-x-1">
+                  <div class="flex items-center justify-between gap-2 mb-1">
+                    <span class="text-xs font-semibold text-gold-accent">יום שישי | 19:30</span>
+                    <span class="material-symbols-outlined text-gold-accent text-[18px]">dinner_dining</span>
+                  </div>
+                  <h4 class="font-headline-card text-lg text-primary mb-1.5">סעודת ליל שבת חגיגית</h4>
+                  <p class="font-body-main text-on-surface-variant text-xs leading-relaxed">
+                    סעודת שבת מלכותית ויוקרתית בחדר האוכל הפרטי שלכם. חוויה קולינרית עשירה המשלבת סלטי בית ביתיים, מנות
+                    דגים מסורתיות ומבחר מנות עיקריות בשריות עשירות.
+                  </p>
+                </div>
+              </button>
+
+              <!-- Step 4 -->
+              <button type="button" id="meal-tab-3" onclick="goToMenuSlide(2); updateTabHighlight('meal-tab-3')"
+                class="w-full text-right flex items-start gap-4 meal-tab-btn opacity-75 relative transition-all duration-300 focus:outline-none z-10 group">
+                <div class="relative flex flex-col items-center flex-shrink-0 pt-1.5">
+                  <div
+                    class="w-6 h-6 rounded-full bg-white border-2 border-sand-dark text-primary flex items-center justify-center font-bold text-[11px] timeline-dot transition-all duration-300 z-10">
+                    4
+                  </div>
+                </div>
+                <div
+                  class="bg-white border border-transparent rounded-xl p-5 shadow-sm flex-grow text-right transition-all duration-300 meal-card group-hover:border-gold-accent/40 group-hover:shadow-lg group-hover:-translate-x-1">
+                  <div class="flex items-center justify-between gap-2 mb-1">
+                    <span class="text-xs font-semibold text-gold-accent">יום שבת | 10:30</span>
+                    <span class="material-symbols-outlined text-gold-accent text-[18px]">celebration</span>
+                  </div>
+                  <h4 class="font-headline-card text-lg text-primary mb-1.5">תפילת שחרית וקידוש רבה בבוקר</h4>
+                  <p class="font-body-main text-on-surface-variant text-xs leading-relaxed">
+                    לאחר תפילת הבוקר המשפחתית, נפגשים לקידוש המפורסם והעשיר של מיעמי: עוגות שמרים נימוחות, מאפים חמים,
+                    דג הרינג מסורתי וקוגל ירושלמי חם ופיקנטי.
+                  </p>
+                </div>
+              </button>
+
+              <!-- Step 5 -->
+              <button type="button" id="meal-tab-4" onclick="goToMenuSlide(1); updateTabHighlight('meal-tab-4')"
+                class="w-full text-right flex items-start gap-4 meal-tab-btn opacity-75 relative transition-all duration-300 focus:outline-none z-10 group">
+                <div class="relative flex flex-col items-center flex-shrink-0 pt-1.5">
+                  <div
+                    class="w-6 h-6 rounded-full bg-white border-2 border-sand-dark text-primary flex items-center justify-center font-bold text-[11px] timeline-dot transition-all duration-300 z-10">
+                    5
+                  </div>
+                </div>
+                <div
+                  class="bg-white border border-transparent rounded-xl p-5 shadow-sm flex-grow text-right transition-all duration-300 meal-card group-hover:border-gold-accent/40 group-hover:shadow-lg group-hover:-translate-x-1">
+                  <div class="flex items-center justify-between gap-2 mb-1">
+                    <span class="text-xs font-semibold text-gold-accent">יום שבת | 12:30</span>
+                    <span class="material-symbols-outlined text-gold-accent text-[18px]">soup_kitchen</span>
+                  </div>
+                  <h4 class="font-headline-card text-lg text-primary mb-1.5">סעודת יום השבת (צהריים)</h4>
+                  <p class="font-body-main text-on-surface-variant text-xs leading-relaxed">
+                    סעודת צהריים חגיגית ושופעת שבמרכזה החמין (טשולנט) העשיר והמפורסם של שף המלון, עופות זהובים בתנור,
+                    קוסקוס ביתי ומבחר קינוחים מפנקים.
+                  </p>
+                </div>
+              </button>
+
+              <!-- Step 6 -->
+              <button type="button" id="meal-tab-5" onclick="goToMenuSlide(2); updateTabHighlight('meal-tab-5')"
+                class="w-full text-right flex items-start gap-4 meal-tab-btn opacity-75 relative transition-all duration-300 focus:outline-none z-10 group">
+                <div class="relative flex flex-col items-center flex-shrink-0 pt-1.5">
+                  <div
+                    class="w-6 h-6 rounded-full bg-white border-2 border-sand-dark text-primary flex items-center justify-center font-bold text-[11px] timeline-dot transition-all duration-300 z-10">
+                    6
+                  </div>
+                </div>
+                <div
+                  class="bg-white border border-transparent rounded-xl p-5 shadow-sm flex-grow text-right transition-all duration-300 meal-card group-hover:border-gold-accent/40 group-hover:shadow-lg group-hover:-translate-x-1">
+                  <div class="flex items-center justify-between gap-2 mb-1">
+                    <span class="text-xs font-semibold text-gold-accent">יום שבת | לפני השקיעה</span>
+                    <span class="material-symbols-outlined text-gold-accent text-[18px]">restaurant</span>
+                  </div>
+                  <h4 class="font-headline-card text-lg text-primary mb-1.5">תפילת מנחה וסעודה שלישית</h4>
+                  <p class="font-body-main text-on-surface-variant text-xs leading-relaxed">
+                    סעודה שלישית מסורתית ומלכדת בחדר האוכל המשפחתי, מלווה בלחמניות טריות, סלטים צבעוניים, ממרחים עשירים
+                    ושירי נשמה מרגשים לקראת צאת השבת.
+                  </p>
+                </div>
+              </button>
+
+            </div>
+          </div>
+
+          <!-- Left Column: Interactive Menu Slider (lg:col-span-5) -->
+          <div id="menu-slider-container"
+            class="lg:col-span-5 w-full max-w-md mx-auto lg:max-w-none lg:sticky lg:top-24 z-10 scroll-mt-24">
+            <div
+              class="relative bg-[#fbf9f4] rounded-2xl overflow-hidden shadow-xl border border-sand-dark aspect-[3/4] flex flex-col">
+
+              <!-- Persistent Kosher Seal Badge -->
+              <div
+                class="absolute top-4 left-4 z-20 bg-gold-accent text-primary text-[11px] font-extrabold px-3 py-1.5 rounded-full shadow-lg border border-white/10 flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px] font-bold">verified</span>
+                <span>כשרות למהדרין - הרב מחפוד</span>
+              </div>
+
+              <!-- Slider Track -->
+              <div class="relative w-full flex-grow overflow-hidden bg-[#fbf9f4]">
+
+                <!-- Slide 1: Friday Menu -->
+                <div class="absolute inset-0 transition-all duration-500 flex flex-col menu-slide opacity-100 z-10"
+                  id="menu-slide-0">
+                  <img src="images/shabbat_menu_friday.png" alt="תפריט ארוחת שישי בערב שבת חתן - מלון מיעמי"
+                    class="w-full h-full object-contain bg-[#fbf9f4]">
+                  <!-- Hidden SEO and Screen Reader Text -->
+                  <div class="sr-only">
+                    <h3>תפריט סעודת ליל שבת</h3>
+                    <p>ארוחת יום שישי בערב במלון מיעמי אשדוד:</p>
+                    <ul>
+                      <li>סלטים: 15 סוגי סלטים, לחם ביתי ומטבל.</li>
+                      <li>דגים: 2 סוגי דגים - פילה סלמון ופילה אמנון.</li>
+                      <li>תוספות: אורז לבן צימוקים ושקדים, פלטה תפוחי אדמה אפויים בפריקה, קוסקוס עם ירקות, פטריות
+                        וארטישוק.</li>
+                      <li>עיקריות: צלי בשר, פרגית עוף, אסאדו בלי עצם, שניצל עוף.</li>
+                      <li>קינוחים ופלטת ירקות העונה ומטבלים בכוסות.</li>
+                      <li>משקאות: קוקה קולה, זירו, ספרייט, תפוזים, לימונדה, מים מינרלים וסודה.</li>
+                      <li>פינת קפה: קפה, נס קפה חם ותה עם נענע.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Slide 2: Saturday Lunch Menu -->
+                <div
+                  class="absolute inset-0 transition-all duration-500 flex flex-col menu-slide opacity-0 pointer-events-none z-0"
+                  id="menu-slide-1">
+                  <img src="images/shabbat_menu_saturday.png" alt="תפריט ארוחת שבת בצהריים שבת חתן - מלון מיעמי"
+                    class="w-full h-full object-contain bg-[#fbf9f4]">
+                  <!-- Hidden SEO and Screen Reader Text -->
+                  <div class="sr-only">
+                    <h3>תפריט סעודת יום השבת (צהריים)</h3>
+                    <p>ארוחת שבת בצהריים במלון מיעמי אשדוד (אחרי תפילת שבת בבוקר):</p>
+                    <ul>
+                      <li>סלטים: 15 סוגי סלטים, לחם ביתי ומטבל.</li>
+                      <li>דגים: 2 סוגי דגים - פילה סלמון ופילה אמנון.</li>
+                      <li>תוספות: אורז לבן צימוקים ושקדים, פלטה תפוחי אדמה אפויים בפריקה, קוסקוס עם ירקות, פטריות
+                        וארטישוק.</li>
+                      <li>עיקריות: צלי בשר, פרגית עוף, אסאדו בלי עצם, שניצל עוף.</li>
+                      <li>קינוחים ופלטת ירקות העונה ומטבלים בכוסות.</li>
+                      <li>משקאות קלים: קוקה קולה, זירו, ספרייט, תפוזים, לימונדה, מים מינרלים וסודה.</li>
+                      <li>פינת קפה: קפה, נס קפה חם ותה עם נענע.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Slide 3: Third Meal Menu -->
+                <div
+                  class="absolute inset-0 transition-all duration-500 flex flex-col menu-slide opacity-0 pointer-events-none z-0"
+                  id="menu-slide-2">
+                  <img src="images/shabbat_menu_kiddush.png" alt="תפריט סעודה שלישית שבת חתן - מלון מיעמי"
+                    class="w-full h-full object-contain bg-[#fbf9f4]">
+                  <!-- Hidden SEO and Screen Reader Text -->
+                  <div class="sr-only">
+                    <h3>תפריט סעודה שלישית</h3>
+                    <p>ארוחת סעודה שלישית במלון מיעמי אשדוד:</p>
+                    <ul>
+                      <li>מנות: פילה סלמון, סלטים, פסטות, פשטידות, פריקסה, בורקסים, פחזניות ממולאות, ג'חנון + רסק +
+                        ביצים, ופל בלגי.</li>
+                      <li>משקאות קלים בארוחות: קוקה קולה, זירו, ספרייט, תפוזים, לימונדה, מים מינרלים וסודה.</li>
+                      <li>פינת קפה כל השבת: קפה, נס קפה ותה עם נענע.</li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Slider Controls -->
+              <div
+                class="bg-primary-container p-4 border-t border-white/5 flex justify-between items-center select-none z-10">
+                <button type="button" onclick="prevMenuSlide()"
+                  class="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+                  aria-label="תפריט קודם">
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+                <div class="flex gap-2" id="slider-dots-container">
+                  <span onclick="setMenuSlide(0)"
+                    class="w-5 h-2.5 rounded-full bg-gold-accent cursor-pointer slider-dot" id="slider-dot-0"></span>
+                  <span onclick="setMenuSlide(1)" class="w-2.5 h-2.5 rounded-full bg-white/30 cursor-pointer slider-dot"
+                    id="slider-dot-1"></span>
+                  <span onclick="setMenuSlide(2)" class="w-2.5 h-2.5 rounded-full bg-white/30 cursor-pointer slider-dot"
+                    id="slider-dot-2"></span>
+                </div>
+                <button type="button" onclick="nextMenuSlide()"
+                  class="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+                  aria-label="תפריט הבא">
+                  <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+              </div>
+
+            </div>
           </div>
         </div>
-        <div class="flex items-start gap-4">
-          <span class="material-symbols-outlined text-gold-accent" style='font-variation-settings: "FILL" 1;'>check_circle</span>
+      </div>
+    </section>
+
+    <!-- Shabbat Features Grid -->
+    <section class="py-16 px-gutter bg-surface">
+      <div class="max-w-container-max mx-auto">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-8 h-px bg-gold-accent"></span>
+            <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">השבת שלכם, השקט
+              שלכם</span>
+            <span class="w-8 h-px bg-gold-accent"></span>
+          </div>
+          <h2 class="font-headline-section text-headline-section text-primary mb-4">כל מה שצריך לשבת מושלמת ושומרת הלכה
+          </h2>
+          <p class="font-body-main text-body-main text-on-surface-variant max-w-2xl mx-auto text-base">
+            אנו דואגים לכל הפרטים הקטנים והגדולים כדי שתוכלו לחגוג ללא דאגות.
+            כל המתקנים והשירותים מותאמים במיוחד לשומרי שבת.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- Feature 1: Kosher -->
+          <div
+            class="bg-white border border-sand-dark rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-start gap-4">
+            <div
+              class="w-12 h-12 rounded-full bg-gold-accent/15 text-gold-accent flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-[26px]">verified</span>
+            </div>
+            <div>
+              <h4 class="font-headline-card text-lg text-primary mb-1">כשרות הרב מחפוד למהדרין</h4>
+              <p class="font-body-main text-on-surface-variant text-sm leading-relaxed">
+                המטבח וכל הארוחות מנוהלים תחת כשרות למהדרין קפדנית ביותר של בד"ץ יורה דעה.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 2: Shabbat Clock -->
+          <div
+            class="bg-white border border-sand-dark rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-start gap-4">
+            <div
+              class="w-12 h-12 rounded-full bg-gold-accent/15 text-gold-accent flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-[26px]">schedule</span>
+            </div>
+            <div>
+              <h4 class="font-headline-card text-lg text-primary mb-1">שעוני שבת בכל החדרים</h4>
+              <p class="font-body-main text-on-surface-variant text-sm leading-relaxed">
+                שעוני שבת מובנים לשליטה אוטומטית מלאה על מערכות המיזוג והתאורה בחדרים.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 3: Shabbat Keys -->
+          <div
+            class="bg-white border border-sand-dark rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-start gap-4">
+            <div
+              class="w-12 h-12 rounded-full bg-gold-accent/15 text-gold-accent flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-[26px]">vpn_key</span>
+            </div>
+            <div>
+              <h4 class="font-headline-card text-lg text-primary mb-1">מפתחות שבת מכניים</h4>
+              <p class="font-body-main text-on-surface-variant text-sm leading-relaxed">
+                מערכת מנעולים מכנית מותאמת לשימוש בשבת ללא צורך בכרטיסים אלקטרוניים.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 4: Platta & Urn -->
+          <div
+            class="bg-white border border-sand-dark rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-start gap-4">
+            <div
+              class="w-12 h-12 rounded-full bg-gold-accent/15 text-gold-accent flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-[26px]">coffee_maker</span>
+            </div>
+            <div>
+              <h4 class="font-headline-card text-lg text-primary mb-1">מיחמים ופלטות שבת</h4>
+              <p class="font-body-main text-on-surface-variant text-sm leading-relaxed">
+                מיחם מים חמים ופלטות חימום ייעודיות ממוקמים בחדרי האוכל הפרטיים של המשפחה.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 5: Free Parking -->
+          <div
+            class="bg-white border border-sand-dark rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-start gap-4">
+            <div
+              class="w-12 h-12 rounded-full bg-gold-accent/15 text-gold-accent flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-[26px]">local_parking</span>
+            </div>
+            <div>
+              <h4 class="font-headline-card text-lg text-primary mb-1">חניה חינם ובשפע</h4>
+              <p class="font-body-main text-on-surface-variant text-sm leading-relaxed">
+                חניה חופשית ללא תשלום לכל אורחי המלון והשמחה - נוחות מירבית בלב אשדוד.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 6: Sea Proximity -->
+          <div
+            class="bg-white border border-sand-dark rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-start gap-4">
+            <div
+              class="w-12 h-12 rounded-full bg-gold-accent/15 text-gold-accent flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-[26px]">beach_access</span>
+            </div>
+            <div>
+              <h4 class="font-headline-card text-lg text-primary mb-1">במרחק נגיעה מטיילת החוף</h4>
+              <p class="font-body-main text-on-surface-variant text-sm leading-relaxed">
+                מיקום מעולה במרחק הליכה קצר ביותר מרצועת החוף המטופחת והטיילת הנהדרת.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Smart Guest Planner Section -->
+    <section class="py-16 px-gutter bg-surface-container-low" id="quote-form">
+      <div
+        class="max-w-4xl mx-auto bg-primary text-white rounded-3xl overflow-hidden shadow-2xl border border-white/10 flex flex-col md:flex-row">
+
+        <!-- Right side (Form explanation & direct contact) -->
+        <div class="md:w-5/12 p-8 flex flex-col justify-between border-b md:border-b-0 md:border-l border-white/10">
           <div>
-            <h4 class="font-headline-card text-lg text-primary">מפתחות שבת</h4>
-            <p class="font-body-main text-on-surface-variant text-sm">מערכת מנעולים מכנית מותאמת לשומרי שבת.</p>
+            <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-6 text-gold-accent">
+              <span class="material-symbols-outlined text-2xl">celebration</span>
+            </div>
+            <h3 class="font-headline-section text-2xl text-gold-accent mb-4">בואו נתחיל לתכנן את האירוע שלכם</h3>
+            <p class="font-body-main text-white/80 text-sm leading-relaxed mb-6">
+              שבתות חתן הן המומחיות הבולטת שלנו.
+              ספרו לנו כמה אורחים אתם מתכננים להזמין, ונתאים לכם את הקומפלקס המושלם לאירוע פרטי ומרגש.
+            </p>
+          </div>
+
+          <div class="space-y-4 pt-6 border-t border-white/10">
+            <p class="text-xs text-white/60">לפניות ישירות ושאלות:</p>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-gold-accent">phone</span>
+              <a href="tel:08-8522085"
+                class="text-sm font-semibold hover:text-gold-accent transition-colors">08-8522085</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-gold-accent">mail</span>
+              <a href="mailto:events@miamihotel.co.il"
+                class="text-sm font-semibold hover:text-gold-accent transition-colors">events@miamihotel.co.il</a>
+            </div>
           </div>
         </div>
-        <blockquote class="border-r-4 border-gold-accent pr-6 py-2 italic text-on-surface-variant font-accent-serif text-lg bg-white/50 rounded-l-lg">
-          "הצוות במיעמי דאג לכל פרט קטן בשבת החתן של בני. הרגשנו בבית."
-          <footer class="text-sm font-bold text-primary mt-2 not-italic mt-auto mb-0">- משפחת לוי, ירושלים</footer>
-        </blockquote>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Lead Form Section (Mobile Optimized) -->
-<section class="px-6 py-12" id="quote-form">
-  <div class="bg-white rounded-3xl shadow-xl border border-sand-dark overflow-hidden flex flex-col">
-    <div class="bg-primary text-white p-8 space-y-4 text-center">
-      <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2 text-gold-accent">
-        <span class="material-symbols-outlined text-2xl">celebration</span>
-      </div>
-      <h3 class="font-headline-section text-2xl text-gold-accent">בואו נתחיל לתכנן את האירוע שלכם</h3>
-      <p class="font-body-main text-white/80 text-sm max-w-md mx-auto">
-        נשמח לתפור עבורכם את האירוע המושלם לשבת חתן או שמחה משפחתית, עם מגוון אולמות, קולינריה משובחת למהדרין ושירות אישי ללא פשרות.
-      </p>
-    </div>
-    <div class="p-8 text-center space-y-6">
-      <a href="contact.html?type=shabbat" class="w-full bg-gold-accent text-white py-4 rounded-xl font-headline-card hover:bg-gold-accent/90 transition-all shadow-lg flex items-center justify-center gap-2">
-        <span>להשארת פרטים בטופס המרכזי</span>
-        <span class="material-symbols-outlined">arrow_back</span>
-      </a>
-      
-      <div class="pt-4 border-t border-outline-variant/30 flex flex-col sm:flex-row justify-center items-center gap-6 text-on-surface-variant">
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-gold-accent">phone</span>
-          <span class="text-sm font-semibold">08-8522085</span>
+        <!-- Left side (Interactive Widget) -->
+        <div class="md:w-7/12 p-8 flex flex-col justify-center bg-white/5 text-right">
+          <h4 class="font-headline-card text-xl text-white mb-6">תכנון כמות מוזמנים ומתחם</h4>
+
+          <!-- Guest Count Range Slider -->
+          <div class="space-y-4 mb-6">
+            <div class="flex justify-between items-center">
+              <span class="text-white/80 text-sm">כמות מוזמנים:</span>
+              <span id="guests-val-display" class="text-gold-accent font-bold text-2xl">60 איש</span>
+            </div>
+            <input type="range" id="shabbat-guests-range" min="40" max="120" step="5" value="60"
+              class="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-gold-accent focus:outline-none">
+            <div class="flex justify-between text-xs text-white/40 font-semibold select-none">
+              <span>40 (מינ')</span>
+              <span>60</span>
+              <span>80</span>
+              <span>100</span>
+              <span>120 (מקס')</span>
+            </div>
+          </div>
+
+          <!-- Complex Recommendation Card -->
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4 mb-8 space-y-2" id="complex-recommend-card">
+            <div class="flex items-center gap-2 text-gold-accent">
+              <span class="material-symbols-outlined text-[20px]" id="recommend-icon">meeting_room</span>
+              <span class="font-semibold text-sm" id="recommend-title">קומפלקס מומלץ: Blue Hall & היכל ראובן</span>
+            </div>
+            <p class="text-white/80 text-xs leading-relaxed" id="recommend-desc">
+              מתאים במיוחד לאירועים אינטימיים של עד 60 איש. תיהנו מאווירה משפחתית חמה, חדר אוכל מרהיב ובית כנסת פרטי
+              המוקצה בלעדית למשפחתכם.
+            </p>
+          </div>
+
+          <!-- Submit redirection button -->
+          <button type="button" onclick="redirectToContactForm()"
+            class="w-full bg-gold-accent hover:bg-gold-accent/90 text-white py-4 rounded-xl font-headline-card hover:-translate-y-0.5 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+            <span>קבלת הצעת מחיר מותאמת</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          </button>
+          <p class="text-center text-white/50 text-[11px] mt-3">
+            * לחיצה תעביר אתכם לטופס ההזמנות המרכזי עם הפרמטרים שבחרתם מוזנים מראש.
+          </p>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-gold-accent">mail</span>
-          <span class="text-sm font-semibold">events@miamihotel.co.il</span>
-        </div>
+
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<div id="site-footer"></div>
-<script src="js/footer-component.js"></script>
+  </main>
 
-<a class="whatsapp-fab" href="https://wa.me/97288522085" aria-label="WhatsApp">
-  <i class="fa-brands fa-whatsapp"></i>
-</a>
+  <div id="site-footer"></div>
+  <script src="js/footer-component.js"></script>
+
+  <a class="whatsapp-fab" href="https://wa.me/97288522085" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Menu Slider Logic
+    let currentMenuSlide = 0;
+    const totalMenuSlides = 3;
+
+    function showMenuSlide(idx) {
+      currentMenuSlide = idx;
+
+      // Update slides visibility
+      const slides = document.querySelectorAll('.menu-slide');
+      slides.forEach((slide, i) => {
+        if (i === idx) {
+          slide.classList.remove('opacity-0', 'pointer-events-none', 'z-0');
+          slide.classList.add('opacity-100', 'z-10');
+        } else {
+          slide.classList.remove('opacity-100', 'z-10');
+          slide.classList.add('opacity-0', 'pointer-events-none', 'z-0');
+        }
+      });
+
+      // Update dots
+      const dots = document.querySelectorAll('.slider-dot');
+      dots.forEach((dot, i) => {
+        if (i === idx) {
+          dot.classList.remove('bg-white/30', 'w-2.5');
+          dot.classList.add('bg-gold-accent', 'w-5');
+        } else {
+          dot.classList.remove('bg-gold-accent', 'w-5');
+          dot.classList.add('bg-white/30', 'w-2.5');
+        }
+      });
+    }
+
+    function updateTabHighlight(activeTabId) {
+      const tabs = document.querySelectorAll('.meal-tab-btn');
+      tabs.forEach((tab) => {
+        const card = tab.querySelector('.meal-card');
+        const dot = tab.querySelector('.timeline-dot');
+        if (tab.id === activeTabId) {
+          tab.classList.remove('opacity-75');
+          if (card) {
+            card.classList.add('border-gold-accent', 'shadow-md');
+            card.classList.remove('border-transparent');
+          }
+          if (dot) {
+            dot.classList.remove('bg-white', 'border-sand-dark', 'text-primary');
+            dot.classList.add('bg-gold-accent', 'border-gold-accent', 'text-white');
+          }
+        } else {
+          tab.classList.add('opacity-75');
+          if (card) {
+            card.classList.remove('border-gold-accent', 'shadow-md');
+            card.classList.add('border-transparent');
+          }
+          if (dot) {
+            dot.classList.remove('bg-gold-accent', 'border-gold-accent', 'text-white');
+            dot.classList.add('bg-white', 'border-sand-dark', 'text-primary');
+          }
+        }
+      });
+    }
+
+    function goToMenuSlide(slideIdx) {
+      showMenuSlide(slideIdx);
+      // On mobile/tablet, scroll down to the menus container when a tab is clicked
+      if (window.innerWidth < 1024) {
+        const target = document.getElementById('menu-slider-container');
+        if (target) {
+          const headerOffset = 96; // Offset for sticky navbar + spacing
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + (window.scrollY || window.pageYOffset) - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    }
+
+    function nextMenuSlide() {
+      let next = (currentMenuSlide + 1) % totalMenuSlides;
+      showMenuSlide(next);
+      // Highlight matching tab on next
+      if (next === 0) updateTabHighlight('meal-tab-2');
+      else if (next === 1) updateTabHighlight('meal-tab-4');
+      else if (next === 2) updateTabHighlight('meal-tab-3');
+    }
+
+    function prevMenuSlide() {
+      let prev = (currentMenuSlide - 1 + totalMenuSlides) % totalMenuSlides;
+      showMenuSlide(prev);
+      // Highlight matching tab on prev
+      if (prev === 0) updateTabHighlight('meal-tab-2');
+      else if (prev === 1) updateTabHighlight('meal-tab-4');
+      else if (prev === 2) updateTabHighlight('meal-tab-3');
+    }
+
+    // Highlight matching tab on dot click
+    function setMenuSlide(idx) {
+      showMenuSlide(idx);
+      if (idx === 0) updateTabHighlight('meal-tab-2');
+      else if (idx === 1) updateTabHighlight('meal-tab-4');
+      else if (idx === 2) updateTabHighlight('meal-tab-3');
+    }
+
+
+    // Smart Planner Logic
+    const rangeInput = document.getElementById('shabbat-guests-range');
+    const guestsValDisplay = document.getElementById('guests-val-display');
+    const recommendIcon = document.getElementById('recommend-icon');
+    const recommendTitle = document.getElementById('recommend-title');
+    const recommendDesc = document.getElementById('recommend-desc');
+
+    if (rangeInput) {
+      // Set initial display
+      const initialVal = parseInt(rangeInput.value);
+      guestsValDisplay.textContent = `${initialVal} איש`;
+      updateRecommendation(initialVal);
+
+      rangeInput.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value);
+        guestsValDisplay.textContent = `${val} איש`;
+        updateRecommendation(val);
+      });
+    }
+
+    function updateRecommendation(guests) {
+      if (guests <= 60) {
+        recommendIcon.textContent = 'meeting_room';
+        recommendTitle.textContent = 'קומפלקס מומלץ: Blue Hall & היכל ראובן';
+        recommendDesc.textContent = 'מתאים במיוחד לאירועים אינטימיים של עד 60 איש. תיהנו מאווירה משפחתית חמה, חדר אוכל מרהיב ובית כנסת פרטי המוקצה בלעדית למשפחתכם.';
+      } else {
+        recommendIcon.textContent = 'castle';
+        recommendTitle.textContent = 'קומפלקס מומלץ: White Hall & היכל מאיר';
+        recommendDesc.textContent = 'מתאים לאירועים בינוניים וגדולים של 60 עד 120 איש. חלל אירוח רחב ידיים, חדר אוכל מואר ואלגנטי ובית כנסת מפואר ובלעדי עבורכם.';
+      }
+    }
+
+    function redirectToContactForm() {
+      const guests = rangeInput ? rangeInput.value : 60;
+      const type = 'shabbat';
+      window.location.href = `contact.html?type=${type}&guests=${guests}`;
+    }
+
+    // Initialize first step active highlight
+    updateTabHighlight('meal-tab-0');
+  </script>
 
 </body>
-</html>
 
+</html>
