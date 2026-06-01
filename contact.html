@@ -215,6 +215,13 @@
                         <button type="button" id="clear-room-selection" class="text-xs text-white/50 hover:text-white underline transition-colors cursor-pointer">הסר חדר</button>
                       </div>
                     </div>
+                    <!-- Dynamic USP Banner -->
+                    <div id="dynamic-usp-banner" class="hidden bg-white/5 border border-mustard-accent/20 rounded-xl p-4 text-mustard-accent text-sm select-none">
+                      <div class="flex items-start gap-2.5">
+                        <span class="material-symbols-outlined text-mustard-accent text-[20px] flex-shrink-0" id="dynamic-usp-icon">info</span>
+                        <p id="dynamic-usp-text" class="leading-relaxed"></p>
+                      </div>
+                    </div>
                     <!-- Date Pickers -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[480px] w-full">
                       <div class="flex flex-col gap-2">
@@ -472,6 +479,38 @@
         const isNoDate = noDateCheckbox && noDateCheckbox.checked;
         const roomInfo = document.getElementById('selected-room-info');
         const roomInput = document.getElementById('form-room-type');
+        const uspBanner = document.getElementById('dynamic-usp-banner');
+        const uspText = document.getElementById('dynamic-usp-text');
+        const uspIcon = document.getElementById('dynamic-usp-icon');
+
+        if (uspBanner && uspText && uspIcon) {
+          let text = '';
+          let icon = '';
+          if (type === 'vacation') {
+            text = 'נופש משפחתי במרחק הליכה קצר ביותר מטיילת החוף, כולל חניה חינם ובשפע ושעוני שבת מובנים בחדרים.';
+            icon = 'beach_access';
+          } else if (type === 'shabbat') {
+            text = 'אירוח שבת חתן בבלעדיות מלאה! בית כנסת פרטי וחדר אוכל נפרד המוקצים רק עבור המשפחה שלכם, בכשרות המהודרת של הרב מחפוד.';
+            icon = 'verified';
+          } else if (type === 'events') {
+            text = 'כנסים ואירועים עסקיים עם ליווי טכנולוגי צמוד, ציוד מולטימדיה מתקדם (מקרן, סאונד), חניה חינם וקייטרינג מהדרין משובח.';
+            icon = 'co_present';
+          } else if (type === 'brit') {
+            text = 'חגיגת ברית/בריתה באווירה משפחתית חמה, אולם מעוצב וחגיגי, חניה חינם בשפע לאורחים ותפריט בשרי עשיר למהדרין.';
+            icon = 'child_friendly';
+          } else if (type === 'bar_mitzvah') {
+            text = 'עלייה לתורה ובר מצווה מרגשת בבית כנסת פרטי ומפואר, סעודת מצווה חגיגית בחדר אוכל פרטי משלכם וכשרות למהדרין הרב מחפוד.';
+            icon = 'school';
+          }
+
+          if (text) {
+            uspText.textContent = text;
+            uspIcon.textContent = icon;
+            uspBanner.classList.remove('hidden');
+          } else {
+            uspBanner.classList.add('hidden');
+          }
+        }
 
         if (type !== 'vacation' && roomInput) {
           roomInput.value = '';
@@ -913,7 +952,7 @@
       // Date parameter population
       if (dateStartParam) {
         if (fpStart) {
-          fpStart.setDate(dateStartParam);
+          fpStart.setDate(dateStartParam, true);
         }
         if (fpEnd) {
           fpEnd.set("minDate", dateStartParam);
@@ -921,7 +960,7 @@
       }
       if (dateEndParam) {
         if (fpEnd) {
-          fpEnd.setDate(dateEndParam);
+          fpEnd.setDate(dateEndParam, true);
         }
       }
 

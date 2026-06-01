@@ -60,6 +60,11 @@
             הכירו את המתחמים
           </a>
         </div>
+        <!-- Shabbat Times Widget -->
+        <div id="shabbat-times-widget" class="inline-flex flex-wrap items-center justify-center gap-3 bg-white/5 border border-gold-accent/20 rounded-xl px-5 py-2.5 text-sm text-gold-accent shadow-md">
+          <span class="material-symbols-outlined text-[20px]">schedule</span>
+          <span id="shabbat-times-text" class="font-semibold text-xs sm:text-sm">טוען זמני שבת באשדוד...</span>
+        </div>
       </div>
     </header>
 
@@ -896,8 +901,68 @@
       }
     });
 
+    // Fetch and sync Shabbat times with LocalStorage cache
+    async function initShabbatTimesWidget() {
+      const displayEl = document.getElementById("shabbat-times-text");
+      if (!displayEl) return;
 
+      function renderTimes(candleTime, havdalahTime) {
+        displayEl.textContent = `זמני השבת הקרובה באשדוד: כניסה: ${candleTime} | יציאה: ${havdalahTime}`;
+      }
 
+      try {
+        const cached = localStorage.getItem("miami_shabbat_times_v2");
+        const cachedTime = localStorage.getItem("miami_shabbat_cached_at_v2");
+        const now = new Date();
+
+        if (cached && cachedTime && (now - new Date(cachedTime) < 24 * 60 * 60 * 1000)) {
+          const data = JSON.parse(cached);
+          if (extractAndRender(data)) return;
+        }
+
+        const response = await fetch("https://www.hebcal.com/shabbat?cfg=json&geonameid=295629");
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem("miami_shabbat_times_v2", JSON.stringify(data));
+          localStorage.setItem("miami_shabbat_cached_at_v2", now.toISOString());
+          extractAndRender(data);
+        } else {
+          throw new Error("API response error");
+        }
+      } catch (error) {
+        console.warn("Failed to load Shabbat times in widget:", error);
+        renderTimes("19:26", "20:27"); // fallback default
+      }
+
+      function extractAndRender(data) {
+        if (!data || !data.items) return false;
+        let candleTime = "";
+        let havdalahTime = "";
+
+        data.items.forEach(item => {
+          if (item.category === "candles" && item.title) {
+            const match = item.title.match(/\d{2}:\d{2}/);
+            if (match) candleTime = match[0];
+          }
+          if (item.category === "havdalah" && item.title) {
+            const match = item.title.match(/\d{2}:\d{2}/);
+            if (match) havdalahTime = match[0];
+          }
+        });
+
+        if (candleTime && havdalahTime) {
+          renderTimes(candleTime, havdalahTime);
+          return true;
+        }
+        return false;
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initShabbatTimesWidget);
+    } else {
+      initShabbatTimesWidget();
+    }
   </script>
 
 </body>

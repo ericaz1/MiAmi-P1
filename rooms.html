@@ -331,6 +331,22 @@
           </h4>
           <p id="modal-bed-config" class="text-xs sm:text-sm text-on-surface-variant font-body-main leading-relaxed"></p>
         </div>
+        <!-- In-Modal Date Availability & Price Calculator -->
+        <div class="mb-6 bg-surface-container-low/60 border border-sand-dark/40 rounded-xl p-4">
+          <h4 class="font-bold text-primary mb-3 flex items-center gap-2 border-b border-sand-dark/30 pb-2 text-sm sm:text-base">
+            <span class="material-symbols-outlined text-gold-accent text-xl">calendar_month</span>
+            <span>בדיקת זמינות ומחיר משוער</span>
+          </h4>
+          <div class="flex flex-col gap-3">
+            <div class="relative">
+              <input id="modal-date-picker" class="w-full bg-white border border-sand-dark rounded-lg py-2 pr-9 pl-3 focus:ring-1 focus:ring-gold-accent focus:border-gold-accent transition-all text-right text-xs sm:text-sm font-semibold shadow-inner focus:outline-none placeholder:text-primary/45 text-primary" type="text" placeholder="בחרו תאריכים למחיר מעודכן...">
+              <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-primary/40 text-lg">calendar_month</span>
+            </div>
+            <div id="modal-price-calc" class="hidden text-xs sm:text-sm font-bold text-gold-accent text-right mt-1">
+              <span id="modal-price-text"></span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Action Buttons -->
@@ -351,6 +367,8 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     let fpInstance;
+    let modalFpInstance;
+    let activeModalRoomId;
 
     // Initialize Flatpickr for check-in and check-out range
     fpInstance = flatpickr("#rooms-date-input", {
@@ -645,6 +663,7 @@
     // Room Details Modal dynamic dataset
     const roomsData = {
       couple: {
+        price: 600,
         title: "חדר זוגי סטנדרט",
         desc: "חדר זוגי נעים ופונקציונלי, המציע נוחות מרבית ועיצוב נקי במחיר משתלם. מתאים לזוג או ליחיד, ומספק תמורה מעולה למחיר עם קרבה מיידית לים ולטיילת באשדוד.",
         images: ["images/room_classic_double.webp", "images/room_deluxe.webp"],
@@ -657,6 +676,7 @@
         bedConfig: "מיטה זוגית רחבה או שתי מיטות יחיד נפרדות (מיטות יהודיות) לפי בחירה מראש."
       },
       family: {
+        price: 850,
         title: "חדר משפחתי מרווח",
         desc: "חדר מרווח ומותאם במיוחד למשפחות (פתרון מצוין לשבתות חתן). החדר מיועד לזוג ובמידת הצורך ניתן להוסיף בו עד 4 מיטות יחיד נוספות, המאפשרות אירוח נוח של עד 6 נפשות בחדר אחד.",
         images: ["images/room_family_suite.webp", "images/room_classic_double.webp", "images/room_deluxe.webp"],
@@ -669,8 +689,9 @@
         bedConfig: "מיטה זוגית (או שתי מיטות יחיד נפרדות) + אפשרות לעד 4 מיטות יחיד נוספות לפי הצורך (עד 6 אורחים בחדר)."
       },
       jacuzzi: {
+        price: 1000,
         title: "חדר זוגי עם ג'קוזי",
-        desc: "חדר זוגי נעים וממכר הכולל ג'קוזי מובנה ומפנק בתוך החדר, פינת ישיבה נוחה ואווירה חמה ושלווה במרחק הליכה מהחוף. הבחירה המושלמת לחופשה רגועה ותמורה מעולה למחיר.",
+        desc: "חדר זוגי נעים ומזמין הכולל ג'קוזי מובנה ומפנק בתוך החדר, פינת ישיבה נוחה ואווירה חמה ושלווה במרחק הליכה מהחוף. הבחירה המושלמת לחופשה רגועה ותמורה מעולה למחיר.",
         images: ["images/room_deluxe.webp", "images/room_presidential_suite.webp", "images/room_classic_double.webp"],
         shabbatSpecs: [
           "ג'קוזי פרטי מובנה בחדר (לשימוש בימי חול).",
@@ -696,9 +717,66 @@
     const modalBookingBtn = document.getElementById('modal-booking-btn');
     const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn');
 
+    function updateModalPriceAndLinks(roomId) {
+      const data = roomsData[roomId];
+      const priceCalcEl = document.getElementById('modal-price-calc');
+      const priceTextEl = document.getElementById('modal-price-text');
+      const bookingBtn = document.getElementById('modal-booking-btn');
+      const whatsappBtn = document.getElementById('modal-whatsapp-btn');
+      if (!priceCalcEl || !priceTextEl || !bookingBtn || !whatsappBtn || !data) return;
+
+      let dateStartVal = '';
+      let dateEndVal = '';
+      let diffDays = 0;
+
+      if (modalFpInstance && modalFpInstance.selectedDates.length === 2) {
+        const d1 = modalFpInstance.selectedDates[0];
+        const d2 = modalFpInstance.selectedDates[1];
+        const diffTime = Math.abs(d2 - d1);
+        diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+        const formatDate = (d) => {
+          const year = d.getFullYear();
+          const month = String(d.getMonth() + 1).padStart(2, '0');
+          const day = String(d.getDate()).padStart(2, '0');
+          return `${year}-${month}-${day}`;
+        };
+        dateStartVal = formatDate(d1);
+        dateEndVal = formatDate(d2);
+      }
+
+      const totalGuests = currentAdults + currentKids;
+
+      let bookingHref = `contact.html?type=vacation&room=${roomId}&guests=${totalGuests}`;
+      if (dateStartVal && dateEndVal) {
+        bookingHref += `&date_start=${dateStartVal}&date_end=${dateEndVal}`;
+      }
+      bookingBtn.href = bookingHref;
+
+      let whatsappMsg = `שלום, אשמח לקבל פרטים נוספים והצעת מחיר עבור ${data.title} במלון מיעמי אשדוד.`;
+      if (dateStartVal && dateEndVal) {
+        const d1Str = modalFpInstance.selectedDates[0].toLocaleDateString('he-IL');
+        const d2Str = modalFpInstance.selectedDates[1].toLocaleDateString('he-IL');
+        whatsappMsg += ` עבור תאריכים ${d1Str} עד ${d2Str}`;
+      }
+      whatsappMsg += ` להרכב של ${totalGuests} אורחים.`;
+      whatsappBtn.href = `https://wa.me/97288522085?text=${encodeURIComponent(whatsappMsg)}`;
+
+      if (diffDays > 0) {
+        const totalPrice = data.price * diffDays;
+        let nightsLabel = diffDays === 1 ? 'לילה אחד' : `${diffDays} לילות`;
+        priceTextEl.innerHTML = `סה"כ משוער: <span class="text-white bg-gold-accent px-2 py-0.5 rounded font-bold">₪${totalPrice}</span> עבור ${nightsLabel} (₪${data.price} ללילה)`;
+        priceCalcEl.classList.remove('hidden');
+      } else {
+        priceCalcEl.classList.add('hidden');
+      }
+    }
+
     function openModal(roomId) {
       const data = roomsData[roomId];
       if (!data) return;
+
+      activeModalRoomId = roomId;
 
       modalTitle.textContent = data.title;
       modalDesc.textContent = data.desc;
@@ -741,39 +819,31 @@
         modalShabbatSpecs.appendChild(li);
       });
 
-      // Extract search dates for modal links
-      let dateStartVal = '';
-      let dateEndVal = '';
+      if (!modalFpInstance) {
+        modalFpInstance = flatpickr("#modal-date-picker", {
+          mode: "range",
+          altInput: true,
+          altFormat: "d/m/Y",
+          dateFormat: "Y-m-d",
+          minDate: "today",
+          maxDate: new Date().fp_incr(365),
+          locale: "en",
+          disableMobile: true,
+          onReady: function (selectedDates, dateStr, instance) {
+            instance.calendarContainer.classList.add('mustard-theme');
+          },
+          onChange: function (selectedDates, dateStr, instance) {
+            updateModalPriceAndLinks(activeModalRoomId);
+          }
+        });
+      }
+
       if (fpInstance && fpInstance.selectedDates.length === 2) {
-        const d1 = fpInstance.selectedDates[0];
-        const d2 = fpInstance.selectedDates[1];
-        const formatDate = (d) => {
-          const year = d.getFullYear();
-          const month = String(d.getMonth() + 1).padStart(2, '0');
-          const day = String(d.getDate()).padStart(2, '0');
-          return `${year}-${month}-${day}`;
-        };
-        dateStartVal = formatDate(d1);
-        dateEndVal = formatDate(d2);
+        modalFpInstance.setDate(fpInstance.selectedDates, true);
+      } else {
+        modalFpInstance.clear();
+        updateModalPriceAndLinks(roomId);
       }
-      
-      const totalGuests = currentAdults + currentKids;
-      let bookingHref = `contact.html?type=vacation&room=${roomId}&guests=${totalGuests}`;
-      if (dateStartVal && dateEndVal) {
-        bookingHref += `&date_start=${dateStartVal}&date_end=${dateEndVal}`;
-      }
-      modalBookingBtn.href = bookingHref;
-      
-      let whatsappMsg = `שלום, אשמח לקבל פרטים נוספים והצעת מחיר עבור ${data.title} במלון מיעמי אשדוד.`;
-      if (dateStartVal && dateEndVal) {
-        const d1Str = fpInstance.selectedDates[0].toLocaleDateString('he-IL');
-        const d2Str = fpInstance.selectedDates[1].toLocaleDateString('he-IL');
-        whatsappMsg += ` עבור תאריכים ${d1Str} עד ${d2Str}`;
-      }
-      whatsappMsg += ` להרכב של ${totalGuests} אורחים.`;
-      
-      const whatsappText = encodeURIComponent(whatsappMsg);
-      modalWhatsappBtn.href = `https://wa.me/97288522085?text=${whatsappText}`;
 
       modal.classList.remove('pointer-events-none');
       modal.classList.add('opacity-100');

@@ -117,14 +117,16 @@
         </div>
 
         <!-- Location Map Image -->
-        <a href="https://www.google.com/maps/search/?api=1&query=מלון+מי+עמי+אשדוד"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="order-2 rounded-xl overflow-hidden shadow-md h-[500px] relative group block cursor-pointer">
-          <img src="images/about_map.jpg" alt="מפת מיקום מלון מיעמי אשדוד" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <a href="https://www.google.com/maps/search/?api=1&query=מלון+מי+עמי+אשדוד" target="_blank"
+          rel="noopener noreferrer"
+          class="order-2 rounded-xl overflow-hidden shadow-md h-[500px] relative group block cursor-pointer">
+          <img src="images/about_map.jpg" alt="מפת מיקום מלון מיעמי אשדוד"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
           <!-- Hover Overlay -->
-          <div class="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 backdrop-blur-[2px]">
-            <div class="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-gold-accent group-hover:scale-110 transition-transform duration-300">
+          <div
+            class="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 backdrop-blur-[2px]">
+            <div
+              class="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-gold-accent group-hover:scale-110 transition-transform duration-300">
               <span class="material-symbols-outlined text-3xl">open_in_new</span>
             </div>
             <span class="text-white font-semibold text-lg">פתיחה ב-Google Maps</span>
@@ -207,7 +209,8 @@
             <span class="material-symbols-outlined">room_service</span>
           </div>
           <h3 class="why-us-card__title">שירות אישי ומסור</h3>
-          <p class="why-us-card__text">צוות המלון המסור זמין עבורכם לכל בקשה ומלווה אתכם לאורך כל השהות עם יחס חם, משפחתי וקשוב לכל פרט.</p>
+          <p class="why-us-card__text">צוות המלון המסור זמין עבורכם לכל בקשה ומלווה אתכם לאורך כל השהות עם יחס חם,
+            משפחתי וקשוב לכל פרט.</p>
         </div>
       </div>
       <!-- Dots indicator for mobile slider -->
@@ -300,7 +303,7 @@
                 <span>עיצוב אולם חגיגי ומותאם אישית</span>
               </div>
             </div>
-            <a class="event-card__btn" href="contact.html?type=shabbat">
+            <a class="event-card__btn" href="contact.html?type=brit">
               <span>לפרטים והזמנה</span>
               <span class="material-symbols-outlined text-[18px]">arrow_back</span>
             </a>
@@ -703,7 +706,8 @@
               </div>
 
               <!-- Nights Counter Display -->
-              <div id="nights-counter-display" class="hidden text-sm font-semibold text-mustard-accent text-right mt-[-0.5rem] mb-2">
+              <div id="nights-counter-display"
+                class="hidden text-sm font-semibold text-mustard-accent text-right mt-[-0.5rem] mb-2">
                 <span>סה"כ לילות: </span>
                 <span id="nights-count-val">0</span>
               </div>
@@ -733,11 +737,14 @@
 
               <!-- Additional Event Details -->
               <div class="flex flex-col gap-2">
-                <label class="text-sm font-semibold text-white/95" for="form-event-details">פרטים נוספים על האירוע (לא חובה)</label>
+                <label class="text-sm font-semibold text-white/95" for="form-event-details">פרטים נוספים על האירוע (לא
+                  חובה)</label>
                 <div class="relative">
-                  <textarea id="form-event-details" name="event_details" maxlength="200" rows="3" placeholder="ספרו לנו עוד על האירוע שלכם (סוג האירוע, דרישות מיוחדות, העדפות מזון וכד')..."
+                  <textarea id="form-event-details" name="event_details" maxlength="200" rows="3"
+                    placeholder="ספרו לנו עוד על האירוע שלכם (סוג האירוע, דרישות מיוחדות, העדפות מזון וכד')..."
                     class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 pb-8 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40 resize-none"></textarea>
-                  <span id="char-counter" class="absolute bottom-2 left-3 text-xs text-white/40 select-none">0/200</span>
+                  <span id="char-counter"
+                    class="absolute bottom-2 left-3 text-xs text-white/40 select-none">0/200</span>
                 </div>
               </div>
 
@@ -1074,7 +1081,7 @@
                 fpEnd.altInput.placeholder = 'dd/mm/yyyy';
               }
             }
-            
+
             // Re-apply required attributes based on selected interest type
             const selectedInterest = document.querySelector('input[name="interest"]:checked')?.value;
             dateStartInput.setAttribute('required', 'required');
@@ -1368,16 +1375,16 @@
         const endVal = fpEnd && fpEnd.selectedDates[0];
         const displayEl = document.getElementById('nights-counter-display');
         const countValEl = document.getElementById('nights-count-val');
-        
+
         if (!displayEl || !countValEl) return;
-        
+
         const selectedInterest = document.querySelector('input[name="interest"]:checked')?.value;
         const noDateYet = noDateCheckbox && noDateCheckbox.checked;
 
         if (selectedInterest === 'vacation' && startVal && endVal && !noDateYet) {
           const diffTime = Math.abs(endVal - startVal);
           const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-          
+
           countValEl.textContent = diffDays;
           displayEl.classList.remove('hidden');
         } else {
