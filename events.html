@@ -21,138 +21,325 @@
 
 <main>
 <!-- Hero Section -->
-<section class="relative h-[819px] flex items-center justify-center overflow-hidden clip-slant">
+<section class="relative h-[650px] flex items-center justify-center overflow-hidden clip-slant">
 <div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover" data-alt="A sophisticated corporate event setup in a luxury hotel ballroom overlooking the Mediterranean Sea. Large floor-to-ceiling windows flood the space with natural morning light. High-end ergonomic seating is arranged in a professional classroom style with modern multimedia podiums. The color palette features deep blues, soft creams, and golden accents, creating a professional yet coastal boutique atmosphere." src="images/events_hero.webp" decoding="async"/>
-<div class="absolute inset-0 bg-primary/40 backdrop-brightness-75"></div>
+<img class="w-full h-full object-cover" data-alt="A warm, inviting event setup in a boutique hotel event hall near the beach. Light sandy colors and blue accents create a cozy Mediterranean atmosphere, perfect for family and corporate gatherings." src="images/events_hero.webp" decoding="async"/>
+<div class="absolute inset-0 bg-primary/45 backdrop-brightness-75"></div>
 </div>
 <div class="relative z-10 text-center text-white px-4 max-w-4xl">
-<h1 class="font-display-hero text-display-hero md:text-display-hero mb-6">אירועים עסקיים וכנסים יוקרתיים</h1>
-<p class="font-body-main text-xl md:text-2xl mb-8 opacity-90 max-w-2xl mx-auto">השילוב המושלם בין מקצועיות ללא פשרות לאווירה המרגיעה של חוף הים באשדוד.</p>
-<a class="inline-block bg-gold-accent text-white px-10 py-4 rounded-xl font-headline-card shadow-xl hover:scale-105 transition-all text-center flex items-center justify-center w-max mx-auto" href="contact.html?type=events">התחילו לתכנן את האירוע שלכם</a>
+<h1 class="font-display-hero text-display-hero md:text-display-hero mb-6">אירועים, שמחות וכנסים במיעמי</h1>
+<p class="font-body-main text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">אירועים משפחתיים באווירה חמה, שמחות בפרטיות מלאה בכשרות מהודרת של הרב מחפוד, וכנסים מקצועיים במרחק הליכה קצר מהחוף.</p>
+  <!-- Tabs Switcher in Hero -->
+  <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-xl mx-auto p-1.5 bg-white/95 backdrop-blur-sm rounded-2xl border border-sand-dark/30 shadow-2xl text-on-surface mt-4">
+    <button id="tab-btn-family" onclick="switchEventTab('family', true)" class="flex-1 py-4 px-6 rounded-xl font-headline-card text-base flex items-center justify-center gap-2 transition-all duration-300 bg-gold-accent text-white shadow-md">
+      <span class="material-symbols-outlined text-[22px]">celebration</span>
+      <span>שמחות ואירועים משפחתיים</span>
+    </button>
+    <button id="tab-btn-business" onclick="switchEventTab('business', true)" class="flex-1 py-4 px-6 rounded-xl font-headline-card text-base flex items-center justify-center gap-2 transition-all duration-300 text-on-surface-variant hover:text-primary hover:bg-primary/5">
+      <span class="material-symbols-outlined text-[22px]">business_center</span>
+      <span>כנסים ואירועים עסקיים</span>
+    </button>
+  </div>
 </div>
 </section>
-<!-- Conference Halls Grid -->
-<section class="max-w-container-max mx-auto px-8 py-12 md:py-section-lg">
-<div class="text-center mb-16">
-<h2 class="font-headline-section text-headline-section text-primary mb-4">מרכזי הכנסים שלנו</h2>
-<div class="h-1 w-24 bg-gold-accent mx-auto"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<!-- Hall 1 -->
-<div class="group bg-white rounded-xl shadow-md overflow-hidden border border-sand-dark transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-<div class="h-64 relative overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern spacious Mediterranean Hall with sleek wooden accents and high ceilings. Multiple rows of professional seating are arranged for a keynote presentation. Advanced projector screens and professional stage lighting are visible. The room feels airy and bright with coastal color tones of blue and sand." src="images/events_hall_mediterranean.webp" loading="lazy" decoding="async"/>
-<span class="absolute top-4 right-4 bg-status-emerald text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Sea View</span>
-</div>
-<div class="p-6">
-<h3 class="font-headline-card text-headline-card text-primary mb-2">אולם הים התיכון</h3>
-<div class="flex items-center gap-2 text-on-surface-variant mb-4">
-<span class="material-symbols-outlined text-gold-accent">group</span>
-<span class="font-label-meta text-label-meta">עד 150 משתתפים</span>
-</div>
-<p class="text-on-surface-variant font-body-main mb-6">מרחב רחב ידיים המעוצב בקו מודרני ונקי, מושלם לכנסים מקצועיים והרצאות רבות משתתפים.</p>
-</div>
-</div>
-<!-- Hall 2 -->
-<div class="group bg-white rounded-xl shadow-md overflow-hidden border border-sand-dark transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-<div class="h-64 relative overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Panorama Hall featuring panoramic glass walls overlooking the Ashdod coastline. Intimate round table setups for a corporate workshop. Soft warm lighting and premium textiles in shades of gold and deep navy create a sophisticated and welcoming business environment." src="images/events_hall_panorama.webp" loading="lazy" decoding="async"/>
-</div>
-<div class="p-6">
-<h3 class="font-headline-card text-headline-card text-primary mb-2">אולם פנורמה</h3>
-<div class="flex items-center gap-2 text-on-surface-variant mb-4">
-<span class="material-symbols-outlined text-gold-accent">group</span>
-<span class="font-label-meta text-label-meta">עד 80 משתתפים</span>
-</div>
-<p class="text-on-surface-variant font-body-main mb-6">אולם בוטיק עם נוף פנורמי עוצר נשימה לים, אידיאלי לסדנאות מנהלים וימי עיון מעוררי השראה.</p>
-</div>
-</div>
-<!-- Hall 3 -->
-<div class="group bg-white rounded-xl shadow-md overflow-hidden border border-sand-dark transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-<div class="h-64 relative overflow-hidden">
-<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Exclusive VIP Boardroom with a long dark oak table and high-end leather chairs. The room is equipped with built-in digital interfaces, 4K teleconferencing screens, and elegant ambient lighting. Glass partitions provide privacy while maintaining an open, professional corporate feel." src="images/events_boardroom.webp" loading="lazy" decoding="async"/>
-<span class="absolute top-4 right-4 bg-gold-accent text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Private</span>
-</div>
-<div class="p-6">
-<h3 class="font-headline-card text-headline-card text-primary mb-2">חדר ישיבות VIP</h3>
-<div class="flex items-center gap-2 text-on-surface-variant mb-4">
-<span class="material-symbols-outlined text-gold-accent">group</span>
-<span class="font-label-meta text-label-meta">עד 20 משתתפים</span>
-</div>
-<p class="text-on-surface-variant font-body-main mb-6">חדר ישיבות אקסקלוסיבי ומאובזר בטכנולוגיה המתקדמת ביותר לדיונים וקבלת החלטות חשובות.</p>
-</div>
-</div>
-</div>
+
+<!-- Event Type Intro Description -->
+<section id="event-selector" class="max-w-container-max mx-auto px-8 pt-16 pb-8 scroll-mt-24">
+  <div class="text-center mb-4">
+    <div class="inline-flex items-center gap-2 mb-3">
+      <span class="w-8 h-px bg-gold-accent"></span>
+      <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">בחרו את סוג האירוע שלכם</span>
+      <span class="w-8 h-px bg-gold-accent"></span>
+    </div>
+    <h2 class="font-headline-section text-headline-section text-primary mb-4">אירוח מותאם אישית לכל שמחה ומפגש</h2>
+    <p class="font-body-main text-on-surface-variant max-w-2xl mx-auto text-base">
+      בין אם מדובר בשמחה משפחתית אינטימית ובין אם בכנס מקצועי לחברה, אנו מציעים מתחמים ייעודיים, אוכל משובח וליווי צמוד לכל אורך הדרך.
+    </p>
+  </div>
 </section>
+
+<!-- Tab Content: Family Events -->
+<section id="tab-content-family" class="transition-all duration-300">
+  <div class="max-w-container-max mx-auto px-8 pb-12">
+    <!-- Family Events Types Feature Section -->
+    <div class="bg-primary/5 border border-sand-dark rounded-3xl p-8 md:p-12 mb-16 flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+      <div class="w-full lg:w-1/2 space-y-6">
+        <div class="inline-flex items-center gap-2 bg-gold-accent/10 text-gold-accent px-3 py-1 rounded-full text-xs font-bold">
+          <span class="material-symbols-outlined text-sm">celebration</span>
+          <span>הכול תחת קורת גג אחת</span>
+        </div>
+        <h3 class="font-headline-section text-2xl md:text-3xl text-primary leading-tight">מתכננים עלייה לתורה או ברית מילה?</h3>
+        <p class="font-body-main text-on-surface-variant text-base leading-relaxed">
+          במלון מיעמי אנו מתמחים ביצירת אירועים משפחתיים מרגשים ללא דאגות. אנו מציעים פתרון אירוח מושלם המשלב את כל שלבי השמחה שלכם:
+        </p>
+        
+        <div class="space-y-4">
+          <!-- Feature 1 -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-gold-accent/15 text-gold-accent flex items-center justify-center flex-shrink-0 mt-1">
+              <span class="material-symbols-outlined text-base">synagogue</span>
+            </div>
+            <div>
+              <h4 class="font-headline-card text-base text-primary mb-1">תפילה ועלייה לתורה בבית כנסת פרטי</h4>
+              <p class="font-body-main text-on-surface-variant text-sm">בתי הכנסת המפוארים שלנו ("היכל מאיר" ו"היכל ראובן") עומדים לרשותכם לתפילה, עלייה לתורה מרגשת וטקס ברית מילה באווירה קדושה ומכובדת.</p>
+            </div>
+          </div>
+          <!-- Feature 2 -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-gold-accent/15 text-gold-accent flex items-center justify-center flex-shrink-0 mt-1">
+              <span class="material-symbols-outlined text-base">restaurant</span>
+            </div>
+            <div>
+              <h4 class="font-headline-card text-base text-primary mb-1">סעודה חגיגית בחדר אוכל פרטי</h4>
+              <p class="font-body-main text-on-surface-variant text-sm">לאחר הטקס, תמשיכו ישירות לסעודה עשירה בחדר האוכל הפרטי שהוקצה בלעדית למשפחתכם, עם תפריטים משובחים בכשרות למהדרין של הרב מחפוד.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2 h-80 lg:h-96 rounded-2xl overflow-hidden shadow-lg border border-sand-dark relative">
+        <img class="w-full h-full object-cover" data-alt="A festive table set up for a Jewish family celebration with synagogue elements and meals." src="images/shabbat_table.webp" loading="lazy" decoding="async"/>
+        <div class="absolute bottom-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md">שמחות משפחתיות במיעמי</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blue Section (Complexes + USPs) -->
+  <div class="bg-[#0b1d33] text-white py-16 px-8 border-t border-b border-white/5">
+    <div class="max-w-container-max mx-auto space-y-16">
+      
+      <!-- Heading: Hosting Complexes -->
+      <div class="text-center">
+        <h3 class="font-headline-section text-2xl text-white mb-2">מתחמי האירוח המשפחתיים שלנו</h3>
+        <div class="h-0.5 w-16 bg-gold-accent mx-auto"></div>
+      </div>
+
+      <!-- Complexes Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-on-surface">
+        <!-- Complex 1 -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-sand-dark transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
+          <div class="h-64 relative overflow-hidden">
+            <img class="w-full h-full object-cover" data-alt="Elegant dining hall setup with warm lighting and decorated tables for a family Shabbat Chatan celebration." src="images/shabbat_hall.webp" loading="lazy" decoding="async"/>
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase">40-120 אורחים</span>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <h4 class="font-headline-card text-xl text-primary mb-2">קומפלקס White Hall & היכל מאיר</h4>
+              <p class="text-on-surface-variant font-body-main text-sm leading-relaxed mb-6">
+                מתחם האירוח המרכזי והחגיגי שלנו לאירועים ושמחות משפחתיות. חדר האוכל מציע עיצוב מואר ואלגנטי, ובסמוך לו ממוקם בית הכנסת המפואר "היכל מאיר" לקידוש ולתפילות מרוממות.
+              </p>
+            </div>
+            <div class="flex items-center gap-4 text-xs font-semibold text-primary/80 border-t border-sand-dark/50 pt-4">
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-gold-accent text-lg">restaurant</span>חדר אוכל פרטי</span>
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-gold-accent text-lg">synagogue</span>בית כנסת פרטי</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Complex 2 -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-sand-dark transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
+          <div class="h-64 relative overflow-hidden">
+            <img class="w-full h-full object-cover" data-alt="Warm and intimate dining room in blue and sand tones, set up for a small family gathering." src="images/shabbat_dining.webp" loading="lazy" decoding="async"/>
+            <span class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase">20-60 אורחים</span>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <h4 class="font-headline-card text-xl text-primary mb-2">קומפלקס Blue Hall & היכל ראובן</h4>
+              <p class="text-on-surface-variant font-body-main text-sm leading-relaxed mb-6">
+                מתחם אינטימי וחם המעוצב ברוח ים-תיכונית. חדר האוכל ה-Blue Hall משרה תחושה ביתית ומלכדת, לצד בית הכנסת המשפחתי "היכל ראובן" המאפשר תפילות מרגשות באווירה אישית.
+              </p>
+            </div>
+            <div class="flex items-center gap-4 text-xs font-semibold text-primary/80 border-t border-sand-dark/50 pt-4">
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-gold-accent text-lg">restaurant</span>חדר אוכל פרטי</span>
+              <span class="flex items-center gap-1"><span class="material-symbols-outlined text-gold-accent text-lg">synagogue</span>בית כנסת פרטי</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- USPs Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-white/10">
+        <!-- USP 1: Privacy -->
+        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl shadow-sm text-right flex flex-col justify-between group hover:bg-white/10 transition-all duration-300">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-gold-accent/15 text-gold-accent flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-[28px] text-gold-accent">castle</span>
+            </div>
+            <h3 class="font-headline-card text-lg text-white mb-2">פרטיות מוחלטת לשמחה</h3>
+            <p class="font-body-main text-white/80 text-sm leading-relaxed">
+              המלון מציע שני קומפלקסים נפרדים לחלוטין של בית כנסת וחדר אוכל פרטיים. כך תיהנו מבלעדיות מלאה ללא ערבוב עם אורחים אחרים.
+            </p>
+          </div>
+        </div>
+        <!-- USP 2: Rav Machpud -->
+        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl shadow-sm text-right flex flex-col justify-between group hover:bg-white/10 transition-all duration-300">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-gold-accent/15 text-gold-accent flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-[28px] text-gold-accent">verified</span>
+            </div>
+            <h3 class="font-headline-card text-lg text-white mb-2">כשרות הרב מחפוד למהדרין</h3>
+            <p class="font-body-main text-white/80 text-sm leading-relaxed">
+              המטבח והקייטרינג מתנהלים תחת כשרות למהדרין קפדנית ביותר של בד"ץ יורה דעה בראשות הרב מחפוד, המעניקה ביטחון הלכתי מלא.
+            </p>
+          </div>
+        </div>
+        <!-- USP 3: Free Parking -->
+        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl shadow-sm text-right flex flex-col justify-between group hover:bg-white/10 transition-all duration-300">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-gold-accent/15 text-gold-accent flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-[28px] text-gold-accent">local_parking</span>
+            </div>
+            <h3 class="font-headline-card text-lg text-white mb-2">חניה חופשית ובשפע</h3>
+            <p class="font-body-main text-white/80 text-sm leading-relaxed">
+              המלון מעמיד לרשות האורחים מגרש חניה פרטי בחינם - יתרון משמעותי במיוחד בקרבת טיילת החוף העמוסה של אשדוד.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Tab Content: Business Events -->
+<section id="tab-content-business" class="max-w-container-max mx-auto px-8 pb-16 hidden transition-all duration-300">
+  <div class="text-center mb-10">
+    <h3 class="font-headline-section text-2xl text-primary mb-2">מרכזי הכנסים וימי העיון שלנו</h3>
+    <div class="h-0.5 w-16 bg-gold-accent mx-auto"></div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+    <!-- Hall 1 -->
+    <div class="group bg-white rounded-xl shadow-md overflow-hidden border border-sand-dark transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col justify-between">
+      <div class="h-64 relative overflow-hidden">
+        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern spacious meeting hall with sleek wooden accents and high ceilings, arranged for a presentation near the beach in Ashdod." src="images/events_hall_mediterranean.webp" loading="lazy" decoding="async"/>
+        <span class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase">אולם מרווח</span>
+      </div>
+      <div class="p-6 flex-grow flex flex-col justify-between">
+        <div>
+          <h3 class="font-headline-card text-headline-card text-primary mb-2">אולם הים התיכון</h3>
+          <div class="flex items-center gap-2 text-on-surface-variant mb-4">
+            <span class="material-symbols-outlined text-gold-accent">group</span>
+            <span class="font-label-meta text-label-meta">עד 150 משתתפים</span>
+          </div>
+          <p class="text-on-surface-variant font-body-main text-sm leading-relaxed mb-6">מרחב רחב ידיים המעוצב בקו מודרני ונקי, מושלם לכנסים מקצועיים, הרצאות וימי עיון רחבי היקף באווירה מקרבת.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Hall 2 -->
+    <div class="group bg-white rounded-xl shadow-md overflow-hidden border border-sand-dark transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col justify-between">
+      <div class="h-64 relative overflow-hidden">
+        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A cozy boutique event hall near the coastal area with modern lighting and neat table setup." src="images/events_hall_panorama.webp" loading="lazy" decoding="async"/>
+        <span class="absolute top-4 right-4 bg-gold-accent text-white text-xs font-bold px-3 py-1 rounded-full uppercase">אולם בוטיק</span>
+      </div>
+      <div class="p-6 flex-grow flex flex-col justify-between">
+        <div>
+          <h3 class="font-headline-card text-headline-card text-primary mb-2">אולם פנורמה</h3>
+          <div class="flex items-center gap-2 text-on-surface-variant mb-4">
+            <span class="material-symbols-outlined text-gold-accent">group</span>
+            <span class="font-label-meta text-label-meta">עד 80 משתתפים</span>
+          </div>
+          <p class="text-on-surface-variant font-body-main text-sm leading-relaxed mb-6">אולם בוטיק מעוצב הממוקם בקרבת טיילת החוף, אידיאלי לסדנאות מנהלים, ישיבות צוות מורחבות וימי עיון באווירת בריזה נעימה.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Hall 3 -->
+    <div class="group bg-white rounded-xl shadow-md overflow-hidden border border-sand-dark transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col justify-between">
+      <div class="h-64 relative overflow-hidden">
+        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Exclusive VIP Boardroom with a long dark oak table and high-end leather chairs for corporate meetings." src="images/events_boardroom.webp" loading="lazy" decoding="async"/>
+        <span class="absolute top-4 right-4 bg-gold-accent text-white text-xs font-bold px-3 py-1 rounded-full uppercase">פרטי ושקט</span>
+      </div>
+      <div class="p-6 flex-grow flex flex-col justify-between">
+        <div>
+          <h3 class="font-headline-card text-headline-card text-primary mb-2">חדר ישיבות VIP</h3>
+          <div class="flex items-center gap-2 text-on-surface-variant mb-4">
+            <span class="material-symbols-outlined text-gold-accent">group</span>
+            <span class="font-label-meta text-label-meta">עד 20 משתתפים</span>
+          </div>
+          <p class="text-on-surface-variant font-body-main text-sm leading-relaxed mb-6">חדר ישיבות מרווח, ממוזג ומאובזר בכל הדרוש לקיום דיונים, ישיבות הנהלה וקבלת החלטות באווירה עסקית שקטה.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Amenities Bento Grid -->
 <section class="bg-surface-container py-12 md:py-section-lg">
 <div class="max-w-container-max mx-auto px-8">
-<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
-<!-- Multimedia -->
-<div class="md:col-span-2 md:row-span-2 bg-primary text-white p-10 rounded-3xl flex flex-col justify-between relative overflow-hidden">
-<div class="absolute -right-20 -bottom-20 opacity-10">
-<span class="material-symbols-outlined text-[300px]">settings_input_component</span>
-</div>
-<div>
-<span class="bg-gold-accent text-white px-4 py-1 rounded-full text-xs font-bold mb-6 inline-block">TECH SOLUTIONS</span>
-<h2 class="font-headline-section text-headline-section mb-6 leading-tight">ציוד מולטימדיה מתקדם</h2>
-<ul class="space-y-4">
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-gold-accent">check_circle</span>
-<span class="font-body-main">מקרני לייזר 4K ומסכי ענק</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-gold-accent">check_circle</span>
-<span class="font-body-main">מערכות סאונד היקפיות מקצועיות</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-gold-accent">check_circle</span>
-<span class="font-body-main">חיבור סיב אופטי במהירות גבוהה</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-gold-accent">check_circle</span>
-<span class="font-body-main">שירותי תרגום סימולטני (בתיאום)</span>
-</li>
-</ul>
-</div>
-<p class="text-on-primary-container font-body-main text-sm mt-8 italic">ליווי טכני צמוד לאורך כל האירוע להבטחת הצלחה מקסימלית.</p>
-</div>
-<!-- Catering -->
-<div class="md:col-span-2 bg-white p-8 rounded-3xl shadow-md border border-sand-dark flex items-center gap-8 group">
-<div class="w-1/3 h-full overflow-hidden rounded-2xl">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Exquisite gourmet catering display at a luxury hotel event. Artisanal hors d'oeuvres are artfully arranged on slate platters. Fresh Mediterranean ingredients, microgreens, and vibrant colors reflect Glatt Kosher Lemehadrin culinary excellence. Warm atmospheric lighting highlights the textures and presentation." src="images/events_catering.webp" loading="lazy" decoding="async"/>
-</div>
-<div class="w-2/3">
-<h3 class="font-headline-card text-headline-card text-primary mb-2">קייטרינג גלאט כשר</h3>
-<p class="font-body-main text-on-surface-variant text-sm mb-4">חוויה קולינרית משובחת בהשגחת המהדרין. תפריטים מותאמים אישית החל מהפסקות קפה ועד ארוחות שף מלאות.</p>
-<span class="font-label-meta text-gold-accent font-bold">גלאט כשר למהדרין</span>
-</div>
-</div>
-<!-- Support -->
-<div class="md:col-span-2 bg-secondary-container text-on-secondary-container p-8 rounded-3xl shadow-md flex items-center gap-8 group">
-<div class="w-2/3">
-<h3 class="font-headline-card text-headline-card mb-2">תמיכה לוגיסטית</h3>
-<p class="font-body-main text-sm mb-4">צוות הפקת האירועים שלנו ילווה אתכם משלב התכנון ועד לביצוע המושלם בשטח.</p>
-<div class="flex gap-2">
-<span class="bg-white/50 px-3 py-1 rounded-lg text-xs font-bold">Events Team</span>
-<span class="bg-white/50 px-3 py-1 rounded-lg text-xs font-bold">24/7 Service</span>
-</div>
-</div>
-<div class="w-1/3 flex justify-center">
-<span class="material-symbols-outlined text-6xl text-primary opacity-40">support_agent</span>
-</div>
-</div>
-</div>
+  <div class="text-center mb-12">
+    <div class="inline-flex items-center gap-2 mb-3">
+      <span class="w-8 h-px bg-gold-accent"></span>
+      <span class="font-label-meta text-label-meta text-gold-accent uppercase tracking-wider">השירותים והמתקנים שלנו</span>
+      <span class="w-8 h-px bg-gold-accent"></span>
+    </div>
+    <h2 class="font-headline-section text-headline-section text-primary mb-4">חוויה מושלמת לכל אורח</h2>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+  <!-- Multimedia -->
+  <div class="md:col-span-2 md:row-span-2 bg-primary text-white p-10 rounded-3xl flex flex-col justify-between relative overflow-hidden">
+  <div class="absolute -right-20 -bottom-20 opacity-10">
+  <span class="material-symbols-outlined text-[300px]">settings_input_component</span>
+  </div>
+  <div>
+  <span class="bg-gold-accent text-white px-4 py-1 rounded-full text-xs font-bold mb-6 inline-block">פתרונות טכנולוגיים</span>
+  <h2 class="font-headline-section text-headline-section mb-6 leading-tight">ציוד מולטימדיה מתקדם</h2>
+  <ul class="space-y-4">
+  <li class="flex items-center gap-3">
+  <span class="material-symbols-outlined text-gold-accent">check_circle</span>
+  <span class="font-body-main">מקרני לייזר ומסכי הקרנה גדולים</span>
+  </li>
+  <li class="flex items-center gap-3">
+  <span class="material-symbols-outlined text-gold-accent">check_circle</span>
+  <span class="font-body-main">מערכות סאונד היקפיות מקצועיות</span>
+  </li>
+  <li class="flex items-center gap-3">
+  <span class="material-symbols-outlined text-gold-accent">check_circle</span>
+  <span class="font-body-main">חיבור WiFi מהיר לכל המשתתפים</span>
+  </li>
+  <li class="flex items-center gap-3">
+  <span class="material-symbols-outlined text-gold-accent">check_circle</span>
+  <span class="font-body-main">לוח וציוד כתיבה משרדי לפי דרישה</span>
+  </li>
+  </ul>
+  </div>
+  <p class="text-on-primary-container font-body-main text-sm mt-8 italic">ליווי טכני צמוד לכל אורך האירוע להבטחת ביצוע חלק.</p>
+  </div>
+  <!-- Catering -->
+  <div class="md:col-span-2 bg-white p-8 rounded-3xl shadow-md border border-sand-dark flex items-center gap-8 group">
+  <div class="w-1/3 h-full overflow-hidden rounded-2xl">
+  <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Tasty kosher food display for a family or corporate event catering." src="images/events_catering.webp" loading="lazy" decoding="async"/>
+  </div>
+  <div class="w-2/3">
+  <h3 class="font-headline-card text-headline-card text-primary mb-2">קייטרינג מהדרין - הרב מחפוד</h3>
+  <p class="font-body-main text-on-surface-variant text-sm mb-4">חוויה קולינרית עשירה וחמה בהשגחת בד"ץ יורה דעה. תפריטים בשריים וחלביים מותאמים אישית החל מהפסקות קפה ועד ארוחות שף מלאות.</p>
+  <span class="bg-gold-accent/15 text-gold-accent font-bold px-3 py-1.5 rounded-full text-xs">גלאט כשר למהדרין</span>
+  </div>
+  </div>
+  <!-- Support -->
+  <div class="md:col-span-2 bg-secondary-container text-on-secondary-container p-8 rounded-3xl shadow-md flex items-center gap-8 group">
+  <div class="w-2/3">
+  <h3 class="font-headline-card text-headline-card mb-2">ליווי לוגיסטי וחניה חינם</h3>
+  <p class="font-body-main text-sm mb-4">צוות האירועים המסור שלנו ילווה אתכם משלב התכנון ועד לביצוע המושלם. לרשות האורחים שלכם עומדת חניה פרטית בחינם בשפע.</p>
+  <div class="flex gap-2">
+  <span class="bg-white/50 px-3 py-1 rounded-lg text-xs font-bold">חניה חינם לאורחים</span>
+  <span class="bg-white/50 px-3 py-1 rounded-lg text-xs font-bold">צוות צמוד 24/7</span>
+  </div>
+  </div>
+  <div class="w-1/3 flex justify-center">
+  <span class="material-symbols-outlined text-6xl text-primary opacity-40">support_agent</span>
+  </div>
+  </div>
+  </div>
 </div>
 </section>
+
 <!-- Lead Form Section -->
 <section class="py-12 md:py-section-lg max-w-container-max mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center" id="inquiry-form">
 <div>
-<h2 class="font-headline-section text-headline-section text-primary mb-6">צרו איתנו קשר לתיאום</h2>
+<h2 class="font-headline-section text-headline-section text-primary mb-6">צרו איתנו קשר לתיאום האירוע</h2>
 <p class="font-body-main text-on-surface-variant text-lg mb-8 leading-relaxed">
-                    המומחים שלנו לאירועים עסקיים יחזרו אליכם עם הצעה מותאמת אישית לצרכי החברה שלכם. בואו נהפוך את הכנס הבא שלכם לסיפור הצלחה.
-                </p>
+  הצוות המקצועי שלנו לאירועים ושמחות יחזור אליכם עם הצעה מותאמת אישית לצרכים שלכם. בואו נהפוך את האירוע או השמחה שלכם לחוויה בלתי נשכחת.
+</p>
 <div class="space-y-6">
 <div class="flex items-start gap-4">
 <div class="bg-gold-accent/10 p-3 rounded-lg">
@@ -160,7 +347,7 @@
 </div>
 <div>
 <h4 class="font-headline-card text-base mb-1">כתובת המלון</h4>
-<p class="font-body-main text-on-surface-variant text-sm">רחוב מקס נורדאו 24, אשדוד</p>
+<p class="font-body-main text-on-surface-variant text-sm">רחוב מקס נורדאו 24, אשדוד (קרבה ישירה לטיילת ולחוף הים)</p>
 </div>
 </div>
 <div class="flex items-start gap-4">
@@ -172,23 +359,76 @@
 <p class="font-body-main text-on-surface-variant text-sm">events@miamihotel.co.il</p>
 </div>
 </div>
+<div class="flex items-start gap-4">
+<div class="bg-gold-accent/10 p-3 rounded-lg">
+<span class="material-symbols-outlined text-gold-accent">local_parking</span>
+</div>
+<div>
+<h4 class="font-headline-card text-base mb-1">חניה לאורחים</h4>
+<p class="font-body-main text-on-surface-variant text-sm">חניה פרטית ללא תשלום לכל אורחי המלון והאירוע</p>
+</div>
+</div>
 </div>
 </div>
 <div class="bg-white p-10 rounded-3xl shadow-xl border border-sand-dark relative overflow-hidden text-center flex flex-col justify-center items-center space-y-6 min-h-[400px]">
 <div class="absolute top-0 right-0 w-2 h-full bg-gold-accent"></div>
 <div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center text-gold-accent mb-2">
-  <span class="material-symbols-outlined text-4xl">business_center</span>
+  <span class="material-symbols-outlined text-4xl">celebration</span>
 </div>
 <h3 class="font-headline-card text-2xl text-primary font-bold">הצעה מותאמת אישית</h3>
 <p class="font-body-main text-on-surface-variant text-base leading-relaxed">
-  מלאו את טופס הפנייה המרכזי לאירועים, והמומחים שלנו יחזרו אליכם עם תוכנית מלאה והצעת מחיר מותאמת.
+  מלאו את טופס הפנייה המרכזי לאירועים, והמומחים שלנו יחזרו אליכם עם תוכנית מלאה והצעת מחיר מותאמת אישית.
 </p>
-<a href="contact.html?type=events" class="w-full bg-primary text-white py-4 rounded-xl font-headline-card hover:bg-primary-container transition-all shadow-lg flex items-center justify-center gap-2">
+<a id="contact-form-btn" href="contact.html?type=bar_mitzvah" class="w-full bg-primary text-white py-4 rounded-xl font-headline-card hover:bg-primary-container transition-all shadow-lg flex items-center justify-center gap-2">
   <span>להשארת פרטים בטופס המרכזי</span>
   <span class="material-symbols-outlined text-lg">arrow_back</span>
 </a>
 </div>
 </section>
+
+<!-- Tab Switching Script -->
+<script>
+function switchEventTab(tabType, shouldScroll = false) {
+  const familyBtn = document.getElementById('tab-btn-family');
+  const businessBtn = document.getElementById('tab-btn-business');
+  const familyContent = document.getElementById('tab-content-family');
+  const businessContent = document.getElementById('tab-content-business');
+  const contactBtn = document.getElementById('contact-form-btn');
+  
+  if (tabType === 'family') {
+    // Buttons styling
+    familyBtn.className = "flex-1 py-4 px-6 rounded-xl font-headline-card text-base flex items-center justify-center gap-2 transition-all duration-300 bg-gold-accent text-white shadow-md";
+    businessBtn.className = "flex-1 py-4 px-6 rounded-xl font-headline-card text-base flex items-center justify-center gap-2 transition-all duration-300 text-on-surface-variant hover:text-primary hover:bg-primary/5";
+    
+    // Content visibility
+    businessContent.classList.add('hidden');
+    familyContent.classList.remove('hidden');
+    
+    if (contactBtn) {
+      contactBtn.href = "contact.html?type=bar_mitzvah";
+    }
+  } else {
+    // Buttons styling
+    businessBtn.className = "flex-1 py-4 px-6 rounded-xl font-headline-card text-base flex items-center justify-center gap-2 transition-all duration-300 bg-gold-accent text-white shadow-md";
+    familyBtn.className = "flex-1 py-4 px-6 rounded-xl font-headline-card text-base flex items-center justify-center gap-2 transition-all duration-300 text-on-surface-variant hover:text-primary hover:bg-primary/5";
+    
+    // Content visibility
+    familyContent.classList.add('hidden');
+    businessContent.classList.remove('hidden');
+    
+    if (contactBtn) {
+      contactBtn.href = "contact.html?type=events";
+    }
+  }
+
+  if (shouldScroll) {
+    const target = document.getElementById('event-selector');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}
+</script>
 </main>
 
 <div id="site-footer"></div>
