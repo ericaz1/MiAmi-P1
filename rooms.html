@@ -60,7 +60,7 @@
       <label class="block font-label-meta text-label-meta text-white mb-2 font-bold drop-shadow-sm">הרכב אורחים</label>
       <div class="relative">
         <button id="guest-select-trigger" class="w-full bg-white/90 border border-sand-dark rounded-xl py-3 pr-10 pl-4 focus:ring-2 focus:ring-gold-accent focus:border-gold-accent transition-all text-right flex items-center justify-between cursor-pointer text-primary font-semibold shadow-inner focus:outline-none" type="button">
-          <span id="guest-select-summary">2 אורחים (זוג)</span>
+          <span id="guest-select-summary">2 מבוגרים</span>
           <span class="material-symbols-outlined text-primary/50 text-lg transition-transform duration-200" id="guest-trigger-arrow">expand_more</span>
         </button>
         <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary/50">group</span>
@@ -109,7 +109,7 @@
   <div id="rooms-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
     <!-- Classic Double Room -->
     <div data-room-type="couple" class="group bg-white rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col">
-      <div class="relative h-64 overflow-hidden">
+      <div class="relative h-64 overflow-hidden cursor-pointer">
         <img alt="Standard Double Room" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="חדר אירוח נעים ונקי במלון מיעמי אשדוד, מעוצב בגוונים רגועים, עם מיטה רחבה ונוחה, תאורה חמה, וחלון המכניס אור טבעי." src="images/room_classic_double.webp" loading="lazy" decoding="async">
         <div class="absolute top-4 right-4">
           <span class="bg-emerald-600 text-white px-3 py-1 rounded-full font-label-meta text-label-meta">הנבחר</span>
@@ -156,7 +156,7 @@
 
     <!-- Family Room -->
     <div data-room-type="family" class="group bg-white rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col">
-      <div class="relative h-64 overflow-hidden">
+      <div class="relative h-64 overflow-hidden cursor-pointer">
         <img alt="Spacious Family Room" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="חדר משפחתי מרווח, מסודר ונקי המיועד לאירוח של זוג וילדים, בעיצוב נעים ונוח המתאים במיוחד לחוגגי שבת חתן." src="images/room_family_suite.webp" loading="lazy" decoding="async">
         <div class="absolute top-4 right-4">
           <span class="bg-gold-accent text-white px-3 py-1 rounded-full font-label-meta text-label-meta">הבחירה למשפחות</span>
@@ -203,7 +203,7 @@
 
     <!-- Jacuzzi Room -->
     <div data-room-type="jacuzzi" class="group bg-white rounded-xl overflow-hidden shadow-md border border-sand-dark hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col">
-      <div class="relative h-64 overflow-hidden">
+      <div class="relative h-64 overflow-hidden cursor-pointer">
         <img alt="Double Room with Jacuzzi" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="חדר אירוח זוגי מעוצב וחם, המציע ג'קוזי מובנה ומפנק, באווירה אינטימית ונינוחה." src="images/room_deluxe.webp" loading="lazy" decoding="async">
         <div class="absolute top-4 right-4">
           <span class="bg-primary text-white px-3 py-1 rounded-full font-label-meta text-label-meta">עם ג'קוזי</span>
@@ -484,7 +484,7 @@
       const total = currentAdults + currentKids;
       let text = '';
       if (currentAdults === 2 && currentKids === 0) {
-        text = '2 אורחים (זוג)';
+        text = '2 מבוגרים';
       } else if (currentAdults === 1 && currentKids === 0) {
         text = 'אורח יחיד';
       } else {
@@ -784,10 +784,23 @@
       modal.classList.remove('opacity-100');
     }
 
+    // Handle click on "For more details" buttons
     viewDetailsBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const roomId = btn.getAttribute('data-room-id');
         openModal(roomId);
+      });
+    });
+
+    // Handle click on room card images/wrappers
+    const roomWrappers = document.querySelectorAll('#rooms-grid .relative.h-64');
+    roomWrappers.forEach(wrapper => {
+      wrapper.addEventListener('click', () => {
+        const card = wrapper.closest('[data-room-type]');
+        if (card) {
+          const roomId = card.getAttribute('data-room-type');
+          openModal(roomId);
+        }
       });
     });
 

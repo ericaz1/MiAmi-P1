@@ -216,7 +216,7 @@
                       </div>
                     </div>
                     <!-- Date Pickers -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[480px] w-full">
                       <div class="flex flex-col gap-2">
                         <label class="text-sm font-semibold text-white/95" for="form-date-start"
                           id="date-start-label">תאריך הגעה</label>
@@ -228,6 +228,15 @@
                         <label class="text-sm font-semibold text-white/95" for="form-date-end">תאריך עזיבה</label>
                         <input type="text" id="form-date-end" name="date_end" placeholder="dd/mm/yyyy" lang="en"
                           class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-mustard-accent transition-colors">
+                      </div>
+                    </div>
+
+                    <!-- Nights Count Display -->
+                    <div id="nights-count-wrapper" class="hidden mt-[-0.5rem] select-none">
+                      <div class="inline-flex items-center gap-2 bg-mustard-accent/15 border border-mustard-accent/30 rounded-lg px-3 py-1.5 text-mustard-accent text-sm font-semibold">
+                        <span class="material-symbols-outlined text-base">nights_stay</span>
+                        <span>סה"כ:</span>
+                        <span id="nights-count-text"></span>
                       </div>
                     </div>
 
@@ -433,6 +442,7 @@
               dateEndInput.removeAttribute('required');
             }
           }
+          updateNightsCount();
         });
       }
 
@@ -525,6 +535,7 @@
           dateStartInput.removeAttribute('required');
           dateEndInput.removeAttribute('required');
         }
+        updateNightsCount();
       }
 
       // Guests plus/minus clicks
@@ -728,6 +739,43 @@
         }
       });
 
+      function updateNightsCount() {
+        const wrapper = document.getElementById('nights-count-wrapper');
+        const textEl = document.getElementById('nights-count-text');
+        if (!wrapper || !textEl) return;
+
+        const selectedInterest = document.querySelector('input[name="interest"]:checked')?.value;
+        const noDateYet = noDateCheckbox && noDateCheckbox.checked;
+
+        if (selectedInterest !== 'vacation' || noDateYet) {
+          wrapper.classList.add('hidden');
+          return;
+        }
+
+        const startVal = fpStart && fpStart.selectedDates[0];
+        const endVal = fpEnd && fpEnd.selectedDates[0];
+
+        if (startVal && endVal) {
+          const diffTime = Math.abs(endVal - startVal);
+          const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+          
+          if (diffDays > 0) {
+            let label = '';
+            if (diffDays === 1) {
+              label = 'לילה אחד (1)';
+            } else if (diffDays === 2) {
+              label = 'שני (2) לילות';
+            } else {
+              label = `${diffDays} לילות`;
+            }
+            textEl.textContent = label;
+            wrapper.classList.remove('hidden');
+            return;
+          }
+        }
+        wrapper.classList.add('hidden');
+      }
+
       function submitLeadForm() {
         const roomInput = document.getElementById('form-room-type');
         const successText = successMessage.querySelector('p');
@@ -771,6 +819,7 @@
               fpEnd.setDate(nextDay);
             }
           }
+          updateNightsCount();
         }
       });
 
@@ -784,6 +833,9 @@
         disableMobile: true,
         onReady: function (selectedDates, dateStr, instance) {
           instance.calendarContainer.classList.add('mustard-theme');
+        },
+        onChange: function (selectedDates, dateStr, instance) {
+          updateNightsCount();
         }
       });
 
@@ -901,6 +953,9 @@
           }
         }
       }
+
+      // Initial count calculation on page load
+      updateNightsCount();
     });
   </script>
 
