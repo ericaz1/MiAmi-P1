@@ -604,6 +604,7 @@
         </div>
 
         <form id="interactive-lead-form">
+          <input type="hidden" name="room_type" id="form-room-type" value="">
           <!-- Step 1: Interest -->
           <div class="form-step active" data-step="1">
             <h3 class="text-2xl font-bold text-white mb-6 text-center">במה נוכל לעזור לכם היום?</h3>
@@ -689,27 +690,49 @@
           <div class="form-step" data-step="2">
             <h3 class="text-2xl font-bold text-white mb-6 text-center">פרטי השהות או האירוע</h3>
             <div class="flex flex-col gap-6 text-right">
+              <!-- Selected Room Info Box -->
+              <div id="selected-room-info" class="hidden bg-white/5 border border-mustard-accent/20 rounded-xl p-4 text-white">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-mustard-accent text-2xl">bed</span>
+                    <div>
+                      <span class="text-xs text-white/60 block leading-none mb-1">החדר שנבחר</span>
+                      <span id="selected-room-name" class="font-bold text-base text-white"></span>
+                    </div>
+                  </div>
+                  <button type="button" id="clear-room-selection" class="text-xs text-white/50 hover:text-white underline transition-colors cursor-pointer">הסר חדר</button>
+                </div>
+              </div>
+              <!-- Dynamic USP Banner -->
+              <div id="dynamic-usp-banner" class="hidden bg-white/5 border border-mustard-accent/20 rounded-xl p-4 text-mustard-accent text-sm select-none">
+                <div class="flex items-start gap-2.5">
+                  <span class="material-symbols-outlined text-mustard-accent text-[20px] flex-shrink-0" id="dynamic-usp-icon">info</span>
+                  <p id="dynamic-usp-text" class="leading-relaxed"></p>
+                </div>
+              </div>
               <!-- Date Pickers -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[480px] w-full">
                 <div class="flex flex-col gap-2">
-                  <label class="text-sm font-semibold text-white/95" for="form-date-start" id="date-start-label">תאריך
-                    הגעה</label>
+                  <label class="text-sm font-semibold text-white/95" for="form-date-start"
+                    id="date-start-label">תאריך הגעה</label>
                   <input type="text" id="form-date-start" name="date_start" placeholder="dd/mm/yyyy" lang="en"
-                    class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 text-white focus:outline-none focus:border-mustard-accent transition-colors"
+                    class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-mustard-accent transition-colors"
                     required>
                 </div>
                 <div class="flex flex-col gap-2" id="date-end-wrapper">
                   <label class="text-sm font-semibold text-white/95" for="form-date-end">תאריך עזיבה</label>
                   <input type="text" id="form-date-end" name="date_end" placeholder="dd/mm/yyyy" lang="en"
-                    class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 text-white focus:outline-none focus:border-mustard-accent transition-colors">
+                    class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-mustard-accent transition-colors">
                 </div>
               </div>
 
-              <!-- Nights Counter Display -->
-              <div id="nights-counter-display"
-                class="hidden text-sm font-semibold text-mustard-accent text-right mt-[-0.5rem] mb-2">
-                <span>סה"כ לילות: </span>
-                <span id="nights-count-val">0</span>
+              <!-- Nights Count Display -->
+              <div id="nights-count-wrapper" class="hidden mt-[-0.5rem] select-none">
+                <div class="inline-flex items-center gap-2 bg-mustard-accent/15 border border-mustard-accent/30 rounded-lg px-3 py-1.5 text-mustard-accent text-sm font-semibold">
+                  <span class="material-symbols-outlined text-base">nights_stay</span>
+                  <span>סה"כ:</span>
+                  <span id="nights-count-text"></span>
+                </div>
               </div>
 
               <!-- No Date Yet Checkbox -->
@@ -737,12 +760,12 @@
 
               <!-- Additional Event Details -->
               <div class="flex flex-col gap-2">
-                <label class="text-sm font-semibold text-white/95" for="form-event-details">פרטים נוספים על האירוע (לא
-                  חובה)</label>
+                <label class="text-sm font-semibold text-white/95" for="form-event-details">פרטים נוספים על האירוע
+                  (לא חובה)</label>
                 <div class="relative">
                   <textarea id="form-event-details" name="event_details" maxlength="200" rows="3"
                     placeholder="ספרו לנו עוד על האירוע שלכם (סוג האירוע, דרישות מיוחדות, העדפות מזון וכד')..."
-                    class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 pb-8 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40 resize-none"></textarea>
+                    class="w-full bg-white/10 border border-white/20 rounded-xl p-3 pb-8 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40 resize-none"></textarea>
                   <span id="char-counter"
                     class="absolute bottom-2 left-3 text-xs text-white/40 select-none">0/200</span>
                 </div>
@@ -753,7 +776,8 @@
                 class="hidden bg-white/5 border border-mustard-accent/20 rounded-xl p-4 text-sm text-mustard-accent/90 leading-relaxed">
                 <div class="flex items-start gap-2">
                   <span class="material-symbols-outlined text-mustard-accent text-lg flex-shrink-0">info</span>
-                  <p>שבת חתן מתקיימת עבור <strong>מינימום של 40 אורחים</strong>. באירוע כזה משפחתכם מקבלת בית כנסת פרטי
+                  <p>שבת חתן מתקיימת עבור <strong>מינימום של 40 אורחים</strong>. באירוע כזה משפחתכם מקבלת בית כנסת
+                    פרטי
                     וחדר אוכל פרטי המוקצים בלעדית עבורכם.</p>
                 </div>
               </div>
@@ -767,19 +791,19 @@
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold text-white/95" for="form-contact-name">שם מלא</label>
                 <input type="text" id="form-contact-name" name="contact_name" placeholder="הכנס את שמך המלא"
-                  class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
+                  class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
                   required>
               </div>
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold text-white/95" for="form-contact-phone">מספר טלפון</label>
                 <input type="tel" id="form-contact-phone" name="contact_phone" placeholder="לדוגמה: 050-1234567"
-                  class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
+                  class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
                   required>
               </div>
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold text-white/95" for="form-contact-email">כתובת אימייל</label>
                 <input type="email" id="form-contact-email" name="contact_email" placeholder="name@domain.com"
-                  class="w-full bg-white/10 border border-white/20 rounded-xl py-2 px-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
+                  class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-mustard-accent transition-colors placeholder:text-white/40"
                   required>
               </div>
             </div>
@@ -788,7 +812,7 @@
           <!-- Navigation buttons -->
           <div class="flex justify-between items-center mt-8 gap-4">
             <button type="button"
-              class="form-nav-btn prev-btn bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all cursor-pointer flex items-center gap-2 hidden"
+              class="form-nav-btn prev-btn bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all cursor-pointer flex items-center gap-2 visibility-hidden"
               id="form-prev-btn">
               <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
               <span>חזרה</span>
@@ -810,7 +834,8 @@
             <span class="material-symbols-outlined text-mustard-accent text-5xl">done</span>
           </div>
           <h3 class="text-2xl font-bold text-white mb-3">הבקשה שלך נשלחה בהצלחה!</h3>
-          <p class="text-white/80 max-w-sm mb-6">תודה שבחרת במלון מיעמי אשדוד. מנהל האירועים והחופשות שלנו יעבור על פרטי
+          <p class="text-white/80 max-w-sm mb-6">תודה שבחרת במלון מיעמי אשדוד. מנהל האירועים והחופשות שלנו יעבור
+            על פרטי
             הבקשה שלך ויחזור אליך טלפונית עם הצעה מותאמת אישית תוך 24 שעות.</p>
           <button type="button"
             class="bg-mustard-accent hover:bg-mustard-accent/90 text-white font-bold py-2.5 px-6 rounded-lg transition-colors cursor-pointer"
@@ -1091,6 +1116,7 @@
               dateEndInput.removeAttribute('required');
             }
           }
+          updateNightsCount();
         });
       }
 
@@ -1118,6 +1144,44 @@
       function updateFormContext(type) {
         const shabbatNote = document.getElementById('shabbat-guests-note');
         const isNoDate = noDateCheckbox && noDateCheckbox.checked;
+        const roomInfo = document.getElementById('selected-room-info');
+        const roomInput = document.getElementById('form-room-type');
+        const uspBanner = document.getElementById('dynamic-usp-banner');
+        const uspText = document.getElementById('dynamic-usp-text');
+        const uspIcon = document.getElementById('dynamic-usp-icon');
+
+        if (uspBanner && uspText && uspIcon) {
+          let text = '';
+          let icon = '';
+          if (type === 'vacation') {
+            text = 'נופש משפחתי במרחק הליכה קצר ביותר מטיילת החוף, כולל חניה חינם ובשפע ושעוני שבת מובנים בחדרים.';
+            icon = 'beach_access';
+          } else if (type === 'shabbat') {
+            text = 'אירוח שבת חתן בבלעדיות מלאה! בית כנסת פרטי וחדר אוכל נפרד המוקצים רק עבור המשפחה שלכם, בכשרות המהודרת של הרב מחפוד.';
+            icon = 'verified';
+          } else if (type === 'events') {
+            text = 'כנסים ואירועים עסקיים עם ליווי טכנולוגי צמוד, ציוד מולטימדיה מתקדם (מקרן, סאונד), חניה חינם וקייטרינג מהדרין משובח.';
+            icon = 'co_present';
+          } else if (type === 'brit') {
+            text = 'חגיגת ברית/בריתה באווירה משפחתית חמה, אולם מעוצב וחגיגי, חניה חינם בשפע לאורחים ותפריט בשרי עשיר למהדרין.';
+            icon = 'child_friendly';
+          } else if (type === 'bar_mitzvah') {
+            text = 'עלייה לתורה ובר מצווה מרגשת בבית כנסת פרטי ומפואר, סעודת מצווה חגיגית בחדר אוכל פרטי משלכם וכשרות למהדרין הרב מחפוד.';
+            icon = 'school';
+          }
+
+          if (text) {
+            uspText.textContent = text;
+            uspIcon.textContent = icon;
+            uspBanner.classList.remove('hidden');
+          } else {
+            uspBanner.classList.add('hidden');
+          }
+        }
+
+        if (type !== 'vacation' && roomInput) {
+          roomInput.value = '';
+        }
 
         if (type === 'vacation') {
           guestStep = 1;
@@ -1134,6 +1198,11 @@
             dateEndInput.setAttribute('required', 'required');
           }
           if (shabbatNote) shabbatNote.classList.add('hidden');
+          
+          // Show room selection info if we have one
+          if (roomInput && roomInput.value && roomInfo) {
+            roomInfo.classList.remove('hidden');
+          }
         } else if (type === 'shabbat') {
           guestStep = 10;
           guestMin = 40;
@@ -1145,6 +1214,11 @@
           dateEndWrapper.style.display = 'none';
           dateEndInput.removeAttribute('required');
           if (shabbatNote) shabbatNote.classList.remove('hidden');
+          
+          // Hide room selection info for other event types
+          if (roomInfo) {
+            roomInfo.classList.add('hidden');
+          }
         } else {
           guestStep = 10;
           guestMin = 10;
@@ -1156,13 +1230,18 @@
           dateEndWrapper.style.display = 'none';
           dateEndInput.removeAttribute('required');
           if (shabbatNote) shabbatNote.classList.add('hidden');
+          
+          // Hide room selection info for other event types
+          if (roomInfo) {
+            roomInfo.classList.add('hidden');
+          }
         }
 
         if (isNoDate) {
           dateStartInput.removeAttribute('required');
           dateEndInput.removeAttribute('required');
         }
-        calculateNights();
+        updateNightsCount();
       }
 
       // Guests plus/minus clicks
@@ -1201,13 +1280,9 @@
         progressBar.style.width = `${(currentStep / totalSteps) * 100}%`;
 
         if (currentStep === 1) {
-          prevBtn.classList.add('hidden');
-          prevBtn.parentElement.classList.remove('justify-between');
-          prevBtn.parentElement.classList.add('justify-center');
+          prevBtn.classList.add('visibility-hidden');
         } else {
-          prevBtn.classList.remove('hidden');
-          prevBtn.parentElement.classList.add('justify-between');
-          prevBtn.parentElement.classList.remove('justify-center');
+          prevBtn.classList.remove('visibility-hidden');
         }
 
         if (currentStep === totalSteps) {
@@ -1370,29 +1445,58 @@
         }
       });
 
-      function calculateNights() {
-        const startVal = fpStart && fpStart.selectedDates[0];
-        const endVal = fpEnd && fpEnd.selectedDates[0];
-        const displayEl = document.getElementById('nights-counter-display');
-        const countValEl = document.getElementById('nights-count-val');
-
-        if (!displayEl || !countValEl) return;
+      function updateNightsCount() {
+        const wrapper = document.getElementById('nights-count-wrapper');
+        const textEl = document.getElementById('nights-count-text');
+        if (!wrapper || !textEl) return;
 
         const selectedInterest = document.querySelector('input[name="interest"]:checked')?.value;
         const noDateYet = noDateCheckbox && noDateCheckbox.checked;
 
-        if (selectedInterest === 'vacation' && startVal && endVal && !noDateYet) {
-          const diffTime = Math.abs(endVal - startVal);
-          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-          countValEl.textContent = diffDays;
-          displayEl.classList.remove('hidden');
-        } else {
-          displayEl.classList.add('hidden');
+        if (selectedInterest !== 'vacation' || noDateYet) {
+          wrapper.classList.add('hidden');
+          return;
         }
+
+        const startVal = fpStart && fpStart.selectedDates[0];
+        const endVal = fpEnd && fpEnd.selectedDates[0];
+
+        if (startVal && endVal) {
+          const diffTime = Math.abs(endVal - startVal);
+          const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+          
+          if (diffDays > 0) {
+            let label = '';
+            if (diffDays === 1) {
+              label = 'לילה אחד (1)';
+            } else if (diffDays === 2) {
+              label = 'שני (2) לילות';
+            } else {
+              label = `${diffDays} לילות`;
+            }
+            textEl.textContent = label;
+            wrapper.classList.remove('hidden');
+            return;
+          }
+        }
+        wrapper.classList.add('hidden');
       }
 
       function submitLeadForm() {
+        const roomInput = document.getElementById('form-room-type');
+        const successText = successMessage.querySelector('p');
+        if (roomInput && roomInput.value) {
+          let roomNameHebrew = "";
+          if (roomInput.value === "couple") roomNameHebrew = "חדר זוגי סטנדרט";
+          else if (roomInput.value === "family") roomNameHebrew = "חדר משפחתי מרווח";
+          else if (roomInput.value === "jacuzzi") roomNameHebrew = "חדר זוגי עם ג'קוזי";
+          
+          if (roomNameHebrew && successText) {
+            successText.innerHTML = `תודה שבחרת במלון מיעמי אשדוד. מנהל האירועים והחופשות שלנו יעבור על פרטי הבקשה שלך עבור <strong>${roomNameHebrew}</strong> ויחזור אליך טלפונית עם הצעה מותאמת אישית תוך 24 שעות.`;
+          }
+        } else if (successText) {
+          successText.innerHTML = `תודה שבחרת במלון מיעמי אשדוד. מנהל האירועים והחופשות שלנו יעבור על פרטי הבקשה שלך ויחזור אליך טלפונית עם הצעה מותאמת אישית תוך 24 שעות.`;
+        }
         successMessage.classList.add('active');
       }
 
@@ -1421,7 +1525,7 @@
               fpEnd.setDate(nextDay);
             }
           }
-          calculateNights();
+          updateNightsCount();
         }
       });
 
@@ -1437,12 +1541,17 @@
           instance.calendarContainer.classList.add('mustard-theme');
         },
         onChange: function (selectedDates, dateStr, instance) {
-          calculateNights();
+          updateNightsCount();
         }
       });
 
       resetBtn.addEventListener('click', () => {
         form.reset();
+        const roomInput = document.getElementById('form-room-type');
+        const roomInfo = document.getElementById('selected-room-info');
+        if (roomInput) roomInput.value = '';
+        if (roomInfo) roomInfo.classList.add('hidden');
+
         if (noDateCheckbox) {
           noDateCheckbox.checked = false;
           noDateCheckbox.dispatchEvent(new Event('change'));
@@ -1463,8 +1572,96 @@
         updateFormUI();
         successMessage.classList.remove('active');
         updateFormContext('vacation');
-        calculateNights();
       });
+
+      // Clear room selection handler
+      const clearRoomBtn = document.getElementById('clear-room-selection');
+      if (clearRoomBtn) {
+        clearRoomBtn.addEventListener('click', () => {
+          const roomInput = document.getElementById('form-room-type');
+          const roomInfo = document.getElementById('selected-room-info');
+          if (roomInput) roomInput.value = '';
+          if (roomInfo) roomInfo.classList.add('hidden');
+        });
+      }
+
+      // URL parameter pre-selection
+      const urlParams = new URLSearchParams(window.location.search);
+      const typeParam = urlParams.get("type");
+      const guestsParam = urlParams.get("guests");
+      const dateStartParam = urlParams.get("date_start");
+      const dateEndParam = urlParams.get("date_end");
+      const roomParam = urlParams.get("room");
+
+      if (typeParam) {
+        const matchingRadio = document.querySelector(`input[name="interest"][value="${typeParam}"]`);
+        if (matchingRadio) {
+          matchingRadio.checked = true;
+          interestCards.forEach(c => c.classList.remove('active'));
+          const card = matchingRadio.closest('.interest-card');
+          if (card) {
+            card.classList.add('active');
+          }
+          updateFormContext(typeParam);
+
+          // Advance to step 2 automatically if type is preselected
+          currentStep = 2;
+          updateFormUI();
+        }
+      }
+
+      if (guestsParam && !isNaN(parseInt(guestsParam))) {
+        const val = parseInt(guestsParam);
+        guestsInput.value = val;
+        guestsDisplay.textContent = `${val} ${guestSuffix}`;
+      }
+
+      // Date parameter population
+      if (dateStartParam) {
+        if (fpStart) {
+          fpStart.setDate(dateStartParam, true);
+        }
+        if (fpEnd) {
+          fpEnd.set("minDate", dateStartParam);
+        }
+      }
+      if (dateEndParam) {
+        if (fpEnd) {
+          fpEnd.setDate(dateEndParam, true);
+        }
+      }
+
+      // Selected Room parameter population
+      if (roomParam) {
+        const roomInput = document.getElementById('form-room-type');
+        const roomInfo = document.getElementById('selected-room-info');
+        const roomNameEl = document.getElementById('selected-room-name');
+        
+        if (roomInput) {
+          roomInput.value = roomParam;
+        }
+        
+        let roomNameHebrew = "";
+        if (roomParam === "couple") {
+          roomNameHebrew = "חדר זוגי סטנדרט";
+        } else if (roomParam === "family") {
+          roomNameHebrew = "חדר משפחתי מרווח";
+        } else if (roomParam === "jacuzzi") {
+          roomNameHebrew = "חדר זוגי עם ג'קוזי";
+        }
+        
+        if (roomNameHebrew) {
+          if (roomNameEl) {
+            roomNameEl.textContent = roomNameHebrew;
+          }
+          if (roomInfo && (!typeParam || typeParam === "vacation")) {
+            roomInfo.classList.remove('hidden');
+          }
+        }
+      }
+
+      // Initial count calculation on page load
+      updateNightsCount();
     });
   </script>
 
