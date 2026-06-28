@@ -115,7 +115,7 @@
     }
   }
 
-  // יצירה והצגה של פופ-אפ תודה רבה יוקרתי
+  // יצירה והצגה של פופ-אפ תודה רבה מעוצב ומרשים
   function showSuccessModal() {
     const modalOverlay = document.createElement("div");
     modalOverlay.className =
